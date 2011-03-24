@@ -35,7 +35,7 @@ namespace Gaza
 		void output(const std::vector<std::string> &input)
 		{
 			std::cout << "[" << std::endl;
-			for(int i = 0; i < input.size() - 1; i++)
+			for(unsigned int i = 0; i < input.size() - 1; i++)
 			{
 				std::cout << "   \"" << input[i] << "\"," << std::endl;
 			}
