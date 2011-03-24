@@ -6,6 +6,11 @@ namespace Gaza
 	{
 		sf::IntRect zeroRectangle(0, 0, 0, 0);
 
+		bool isZero(const sf::IntRect &rectangle)
+		{
+			return rectangle.Left == zeroRectangle.Left && rectangle.Top == zeroRectangle.Top && rectangle.Width == zeroRectangle.Width && rectangle.Height == zeroRectangle.Height;
+		}
+
 		int stringToInt(const std::string &input)
 		{
 			std::stringstream ss(input);
@@ -22,17 +27,58 @@ namespace Gaza
 			return ss.str();
 		}
 		
-		bool isZero(const sf::IntRect &rectangle)
+		int power(int base, int exponent)
 		{
-			return rectangle.Left == zeroRectangle.Left && rectangle.Top == zeroRectangle.Top && rectangle.Width == zeroRectangle.Width && rectangle.Height == zeroRectangle.Height;
+			if(exponent == 0)
+			{
+				return 1;
+			}
+			else
+			{
+				if(exponent % 2 == 0)
+				{
+					return power(base * base, exponent / 2);
+				}
+				else
+				{
+					return base * power(base, exponent - 1);
+				}
+			}
 		}
 
-		void output(const sf::IntRect &rectangle)
+		/* std::string toString(const sf::IntRect &input)
 		{
-			std::cout << "{x: " << rectangle.Left << ", y: " << rectangle.Top << ", w: " << rectangle.Width << ", h: " << rectangle.Height << "}" << std::endl;
+			std::stringstream ss;
+
+			ss << "{x: " << input.Left << ", y: " << input.Top << ", w: " << input.Width << ", h: " << input.Height << "}";
+
+			return ss.str();
 		}
 
-		void output(const std::vector<std::string> &input)
+		std::string toString(const sf::IntRect * &input)
+		{
+			std::stringstream ss;
+			ss << "{x: " << input->Left << ", y: " << input->Top << ", w: " << input->Width << ", h: " << input->Height << "}";
+			return ss.str();
+		}
+
+		std::string toString(const std::vector<std::string> &input)
+		{
+			std::stringstream ss;
+
+			ss << "[" << std::endl;
+			for(unsigned int i = 0; i < input.size() - 1; i++)
+			{
+				ss << "   \"" << input[i] << "\"," << std::endl;
+			}
+			if(input.size() > 0)
+			{
+				ss << "   \"" << input[input.size() - 1] << "\"" << std::endl;
+			}
+			ss << "]" << std::endl;
+		}
+
+		void output(const std::vector<sf::IntRect> &input)
 		{
 			std::cout << "[" << std::endl;
 			for(unsigned int i = 0; i < input.size() - 1; i++)
@@ -45,5 +91,104 @@ namespace Gaza
 			}
 			std::cout << "]" << std::endl;
 		}
+
+		void output(const std::vector<sf::IntRect *> &input)
+		{
+			std::cout << "[" << std::endl;
+			for(unsigned int i = 0; i < input.size() - 1; i++)
+			{
+				std
+				output(input[i], false);
+				std::cout << "," << std::endl;
+			}
+			if(input.size() > 0)
+			{
+				output(input[i], true);
+			}
+			std::cout << "]" << std::endl;
+		} */
 	}
+
+	std::ostream& operator <<(std::ostream &os, const sf::IntRect &input)
+	{
+		os << "{x: " << input.Left << ", y: " << input.Top << ", w: " << input.Width << ", h: " << input.Height << "}";
+
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream &os, const sf::IntRect * &input)
+	{
+		os << *input;
+
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect> &input)
+	{
+		os << "[" << std::endl;
+		for(unsigned int i = 0; i < input.size() - 1; i++)
+		{
+			os << "   " << input[i] << "," << std::endl;
+		}
+		if(input.size() > 0)
+		{
+			os << "   " << input[input.size() - 1] << "" << std::endl;
+		}
+		os << "]" << std::endl;
+
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect> * &input)
+	{
+		os << *input;
+
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect *> &input)
+	{
+		os << "[" << std::endl;
+		for(unsigned int i = 0; i < input.size() - 1; i++)
+		{
+			os << "   " << *input[i] << "," << std::endl;
+		}
+		if(input.size() > 0)
+		{
+			os << "   " << *input[input.size() - 1] << std::endl;
+		}
+		os << "]" << std::endl;
+
+		return os;
+	}
+	
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect *> * &input)
+	{
+		os << *input;
+
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<std::string> &input)
+	{
+		os << "[" << std::endl;
+		for(unsigned int i = 0; i < input.size() - 1; i++)
+		{
+			os << "   \"" << input[i] << "\"," << std::endl;
+		}
+		if(input.size() > 0)
+		{
+			os << "   \"" << input[input.size() - 1] << "\"" << std::endl;
+		}
+		os << "]" << std::endl;
+
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<std::string> * &input)
+	{
+		os << *input;
+
+		return os;
+	}	
 }

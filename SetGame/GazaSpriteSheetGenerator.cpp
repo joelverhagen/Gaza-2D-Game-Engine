@@ -29,63 +29,59 @@ namespace Gaza
 
 		SpriteSheetCollection * spriteSheetCollection = new SpriteSheetCollection();
 
-		Utility::RectanglePacker * currentRectanglePacker = new Utility::RectanglePacker(maximumImageWidth, maximumImageHeight);
-		
-		sf::Image * currentImage = new sf::Image();
-		currentImage->Create(maximumImageWidth, maximumImageWidth, sf::Color(0, 0, 0, 0));
+		// TODO: sort the images before insertion
 
-		SpriteSheet * currentSpriteSheet = new SpriteSheet(imageManager);
-		currentSpriteSheet->setName(Utility::intToString(spriteSheetCollection->getSpriteSheetCount()));
-		currentSpriteSheet->setImage(currentImage);
-
-		while(individualImages.size() > 0)
+		do
 		{
-			std::pair<std::string, sf::Image *> pair = individualImages.front();
-			sf::Image * currentIndividualImage = pair.second;
-			sf::IntRect rectangle(0, 0, currentIndividualImage->GetWidth(), currentIndividualImage->GetHeight());
+			RectanglePacking::ScottHandler * scottHandler = new RectanglePacking::ScottHandler();
+			RectanglePacking::Packer * packer = new RectanglePacking::Packer(scottHandler);
 
-			if((unsigned int)rectangle.Width > maximumImageWidth || (unsigned int)rectangle.Height > maximumImageHeight)
+			std::vector<sf::IntRect *> rectangles;
+
+			for(unsigned int i = 0; i < individualImages.size(); i++)
 			{
-				std::cout << "An image was too large to fit inside the maximum image width or maximum image height" << std::endl;
-				popImage();
-				continue;
+				unsigned int currentWidth = individualImages[i].second->GetWidth();
+				unsigned int currentHeight = individualImages[i].second->GetHeight();
+
+				if(currentWidth > maximumImageWidth || currentHeight > maximumImageHeight)
+				{
+					std::cout << "An image was too large to fit inside the maximum image width or maximum image height" << std::endl;
+					removeImage(i);
+					i--;
+					continue;
+				}
+
+				sf::IntRect * rectangle = packer->addRectangle(currentWidth, currentHeight);
+
+				if(rectangle == 0)
+				{
+					break;
+				}
+
+				rectangles.push_back(rectangle);
 			}
 
-			// add one pixel border to avoid
-			rectangle.Width += 1;
-			rectangle.Height += 1;
+			sf::Image * currentImage = new sf::Image();
+			currentImage->Create(packer->getContainerWidth(), packer->getContainerHeight(), sf::Color(0, 0, 0, 0));
 
-			rectangle = currentRectanglePacker->addRectangle(rectangle);
+			SpriteSheet * currentSpriteSheet = new SpriteSheet(imageManager);
+			currentSpriteSheet->setName(Utility::intToString(spriteSheetCollection->getSpriteSheetCount()));
+			currentSpriteSheet->setImage(currentImage);
 
-			rectangle.Width -= 1;
-			rectangle.Height -= 1;
-
-			if(Utility::isZero(rectangle))
+			for(unsigned int i = 0; i < rectangles.size(); i++)
 			{
-				// need a new sprite sheet
-				spriteSheetCollection->addSpriteSheet(currentSpriteSheet);
-				
-				delete currentRectanglePacker;
-				currentRectanglePacker = new Utility::RectanglePacker(maximumImageWidth, maximumImageHeight);
-
-				currentImage = new sf::Image();
-				currentImage->Create(maximumImageWidth, maximumImageWidth, sf::Color(0, 0, 0, 0));
-
-				currentSpriteSheet = new SpriteSheet(imageManager);
-				currentSpriteSheet->setName(Utility::intToString(spriteSheetCollection->getSpriteSheetCount()));
-				currentSpriteSheet->setImage(currentImage);
+				currentImage->Copy(*individualImages[i].second, rectangles[i]->Left, rectangles[i]->Top);
+				currentSpriteSheet->addSprite(individualImages[i].first, new Sprite(*rectangles[i], currentImage));
 			}
-			else
-			{
-				currentImage->Copy(*currentIndividualImage, rectangle.Left, rectangle.Top);
-				currentSpriteSheet->addSprite(pair.first, new Sprite(rectangle, currentImage));
-				popImage();
-			}
+
+			removeImages(0, rectangles.size());
+
+			spriteSheetCollection->addSpriteSheet(currentSpriteSheet);
+
+			delete packer;
+			delete scottHandler;
 		}
-
-		delete currentRectanglePacker;
-
-		spriteSheetCollection->addSpriteSheet(currentSpriteSheet);
+		while(individualImages.size() > 0);
 
 		return spriteSheetCollection;
 	}
@@ -93,7 +89,7 @@ namespace Gaza
 	void SpriteSheetGenerator::pushImage(const std::string &name, sf::Image * image)
 	{
 		imageManager->add(name, image);
-		individualImages.push(std::pair<std::string, sf::Image *>(name, image));
+		individualImages.push_back(std::pair<std::string, sf::Image *>(name, image));
 	}
 
 	Sprite * SpriteSheetGenerator::getSprite(const std::string &name)
@@ -101,10 +97,18 @@ namespace Gaza
 		return inputSpriteSheets.getSprite(name);
 	}
 
-	void SpriteSheetGenerator::popImage()
+	void SpriteSheetGenerator::removeImage(int index)
 	{
-		std::pair<std::string, sf::Image *> pair = individualImages.front();
-		imageManager->release(pair.first);
-		individualImages.pop();
+		imageManager->release(individualImages[index].first);
+		individualImages.erase(individualImages.begin() + index);
+	}
+
+	void SpriteSheetGenerator::removeImages(int first, int last)
+	{
+		for(int i = first; i < last; i++)
+		{
+			imageManager->release(individualImages[i].first);
+		}
+		individualImages.erase(individualImages.begin() + first, individualImages.begin() + last);
 	}
 }

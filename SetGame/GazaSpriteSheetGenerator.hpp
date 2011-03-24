@@ -4,13 +4,13 @@
 #include "Gaza.hpp"
 #include "GazaSpriteSheet.hpp"
 #include "GazaSpriteSheetCollection.hpp"
-#include "GazaImageManager.hpp"
-#include "GazaRectanglePacker.hpp"
+#include "GazaPacker.hpp"
+#include "GazaScottHandler.hpp"
 #include "GazaUtility.hpp"
 
 #include <string>
 #include <map>
-#include <queue>
+#include <list>
 
 namespace Gaza
 {
@@ -29,12 +29,13 @@ namespace Gaza
 		Sprite * getSprite(const std::string &name);
 
 	private:
-		void popImage();
+		void removeImage(int index);
+		void removeImages(int first, int last);
 
 		ImageManager * imageManager;
 
 		SpriteSheetCollection inputSpriteSheets;
-		std::queue<std::pair<std::string, sf::Image *> > individualImages;
+		std::vector<std::pair<std::string, sf::Image *> > individualImages;
 	};
 }
 

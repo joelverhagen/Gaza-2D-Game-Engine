@@ -22,6 +22,12 @@
     <Filter Include="Header Files\Base\RapidXml">
       <UniqueIdentifier>{cd410bd9-5ae3-4bca-9c88-a249f9e8498f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Base\RectanglePacking">
+      <UniqueIdentifier>{67717c5a-981c-40a2-b8e9-e25b4da8cfe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base\RectanglePacking">
+      <UniqueIdentifier>{ca0322b7-da3d-4c7d-bc60-91b6ebabc339}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,8 +54,11 @@
     <ClCompile Include="CardSpriteSheetGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GazaRectanglePacker.cpp">
-      <Filter>Source Files\Base</Filter>
+    <ClCompile Include="GazaPacker.cpp">
+      <Filter>Source Files\Base\RectanglePacking</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaScottHandler.cpp">
+      <Filter>Source Files\Base\RectanglePacking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,8 +104,14 @@
     <ClInclude Include="GazaSprite.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="GazaRectanglePacker.hpp">
-      <Filter>Header Files\Base</Filter>
+    <ClInclude Include="GazaPacker.hpp">
+      <Filter>Header Files\Base\RectanglePacking</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaBaseHandler.hpp">
+      <Filter>Header Files\Base\RectanglePacking</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaScottHandler.hpp">
+      <Filter>Header Files\Base\RectanglePacking</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

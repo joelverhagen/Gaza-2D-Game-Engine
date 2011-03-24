@@ -19,9 +19,7 @@ int main()
 	CardSpriteSheetGenerator * generator = new CardSpriteSheetGenerator(imageManager, spriteSheet);
 	Gaza::SpriteSheetCollection * collection = generator->generate();
 
-	delete spriteSheet;
-
-	Gaza::Sprite * gSprite = collection->getSprite("emptySpot");
+	Gaza::Sprite * gSprite = collection->getSprite("redTwoStripedOvalUnselected");
 
 	sf::Sprite sprite;
 	sprite.SetImage(*gSprite->image);

@@ -12,13 +12,25 @@ namespace Gaza
 	namespace Utility
 	{
 		static sf::IntRect zeroIntRect;
+		bool isZero(const sf::IntRect &rectangle);
+
+		int power(int base, int exponent);
 
 		int stringToInt(const std::string &input);
 		std::string intToString(int input);
-		bool isZero(const sf::IntRect &rectangle);
-		void output(const sf::IntRect &rectangle);
-		void output(const std::vector<std::string> &input);
 	}
+
+	std::ostream& operator <<(std::ostream &os, const sf::IntRect &input);
+	std::ostream& operator <<(std::ostream &os, const sf::IntRect * &input);
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect> &input);
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect> * &input);
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect *> &input);
+	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect *> * &input);
+
+	std::ostream& operator <<(std::ostream &os, const std::vector<std::string> &input);
+	std::ostream& operator <<(std::ostream &os, const std::vector<std::string> * &input);
 }
 
 #endif
