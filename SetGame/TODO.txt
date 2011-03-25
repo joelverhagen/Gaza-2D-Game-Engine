@@ -1,0 +1,3 @@
+- Check for memory leaks on all kinds of different max image size configurations and number of images to be packed
+- Sort images before packing
+- Test image packing with very large images (images that are greater than max image size)
