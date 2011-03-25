@@ -1,4 +1,4 @@
-#include <vld.h>
+// #include <vld.h>
 
 #include <iostream>
 using namespace std;
@@ -23,9 +23,15 @@ int main()
 
 	delete spriteSheet;
 
-	Gaza::Sprite * gSprite = collection->getSprite("redTwoStripedOvalUnselected");
+	Gaza::Sprite * gSprite = collection->getSprite("greenOneStripedOvalUnselected");
+
+	if(gSprite == 0)
+	{
+		return 0;
+	}
 
 	sf::Sprite sprite;
+
 	sprite.SetImage(*gSprite->image);
 	sprite.SetSubRect(gSprite->rectangle);
 

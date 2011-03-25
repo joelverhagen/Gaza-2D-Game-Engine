@@ -9,7 +9,7 @@ namespace Gaza
 
 	SpriteSheetGenerator::~SpriteSheetGenerator()
 	{
-		// the generator should not have ownership of the input sprite sheets
+		// the generator should not have ownership of the input sprite sheets, so empty references before the generator destructs
 		inputSpriteSheets.clearSpriteSheets();
 	}
 
@@ -29,8 +29,6 @@ namespace Gaza
 
 		SpriteSheetCollection * spriteSheetCollection = new SpriteSheetCollection();
 
-		// TODO: sort the images before insertion
-
 		do
 		{
 			RectanglePacking::ScottHandler * scottHandler = new RectanglePacking::ScottHandler();
@@ -45,7 +43,7 @@ namespace Gaza
 
 				if(currentWidth > maximumImageWidth || currentHeight > maximumImageHeight)
 				{
-					std::cout << "An image was too large to fit inside the maximum image width or maximum image height" << std::endl;
+					std::cout << "An image was too large to fit inside the maximum image width or maximum image height." << std::endl;
 					removeImage(i);
 					i--;
 					continue;

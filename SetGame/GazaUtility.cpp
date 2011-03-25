@@ -4,13 +4,6 @@ namespace Gaza
 {
 	namespace Utility
 	{
-		sf::IntRect zeroRectangle(0, 0, 0, 0);
-
-		bool isZero(const sf::IntRect &rectangle)
-		{
-			return rectangle.Left == zeroRectangle.Left && rectangle.Top == zeroRectangle.Top && rectangle.Width == zeroRectangle.Width && rectangle.Height == zeroRectangle.Height;
-		}
-
 		int stringToInt(const std::string &input)
 		{
 			std::stringstream ss(input);
@@ -46,67 +39,17 @@ namespace Gaza
 			}
 		}
 
-		/* std::string toString(const sf::IntRect &input)
+		double round(double input)
 		{
-			std::stringstream ss;
-
-			ss << "{x: " << input.Left << ", y: " << input.Top << ", w: " << input.Width << ", h: " << input.Height << "}";
-
-			return ss.str();
+			return floor(input + 0.5);
 		}
 
-		std::string toString(const sf::IntRect * &input)
-		{
-			std::stringstream ss;
-			ss << "{x: " << input->Left << ", y: " << input->Top << ", w: " << input->Width << ", h: " << input->Height << "}";
-			return ss.str();
+#ifdef _MSC_VER
+		double log2(double n)  
+		{  
+			return log(n) / log(2.f);  
 		}
-
-		std::string toString(const std::vector<std::string> &input)
-		{
-			std::stringstream ss;
-
-			ss << "[" << std::endl;
-			for(unsigned int i = 0; i < input.size() - 1; i++)
-			{
-				ss << "   \"" << input[i] << "\"," << std::endl;
-			}
-			if(input.size() > 0)
-			{
-				ss << "   \"" << input[input.size() - 1] << "\"" << std::endl;
-			}
-			ss << "]" << std::endl;
-		}
-
-		void output(const std::vector<sf::IntRect> &input)
-		{
-			std::cout << "[" << std::endl;
-			for(unsigned int i = 0; i < input.size() - 1; i++)
-			{
-				std::cout << "   \"" << input[i] << "\"," << std::endl;
-			}
-			if(input.size() > 0)
-			{
-				std::cout << "   \"" << input[input.size() - 1] << "\"" << std::endl;
-			}
-			std::cout << "]" << std::endl;
-		}
-
-		void output(const std::vector<sf::IntRect *> &input)
-		{
-			std::cout << "[" << std::endl;
-			for(unsigned int i = 0; i < input.size() - 1; i++)
-			{
-				std
-				output(input[i], false);
-				std::cout << "," << std::endl;
-			}
-			if(input.size() > 0)
-			{
-				output(input[i], true);
-			}
-			std::cout << "]" << std::endl;
-		} */
+#endif
 	}
 
 	std::ostream& operator <<(std::ostream &os, const sf::IntRect &input)

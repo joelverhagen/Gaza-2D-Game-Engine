@@ -151,7 +151,6 @@ namespace Gaza
 	{
 		if(sprites.find(name) == sprites.end())
 		{
-			std::cout << "A sprite with name \"" << name << "\" does not exist." << std::endl;
 			return 0;
 		}
 		return sprites[name];

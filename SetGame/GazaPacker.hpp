@@ -30,9 +30,15 @@ namespace Gaza
 
 			std::vector<sf::IntRect *> rectangles;
 
-			unsigned int currentPower;
-			unsigned int containerWidth;
-			unsigned int containerHeight;
+			unsigned int maximumWidthPower;
+			unsigned int maximumHeightPower;
+
+			unsigned int currentPowerSum;
+
+			bool nextSet;
+
+			unsigned int currentWidthPower;
+			unsigned int currentHeightPower;
 		};
 	}
 }
