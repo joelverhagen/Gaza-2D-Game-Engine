@@ -1,3 +1,5 @@
+#include <vld.h>
+
 #include <iostream>
 using namespace std;
 
@@ -18,6 +20,8 @@ int main()
 
 	CardSpriteSheetGenerator * generator = new CardSpriteSheetGenerator(imageManager, spriteSheet);
 	Gaza::SpriteSheetCollection * collection = generator->generate();
+
+	delete spriteSheet;
 
 	Gaza::Sprite * gSprite = collection->getSprite("redTwoStripedOvalUnselected");
 
@@ -46,6 +50,10 @@ int main()
 
 		window.Display();
 	}
+
+	delete collection;
+	delete generator;
+	delete imageManager;
 
 	return 0;
 }

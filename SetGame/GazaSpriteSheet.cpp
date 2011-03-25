@@ -9,6 +9,12 @@ namespace Gaza
 
 	SpriteSheet::~SpriteSheet()
 	{
+		for(std::map<std::string, Sprite *>::iterator i = sprites.begin(); i != sprites.end(); i++)
+		{
+			delete (*i).second;
+		}
+		sprites.clear();
+
 		if(name.size() != 0)
 		{
 			imageManager->release(name);

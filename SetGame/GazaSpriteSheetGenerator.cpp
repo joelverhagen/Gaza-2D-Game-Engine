@@ -76,10 +76,15 @@ namespace Gaza
 
 			removeImages(0, rectangles.size());
 
-			spriteSheetCollection->addSpriteSheet(currentSpriteSheet);
+			for(unsigned int i = 0; i < rectangles.size(); i++)
+			{
+				delete rectangles[i];
+			}
 
 			delete packer;
 			delete scottHandler;
+
+			spriteSheetCollection->addSpriteSheet(currentSpriteSheet);
 		}
 		while(individualImages.size() > 0);
 

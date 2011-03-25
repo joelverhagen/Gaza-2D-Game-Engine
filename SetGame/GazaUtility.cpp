@@ -125,16 +125,18 @@ namespace Gaza
 
 	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect> &input)
 	{
-		os << "[" << std::endl;
+		if(input.size() == 0)
+		{
+			os << "[]" << std::endl;
+			
+			return os;
+		}
+
 		for(unsigned int i = 0; i < input.size() - 1; i++)
 		{
 			os << "   " << input[i] << "," << std::endl;
 		}
-		if(input.size() > 0)
-		{
-			os << "   " << input[input.size() - 1] << "" << std::endl;
-		}
-		os << "]" << std::endl;
+		os << "   " << input[input.size() - 1] << std::endl << "]" << std::endl;
 
 		return os;
 	}
@@ -148,16 +150,18 @@ namespace Gaza
 
 	std::ostream& operator <<(std::ostream &os, const std::vector<sf::IntRect *> &input)
 	{
-		os << "[" << std::endl;
+		if(input.size() == 0)
+		{
+			os << "[]" << std::endl;
+			
+			return os;
+		}
+
 		for(unsigned int i = 0; i < input.size() - 1; i++)
 		{
 			os << "   " << *input[i] << "," << std::endl;
 		}
-		if(input.size() > 0)
-		{
-			os << "   " << *input[input.size() - 1] << std::endl;
-		}
-		os << "]" << std::endl;
+		os << "   " << *input[input.size() - 1] << std::endl << "]" << std::endl;
 
 		return os;
 	}
@@ -171,16 +175,18 @@ namespace Gaza
 
 	std::ostream& operator <<(std::ostream &os, const std::vector<std::string> &input)
 	{
-		os << "[" << std::endl;
+		if(input.size() == 0)
+		{
+			os << "[]" << std::endl;
+			
+			return os;
+		}
+
 		for(unsigned int i = 0; i < input.size() - 1; i++)
 		{
 			os << "   \"" << input[i] << "\"," << std::endl;
 		}
-		if(input.size() > 0)
-		{
-			os << "   \"" << input[input.size() - 1] << "\"" << std::endl;
-		}
-		os << "]" << std::endl;
+		os << "   \"" << input[input.size() - 1] << "\"" << std::endl << "]" << std::endl;
 
 		return os;
 	}
