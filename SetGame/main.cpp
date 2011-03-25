@@ -1,4 +1,4 @@
-// #include <vld.h>
+#include <vld.h>
 
 #include <iostream>
 using namespace std;
@@ -25,15 +25,13 @@ int main()
 
 	Gaza::Sprite * gSprite = collection->getSprite("greenOneStripedOvalUnselected");
 
-	if(gSprite == 0)
-	{
-		return 0;
-	}
-
 	sf::Sprite sprite;
 
-	sprite.SetImage(*gSprite->image);
-	sprite.SetSubRect(gSprite->rectangle);
+	if(gSprite != 0)
+	{
+		sprite.SetImage(*gSprite->image);
+		sprite.SetSubRect(gSprite->rectangle);
+	}
 
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Test");
 

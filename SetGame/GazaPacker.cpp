@@ -39,6 +39,9 @@ namespace Gaza
 				if(!resize)
 				{
 					// we've resized, but there was a problem (meaning we resized to a size that was too big)
+					delete rectangle;
+					rectangles.pop_back();
+
 					return 0;
 				}
 
