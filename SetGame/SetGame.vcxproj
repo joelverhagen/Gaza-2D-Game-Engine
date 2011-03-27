@@ -11,7 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="CardSpriteSheetGenerator.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GazaApplication.cpp" />
+    <ClCompile Include="GazaBaseState.cpp" />
     <ClCompile Include="GazaFile.cpp" />
     <ClCompile Include="GazaLogger.cpp" />
     <ClCompile Include="GazaPacker.cpp" />
@@ -20,14 +24,20 @@
     <ClCompile Include="GazaSpriteSheet.cpp" />
     <ClCompile Include="GazaSpriteSheetCollection.cpp" />
     <ClCompile Include="GazaSpriteSheetGenerator.cpp" />
+    <ClCompile Include="GazaStateManager.cpp" />
     <ClCompile Include="GazaUtility.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.hpp" />
     <ClInclude Include="CardSpriteSheetGenerator.hpp" />
+    <ClInclude Include="Common.hpp" />
+    <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Gaza.hpp" />
+    <ClInclude Include="GazaApplication.hpp" />
     <ClInclude Include="GazaBaseHandler.hpp" />
     <ClInclude Include="GazaFile.hpp" />
+    <ClInclude Include="GazaBaseState.hpp" />
     <ClInclude Include="GazaImageManager.hpp" />
     <ClInclude Include="GazaLogger.hpp" />
     <ClInclude Include="GazaPacker.hpp" />
@@ -37,11 +47,13 @@
     <ClInclude Include="GazaSpriteSheet.hpp" />
     <ClInclude Include="GazaSpriteSheetCollection.hpp" />
     <ClInclude Include="GazaSpriteSheetGenerator.hpp" />
+    <ClInclude Include="GazaTypes.hpp" />
     <ClInclude Include="GazaUtility.hpp" />
     <ClInclude Include="rapidxml.hpp" />
     <ClInclude Include="rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml_print.hpp" />
     <ClInclude Include="rapidxml_utils.hpp" />
+    <ClInclude Include="GazaStateManager.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7D4F0672-8631-4737-9FF0-AE198A9EB015}</ProjectGuid>

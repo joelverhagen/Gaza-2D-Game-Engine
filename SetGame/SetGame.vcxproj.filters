@@ -28,6 +28,12 @@
     <Filter Include="Source Files\Base\RectanglePacking">
       <UniqueIdentifier>{ca0322b7-da3d-4c7d-bc60-91b6ebabc339}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Base\SpriteSheets">
+      <UniqueIdentifier>{aee2214a-a013-495e-80b9-57f097d72a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base\SpriteSheets">
+      <UniqueIdentifier>{dbe1eddf-2c93-4b97-9790-9308f347810a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,19 +42,10 @@
     <ClCompile Include="GazaFile.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="GazaSpriteSheet.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="GazaUtility.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="GazaSpriteSheetGenerator.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="GazaSprite.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="GazaSpriteSheetCollection.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="CardSpriteSheetGenerator.cpp">
@@ -62,6 +59,30 @@
     </ClCompile>
     <ClCompile Include="GazaLogger.cpp">
       <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaSpriteSheet.cpp">
+      <Filter>Source Files\Base\SpriteSheets</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaSpriteSheetGenerator.cpp">
+      <Filter>Source Files\Base\SpriteSheets</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaSpriteSheetCollection.cpp">
+      <Filter>Source Files\Base\SpriteSheets</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaApplication.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaStateManager.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaBaseState.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,20 +110,11 @@
     <ClInclude Include="GazaResourceManager.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="GazaSpriteSheet.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
     <ClInclude Include="GazaUtility.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaSpriteSheetGenerator.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="CardSpriteSheetGenerator.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaSpriteSheetCollection.hpp">
-      <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="GazaSprite.hpp">
       <Filter>Header Files\Base</Filter>
@@ -117,6 +129,36 @@
       <Filter>Header Files\Base\RectanglePacking</Filter>
     </ClInclude>
     <ClInclude Include="GazaLogger.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaApplication.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaSpriteSheet.hpp">
+      <Filter>Header Files\Base\SpriteSheets</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaSpriteSheetGenerator.hpp">
+      <Filter>Header Files\Base\SpriteSheets</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaSpriteSheetCollection.hpp">
+      <Filter>Header Files\Base\SpriteSheets</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaStateManager.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaBaseState.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaTypes.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>

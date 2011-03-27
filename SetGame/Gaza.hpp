@@ -1,6 +1,7 @@
 #ifndef GAZACOMMON_HPP
 #define GAZACOMMON_HPP
 
+#include "GazaTypes.hpp"
 #include "GazaLogger.hpp"
 
 #include <SFML\Graphics.hpp>

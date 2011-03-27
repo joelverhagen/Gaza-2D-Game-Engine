@@ -140,7 +140,7 @@ namespace Gaza
 	{
 		if(sprites.find(name) != sprites.end())
 		{
-			Logger::getInstance()->write("A sprite with name \"" << name << "\" already exists.");
+			Logger::getInstance()->write("A sprite with name \""+name+"\" already exists.");
 			return false;
 		}
 		sprites[name] = sprite;

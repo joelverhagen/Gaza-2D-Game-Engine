@@ -1,19 +1,11 @@
-#include <vld.h>
+// #include <vld.h>
 
-#include <iostream>
-using namespace std;
+#include "Application.hpp"
 
-#include "GazaImageManager.hpp"
-#include "GazaSpriteSheet.hpp"
-#include "GazaSprite.hpp"
-#include "CardSpriteSheetGenerator.hpp"
-#include "GazaUtility.hpp"
-
-#include "SFML/Graphics.hpp"
 
 int main()
 {
-	Gaza::ImageManager * imageManager = new Gaza::ImageManager();
+	/* Gaza::ImageManager * imageManager = new Gaza::ImageManager();
 
 	Gaza::SpriteSheet * spriteSheet = new Gaza::SpriteSheet(imageManager);
 	spriteSheet->loadFromFile("cardSprites.xml");
@@ -31,33 +23,9 @@ int main()
 	{
 		sprite.SetImage(*gSprite->image);
 		sprite.SetSubRect(gSprite->rectangle);
-	}
+	} */
 
-	sf::RenderWindow window(sf::VideoMode(400, 400), "Test");
+	Application application;
 
-	bool running = true;
-
-	sf::Event event;
-	while(running)
-	{
-		while(window.GetEvent(event))
-		{
-			if(event.Type == sf::Event::Closed)
-			{
-				running = false;
-			}
-		}
-
-		window.Clear();
-
-		window.Draw(sprite);
-
-		window.Display();
-	}
-
-	delete collection;
-	delete generator;
-	delete imageManager;
-
-	return 0;
+	return application.run();
 }
