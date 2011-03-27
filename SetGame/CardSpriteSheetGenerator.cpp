@@ -2,6 +2,7 @@
 
 CardSpriteSheetGenerator::CardSpriteSheetGenerator(Gaza::ImageManager * imageManager, Gaza::SpriteSheet * spriteSheet) : SpriteSheetGenerator(imageManager)
 {
+	setHandler(&scottHandler);
 	addSpriteSheet(spriteSheet);
 }
 
