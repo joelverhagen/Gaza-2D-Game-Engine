@@ -1,6 +1,7 @@
 #ifndef GAMESTATE_HPP
 #define GAMESTATE_HPP
 
+#include "GazaSpriteSheetCollection.hpp"
 #include "GazaApplication.hpp"
 #include "GazaBaseState.hpp"
 #include "GazaLogger.hpp"
@@ -8,16 +9,20 @@
 class GameState : public Gaza::BaseState
 {
 public:
+	void setCardSprites(Gaza::SpriteSheetCollection * cardSprites);
+
 	void initialize();
 	void cleanup();
 
-	virtual void handleEvents(Gaza::Application * application);
-	virtual void update(Gaza::Application * application);
-	virtual void draw(Gaza::Application * application);
+	void handleEvents(Gaza::Application * application);
+	void update(Gaza::Application * application);
+	void draw(Gaza::Application * application);
 
-	static GameState * getInstance();
+	static GameState * getInstance();	
 
 protected:
+	Gaza::SpriteSheetCollection * cardSprites;
+
 	static GameState instance;
 };
 

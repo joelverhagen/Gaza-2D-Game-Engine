@@ -11,13 +11,16 @@
 
 class Application : public Gaza::Application
 {
-	void initialize();
-	void cleanup();
+public:
+	Application();
+	~Application();
 
 	Gaza::ImageManager * getImageManager();
 
 private:
-	Gaza::ImageManager * imageManager;
+	Gaza::ImageManager imageManager;
+
+	Gaza::SpriteSheetCollection * cardSprites;
 };
 
 #endif

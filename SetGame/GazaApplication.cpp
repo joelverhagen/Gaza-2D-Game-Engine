@@ -7,31 +7,32 @@ namespace Gaza
 		running = true;
 
 		videoMode = new sf::VideoMode(600, 600, 32);
-		renderWindow = new sf::RenderWindow(*videoMode, "Gaza Engine");
-		renderWindow->SetFramerateLimit(60);
 
-		stateManager = new StateManager();
+		renderWindow = new sf::RenderWindow(*videoMode, "Gaza Engine");
+		renderWindow->Clear(sf::Color::Black);
+		renderWindow->Display();
+
+		renderWindow->SetFramerateLimit(60);
 	}
 
 	Application::~Application()
 	{
-		delete stateManager;
 		delete renderWindow;
 		delete videoMode;
 	}
 
 	int Application::run()
 	{
-		initialize();
-
 		while(running)
 		{
-			stateManager->currentState()->handleEvents(this);
-			stateManager->currentState()->update(this);
-			stateManager->currentState()->draw(this);
-		}
+			states.top()->handleEvents(this);
 
-		cleanup();
+			states.top()->update(this);
+
+			renderWindow->Clear(sf::Color::Black);
+			states.top()->draw(this);
+			renderWindow->Display();
+		}
 
 		return 0;
 	}
@@ -49,5 +50,17 @@ namespace Gaza
 	sf::RenderWindow * Application::getRenderWindow()
 	{
 		return renderWindow;
+	}
+
+	void Application::changeState(BaseState * state)
+	{
+		if(!states.empty())
+		{
+			states.top()->cleanup();
+			states.pop();
+		}
+
+		states.push(state);
+		state->initialize();
 	}
 }

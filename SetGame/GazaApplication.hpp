@@ -4,7 +4,7 @@
 #include "Gaza.hpp"
 #include "GazaStateManager.hpp"
 
-#include <vector>
+#include <stack>
 
 namespace Gaza
 {
@@ -22,10 +22,9 @@ namespace Gaza
 		sf::RenderWindow * getRenderWindow();
 
 	protected:
-		virtual void initialize() = 0;
-		virtual void cleanup() = 0;
+		void changeState(BaseState * state);
 
-		StateManager * stateManager;
+		std::stack<BaseState *> states;
 
 	private:
 		sf::RenderWindow * renderWindow;

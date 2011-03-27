@@ -1,18 +1,24 @@
 #include "Application.hpp"
 
-void Application::initialize()
+Application::Application()
 {
-	imageManager = new Gaza::ImageManager();
-	
-	stateManager->addState(GameState::getInstance());
+	Gaza::SpriteSheet spriteSheet(&imageManager);
+	spriteSheet.loadFromFile("cardSprites.xml");
+
+	CardSpriteSheetGenerator generator(&imageManager, &spriteSheet);
+	cardSprites = generator.generate();
+
+	GameState * gameState = GameState::getInstance();
+	gameState->setCardSprites(cardSprites);
+	changeState(gameState);
 }
 
-void Application::cleanup()
+Application::~Application()
 {
-	delete imageManager;
+	delete cardSprites;
 }
 
 Gaza::ImageManager * Application::getImageManager()
 {
-	return imageManager;
+	return &imageManager;
 }

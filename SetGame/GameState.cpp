@@ -2,6 +2,11 @@
 
 GameState GameState::instance;
 
+void GameState::setCardSprites(Gaza::SpriteSheetCollection * cardSprites)
+{
+	this->cardSprites = cardSprites;
+}
+
 void GameState::initialize()
 {
 
