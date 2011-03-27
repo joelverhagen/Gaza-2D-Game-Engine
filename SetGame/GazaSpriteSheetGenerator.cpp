@@ -22,7 +22,7 @@ namespace Gaza
 	{
 		if(handler == 0)
 		{
-			std::cout << "You must set a handler before you can run the generate function.";
+			Logger::getInstance()->write("You must set a handler before you can run the generate function.");
 			return 0;
 		}
 
@@ -55,7 +55,7 @@ namespace Gaza
 
 				if(currentWidth > maximumImageWidth || currentHeight > maximumImageHeight)
 				{
-					std::cout << "An image was too large to fit inside the maximum image width or maximum image height." << std::endl;
+					Logger::getInstance()->write("An image was too large to fit inside the maximum image width or maximum image height.");
 					removeImage(i);
 					i--;
 					continue;

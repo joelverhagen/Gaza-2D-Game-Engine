@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="CardSpriteSheetGenerator.cpp" />
     <ClCompile Include="GazaFile.cpp" />
+    <ClCompile Include="GazaLogger.cpp" />
     <ClCompile Include="GazaPacker.cpp" />
     <ClCompile Include="GazaScottHandler.cpp" />
     <ClCompile Include="GazaSprite.cpp" />
@@ -28,6 +29,7 @@
     <ClInclude Include="GazaBaseHandler.hpp" />
     <ClInclude Include="GazaFile.hpp" />
     <ClInclude Include="GazaImageManager.hpp" />
+    <ClInclude Include="GazaLogger.hpp" />
     <ClInclude Include="GazaPacker.hpp" />
     <ClInclude Include="GazaResourceManager.hpp" />
     <ClInclude Include="GazaScottHandler.hpp" />

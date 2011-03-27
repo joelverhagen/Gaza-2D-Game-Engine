@@ -60,6 +60,9 @@
     <ClCompile Include="GazaScottHandler.cpp">
       <Filter>Source Files\Base\RectanglePacking</Filter>
     </ClCompile>
+    <ClCompile Include="GazaLogger.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml.hpp">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="GazaScottHandler.hpp">
       <Filter>Header Files\Base\RectanglePacking</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaLogger.hpp">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

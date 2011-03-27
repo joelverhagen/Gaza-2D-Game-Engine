@@ -53,7 +53,7 @@ namespace Gaza
 
 		if(!document.first_node("SpriteSheet"))
 		{
-			std::cout << "The sprite sheet must have a root element of type SpriteSheet." << std::endl;
+			Logger::getInstance()->write("The sprite sheet must have a root element of type SpriteSheet.");
 			return false;
 		}
 
@@ -61,7 +61,7 @@ namespace Gaza
 
 		if(!rootNode->first_attribute("name"))
 		{
-			std::cout << "The SpriteSheet element must have a name attribute." << std::endl;
+			Logger::getInstance()->write("The SpriteSheet element must have a name attribute.");
 			return false;
 		}
 
@@ -69,7 +69,7 @@ namespace Gaza
 
 		if(!rootNode->first_attribute("filePath"))
 		{
-			std::cout << "The SpriteSheet element must have a filePath attribute." << std::endl;
+			Logger::getInstance()->write("The SpriteSheet element must have a filePath attribute.");
 			return false;
 		}
 
@@ -77,7 +77,7 @@ namespace Gaza
 
 		if(!File::fileExists(filePath))
 		{
-			std::cout << "The SpriteSheet's filePath attribute must point to an existing image." << std::endl;
+			Logger::getInstance()->write("The SpriteSheet's filePath attribute must point to an existing image.");
 			return false;
 		}
 
@@ -87,7 +87,7 @@ namespace Gaza
 		if(!imageLoadResult)
 		{
 			delete image;
-			std::cout << "The SpriteSheet's filePath attribute must point to a valid image." << std::endl;
+			Logger::getInstance()->write("The SpriteSheet's filePath attribute must point to a valid image.");
 			return false;
 		}
 
@@ -95,7 +95,7 @@ namespace Gaza
 
 		if(!rootNode->first_node("Rectangle"))
 		{
-			std::cout << "The SpriteSheet element must have at least one Rectangle child node." << std::endl;
+			Logger::getInstance()->write("The SpriteSheet element must have at least one Rectangle child node.");
 			return false;
 		}
 
@@ -103,7 +103,7 @@ namespace Gaza
 		{
 			if(!childNode->first_attribute("left") || !childNode->first_attribute("top") || !childNode->first_attribute("width") || !childNode->first_attribute("height") || !childNode->first_attribute("name"))
 			{
-				std::cout << "Every Rectangle element must have an left, top, width, height, and name attribute." << std::endl;
+				Logger::getInstance()->write("Every Rectangle element must have an left, top, width, height, and name attribute.");
 				return false;
 			}
 
@@ -127,7 +127,7 @@ namespace Gaza
 	{
 		if(name.size() == 0)
 		{
-			std::cout << "A name must be set before the image is set." << std::endl;
+			Logger::getInstance()->write("A name must be set before the image is set.");
 			return false;
 		}
 		imageManager->release(name);
@@ -140,7 +140,7 @@ namespace Gaza
 	{
 		if(sprites.find(name) != sprites.end())
 		{
-			std::cout << "A sprite with name \"" << name << "\" already exists." << std::endl;
+			Logger::getInstance()->write("A sprite with name \"" << name << "\" already exists.");
 			return false;
 		}
 		sprites[name] = sprite;
