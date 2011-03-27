@@ -1,28 +1,30 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-enum CardColors
+#include <SFML\Graphics.hpp>
+
+enum CardColor
 {
 	green,
 	purple,
 	red
 };
 
-enum CardNumbers
+enum CardNumber
 {
 	one,
 	two,
 	three
 };
 
-enum CardPatterns
+enum CardPattern
 {
 	empty,
 	solid,
 	striped
 };
 
-enum CardShapes
+enum CardShape
 {
 	diamond,
 	oval,

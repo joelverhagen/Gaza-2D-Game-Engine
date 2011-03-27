@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardSpriteSheetGenerator.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GazaApplication.cpp" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp" />
+    <ClInclude Include="Card.hpp" />
     <ClInclude Include="CardSpriteSheetGenerator.hpp" />
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="GameState.hpp" />

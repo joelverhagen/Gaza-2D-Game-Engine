@@ -84,6 +84,9 @@
     <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml.hpp">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="GazaTypes.hpp">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

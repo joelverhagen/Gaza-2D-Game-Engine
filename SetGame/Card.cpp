@@ -1,20 +1,72 @@
-#include "Card.h"
+#include "Card.hpp"
 
-sf::Image * Card::image = NULL;
-
-void Card::initialize(sf::Image * inputImage)
+std::string Card::getSpriteName(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape)
 {
-	image = inputImage;
+	std::string name;
+
+	switch(cardColor)
+	{
+	case green:
+		name += "green";
+		break;
+	case purple:
+		name += "purple";
+		break;
+	case red:
+		name += "red";
+		break;
+	}
+
+	switch(cardNumber)
+	{
+	case one:
+		name += "One";
+		break;
+	case two:
+		name += "Two";
+		break;
+	case three:
+		name += "Three";
+		break;
+	}
+
+	switch(cardPattern)
+	{
+	case empty:
+		name += "Empty";
+		break;
+	case solid:
+		name += "Solid";
+		break;
+	case striped:
+		name += "Striped";
+		break;
+	}
+
+	switch(cardShape)
+	{
+	case diamond:
+		name += "Diamond";
+		break;
+	case oval:
+		name += "Oval";
+		break;
+	case squiggly:
+		name += "Squiggly";
+		break;
+	}
+
+	return name;
 }
 
-Card::Card(SpriteSheet &spriteSheet)
+Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::SpriteSheetCollection * cardSprites)
 {
-	sprite.SetImage(*image);
+	this->cardColor = cardColor;
+	this->cardNumber = cardNumber;
+	this->cardPattern = cardPattern;
+	this->cardShape = cardShape;
 
-	sprite.SetColor(sf::Color(255, 0, 0));
-}
-
-sf::Sprite Card::getSprite()
-{
-	return sprite;
+	Gaza::Sprite * subImage = cardSprites->getSprite(getSpriteName(cardColor, cardNumber, cardPattern, cardShape));
+	sprite.SetImage(*subImage->image);
+	sprite.SetSubRect(subImage->rectangle);
 }
