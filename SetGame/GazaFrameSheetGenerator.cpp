@@ -1,24 +1,24 @@
-#include "GazaSpriteSheetGenerator.hpp"
+#include "GazaFrameSheetGenerator.hpp"
 
 namespace Gaza
 {
-	SpriteSheetGenerator::SpriteSheetGenerator(ImageManager * imageManager)
+	FrameSheetGenerator::FrameSheetGenerator(ImageManager * imageManager)
 	{
 		this->imageManager = imageManager;
 		this->handler = 0;
 	}
 
-	SpriteSheetGenerator::~SpriteSheetGenerator()
+	FrameSheetGenerator::~FrameSheetGenerator()
 	{
 
 	}
 
-	void SpriteSheetGenerator::addSpriteSheet(SpriteSheet * spriteSheet)
+	void FrameSheetGenerator::addFrameSheet(FrameSheet * frameSheet)
 	{
-		inputSpriteSheets.addSpriteSheet(spriteSheet);
+		inputFrameSheets.addFrameSheet(frameSheet);
 	}
 	
-	SpriteSheetCollection * SpriteSheetGenerator::generate()
+	FrameSheetCollection * FrameSheetGenerator::generate()
 	{
 		if(handler == 0)
 		{
@@ -29,14 +29,14 @@ namespace Gaza
 		generateImages();
 
 		// the generator should not have ownership of the input sprite sheets, so empty references before the generator destructs
-		inputSpriteSheets.clearSpriteSheets();
+		inputFrameSheets.clearFrameSheets();
 
 		if(individualImages.size() == 0)
 		{
 			return 0;
 		}
 
-		SpriteSheetCollection * spriteSheetCollection = new SpriteSheetCollection();
+		FrameSheetCollection * frameSheetCollection = new FrameSheetCollection();
 
 		// sort the images
 		std::stable_sort(individualImages.begin(), individualImages.end(), SortPredicate());
@@ -74,14 +74,14 @@ namespace Gaza
 			sf::Image * currentImage = new sf::Image();
 			currentImage->Create(packer->getContainerWidth(), packer->getContainerHeight(), sf::Color(0, 0, 0, 0));
 
-			SpriteSheet * currentSpriteSheet = new SpriteSheet(imageManager);
-			currentSpriteSheet->setName(Utility::intToString(spriteSheetCollection->getSpriteSheetCount()));
-			currentSpriteSheet->setImage(currentImage);
+			FrameSheet * currentFrameSheet = new FrameSheet(imageManager);
+			currentFrameSheet->setName(Utility::intToString(frameSheetCollection->getFrameSheetCount()));
+			currentFrameSheet->setImage(currentImage);
 
 			for(unsigned int i = 0; i < rectangles.size(); i++)
 			{
 				currentImage->Copy(*individualImages[i].second, rectangles[i]->Left, rectangles[i]->Top);
-				currentSpriteSheet->addRectangle(individualImages[i].first, *rectangles[i]);
+				currentFrameSheet->addRectangle(individualImages[i].first, *rectangles[i]);
 			}
 
 			removeImages(0, rectangles.size());
@@ -93,36 +93,36 @@ namespace Gaza
 
 			delete packer;
 
-			spriteSheetCollection->addSpriteSheet(currentSpriteSheet);
+			frameSheetCollection->addFrameSheet(currentFrameSheet);
 		}
 		while(individualImages.size() > 0);
 
-		return spriteSheetCollection;
+		return frameSheetCollection;
 	}
 
-	void SpriteSheetGenerator::setHandler(RectanglePacking::BaseHandler * handler)
+	void FrameSheetGenerator::setHandler(RectanglePacking::BaseHandler * handler)
 	{
 		this->handler = handler;
 	}
 
-	void SpriteSheetGenerator::pushImage(const std::string &name, sf::Image * image)
+	void FrameSheetGenerator::pushImage(const std::string &name, sf::Image * image)
 	{
 		imageManager->add(name, image);
 		individualImages.push_back(std::pair<std::string, sf::Image *>(name, image));
 	}
 
-	SubImage * SpriteSheetGenerator::getSubImage(const std::string &name)
+	Frame * FrameSheetGenerator::getFrame(const std::string &name)
 	{
-		return inputSpriteSheets.getSubImage(name);
+		return inputFrameSheets.getFrame(name);
 	}
 
-	void SpriteSheetGenerator::removeImage(int index)
+	void FrameSheetGenerator::removeImage(int index)
 	{
 		imageManager->release(individualImages[index].first);
 		individualImages.erase(individualImages.begin() + index);
 	}
 
-	void SpriteSheetGenerator::removeImages(int first, int last)
+	void FrameSheetGenerator::removeImages(int first, int last)
 	{
 		for(int i = first; i < last; i++)
 		{

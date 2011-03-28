@@ -13,7 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="CardSpriteSheetGenerator.cpp" />
+    <ClCompile Include="CardFrameSheetGenerator.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GazaApplication.cpp" />
@@ -22,10 +22,10 @@
     <ClCompile Include="GazaLogger.cpp" />
     <ClCompile Include="GazaPacker.cpp" />
     <ClCompile Include="GazaScottHandler.cpp" />
-    <ClCompile Include="GazaSubImage.cpp" />
-    <ClCompile Include="GazaSpriteSheet.cpp" />
-    <ClCompile Include="GazaSpriteSheetCollection.cpp" />
-    <ClCompile Include="GazaSpriteSheetGenerator.cpp" />
+    <ClCompile Include="GazaFrame.cpp" />
+    <ClCompile Include="GazaFrameSheet.cpp" />
+    <ClCompile Include="GazaFrameSheetCollection.cpp" />
+    <ClCompile Include="GazaFrameSheetGenerator.cpp" />
     <ClCompile Include="GazaStateManager.cpp" />
     <ClCompile Include="GazaUtility.cpp" />
     <ClCompile Include="main.cpp" />
@@ -33,7 +33,7 @@
   <ItemGroup>
     <ClInclude Include="Application.hpp" />
     <ClInclude Include="Card.hpp" />
-    <ClInclude Include="CardSpriteSheetGenerator.hpp" />
+    <ClInclude Include="CardFrameSheetGenerator.hpp" />
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="Deck.hpp" />
     <ClInclude Include="GameState.hpp" />
@@ -47,10 +47,10 @@
     <ClInclude Include="GazaPacker.hpp" />
     <ClInclude Include="GazaResourceManager.hpp" />
     <ClInclude Include="GazaScottHandler.hpp" />
-    <ClInclude Include="GazaSubImage.hpp" />
-    <ClInclude Include="GazaSpriteSheet.hpp" />
-    <ClInclude Include="GazaSpriteSheetCollection.hpp" />
-    <ClInclude Include="GazaSpriteSheetGenerator.hpp" />
+    <ClInclude Include="GazaFrame.hpp" />
+    <ClInclude Include="GazaFrameSheet.hpp" />
+    <ClInclude Include="GazaFrameSheetCollection.hpp" />
+    <ClInclude Include="GazaFrameSheetGenerator.hpp" />
     <ClInclude Include="GazaTypes.hpp" />
     <ClInclude Include="GazaUtility.hpp" />
     <ClInclude Include="rapidxml.hpp" />

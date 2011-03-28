@@ -3,8 +3,8 @@
 
 #include "Common.hpp"
 
-#include "GazaSubImage.hpp"
-#include "GazaSpriteSheetCollection.hpp"
+#include "GazaFrame.hpp"
+#include "GazaFrameSheetCollection.hpp"
 #include "GazaLogger.hpp"
 
 #include <string>
@@ -12,7 +12,7 @@
 class Card
 {
 public:
-	Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::SpriteSheetCollection * cardSprites);
+	Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::FrameSheetCollection * cardSprites);
 
 	void draw(sf::RenderTarget &target);
 

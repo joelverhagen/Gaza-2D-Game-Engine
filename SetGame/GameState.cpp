@@ -12,7 +12,7 @@ GameState::~GameState()
 	cleanup();
 }
 
-void GameState::setCardSprites(Gaza::SpriteSheetCollection * cardSprites)
+void GameState::setCardSprites(Gaza::FrameSheetCollection * cardSprites)
 {
 	this->cardSprites = cardSprites;
 }

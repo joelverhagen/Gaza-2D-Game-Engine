@@ -59,7 +59,7 @@ std::string Card::getSpriteName(CardColor cardColor, CardNumber cardNumber, Card
 	return name;
 }
 
-Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::SpriteSheetCollection * cardSprites)
+Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::FrameSheetCollection * cardSprites)
 {
 	selected = false;
 
@@ -69,28 +69,28 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 	this->cardShape = cardShape;
 
 	std::string unselectedName = getSpriteName(cardColor, cardNumber, cardPattern, cardShape)+"Unselected";
-	Gaza::SubImage * unselectedSubImage = cardSprites->getSubImage(unselectedName);
+	Gaza::Frame * unselectedFrame = cardSprites->getFrame(unselectedName);
 
-	if(unselectedSubImage == 0)
+	if(unselectedFrame == 0)
 	{
 		Gaza::Logger::getInstance()->write("Sprite of name \""+unselectedName+"\" could not be found.");
 		return;
 	}
 
 	std::string selectedName = getSpriteName(cardColor, cardNumber, cardPattern, cardShape)+"Selected";
-	Gaza::SubImage * selectedSubImage = cardSprites->getSubImage(selectedName);
+	Gaza::Frame * selectedFrame = cardSprites->getFrame(selectedName);
 
-	if(selectedSubImage == 0)
+	if(selectedFrame == 0)
 	{
 		Gaza::Logger::getInstance()->write("Sprite of name \""+selectedName+"\" could not be found.");
 		return;
 	}
 
-	unselectedSprite.SetImage(*unselectedSubImage->image);
-	unselectedSprite.SetSubRect(unselectedSubImage->rectangle);
+	unselectedSprite.SetImage(*unselectedFrame->image);
+	unselectedSprite.SetSubRect(unselectedFrame->rectangle);
 
-	selectedSprite.SetImage(*selectedSubImage->image);
-	selectedSprite.SetSubRect(selectedSubImage->rectangle);
+	selectedSprite.SetImage(*selectedFrame->image);
+	selectedSprite.SetSubRect(selectedFrame->rectangle);
 }
 
 void Card::draw(sf::RenderTarget &target)

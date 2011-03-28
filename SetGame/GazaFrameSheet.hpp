@@ -1,8 +1,8 @@
-#ifndef GAZASPRITESHEET_HPP
-#define GAZASPRITESHEET_HPP
+#ifndef GAZAFRAMESHEET_HPP
+#define GAZAFRAMESHEET_HPP
 
 #include "Gaza.hpp"
-#include "GazaSubImage.hpp"
+#include "GazaFrame.hpp"
 #include "GazaFile.hpp"
 #include "GazaUtility.hpp"
 #include "GazaImageManager.hpp"
@@ -14,11 +14,11 @@
 
 namespace Gaza
 {
-	class SpriteSheet
+	class FrameSheet
 	{
 	public:
-		SpriteSheet(ImageManager * imageManager);
-		~SpriteSheet();
+		FrameSheet(ImageManager * imageManager);
+		~FrameSheet();
 
 		std::string getName();
 		void setName(const std::string &name);
@@ -29,17 +29,17 @@ namespace Gaza
 		bool setImage(sf::Image * image);
 		bool addRectangle(const std::string &name, const sf::IntRect &rectangle);
 		
-		SubImage * getSubImage(const std::string &name);
+		Frame * getFrame(const std::string &name);
 		sf::Image * getImage();
 
-		int getSubImageCount();
-		std::vector<std::string> getSubImageNames();
+		int getFrameCount();
+		std::vector<std::string> getFrameNames();
 
 	private:
 		ImageManager * imageManager;
 
 		std::string name;		
-		std::map<std::string, SubImage *> subImages;
+		std::map<std::string, Frame *> subImages;
 	};
 }
 

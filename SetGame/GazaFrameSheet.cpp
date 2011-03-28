@@ -1,15 +1,15 @@
-#include "GazaSpriteSheet.hpp"
+#include "GazaFrameSheet.hpp"
 
 namespace Gaza
 {
-	SpriteSheet::SpriteSheet(ImageManager * imageManager)
+	FrameSheet::FrameSheet(ImageManager * imageManager)
 	{
 		this->imageManager = imageManager;
 	}
 
-	SpriteSheet::~SpriteSheet()
+	FrameSheet::~FrameSheet()
 	{
-		for(std::map<std::string, SubImage *>::iterator i = subImages.begin(); i != subImages.end(); i++)
+		for(std::map<std::string, Frame *>::iterator i = subImages.begin(); i != subImages.end(); i++)
 		{
 			delete (*i).second;
 		}
@@ -21,12 +21,12 @@ namespace Gaza
 		}
 	}
 
-	std::string SpriteSheet::getName()
+	std::string FrameSheet::getName()
 	{
 		return name;
 	}
 
-	void SpriteSheet::setName(const std::string &name)
+	void FrameSheet::setName(const std::string &name)
 	{
 		if(name.size() != 0)
 		{
@@ -35,9 +35,15 @@ namespace Gaza
 		this->name = name;
 	}
 
-	bool SpriteSheet::loadFromFile(const std::string &filePath)
+	bool FrameSheet::loadFromFile(const std::string &filePath)
 	{
 		char * fileData = File::getFile(filePath, true);
+
+		if(fileData == 0)
+		{
+			Logger::getInstance()->write("The file \""+filePath+"\" could not be opened.");
+			return false;
+		}
 
 		bool result = loadFromMemory(fileData);
 
@@ -46,22 +52,22 @@ namespace Gaza
 		return result;
 	}
 
-	bool SpriteSheet::loadFromMemory(char * fileData)
+	bool FrameSheet::loadFromMemory(char * fileData)
 	{
 		rapidxml::xml_document<> document;
 		document.parse<0>(fileData);
 
-		if(!document.first_node("SpriteSheet"))
+		if(!document.first_node("FrameSheet"))
 		{
-			Logger::getInstance()->write("The sprite sheet must have a root element of type SpriteSheet.");
+			Logger::getInstance()->write("The sprite sheet must have a root element of type FrameSheet.");
 			return false;
 		}
 
-		rapidxml::xml_node<> * rootNode = document.first_node("SpriteSheet");
+		rapidxml::xml_node<> * rootNode = document.first_node("FrameSheet");
 
 		if(!rootNode->first_attribute("name"))
 		{
-			Logger::getInstance()->write("The SpriteSheet element must have a name attribute.");
+			Logger::getInstance()->write("The FrameSheet element must have a name attribute.");
 			return false;
 		}
 
@@ -69,7 +75,7 @@ namespace Gaza
 
 		if(!rootNode->first_attribute("filePath"))
 		{
-			Logger::getInstance()->write("The SpriteSheet element must have a filePath attribute.");
+			Logger::getInstance()->write("The FrameSheet element must have a filePath attribute.");
 			return false;
 		}
 
@@ -77,7 +83,7 @@ namespace Gaza
 
 		if(!File::fileExists(filePath))
 		{
-			Logger::getInstance()->write("The SpriteSheet's filePath attribute must point to an existing image.");
+			Logger::getInstance()->write("The FrameSheet's filePath attribute must point to an existing image.");
 			return false;
 		}
 
@@ -87,7 +93,7 @@ namespace Gaza
 		if(!imageLoadResult)
 		{
 			delete image;
-			Logger::getInstance()->write("The SpriteSheet's filePath attribute must point to a valid image.");
+			Logger::getInstance()->write("The FrameSheet's filePath attribute must point to a valid image.");
 			return false;
 		}
 
@@ -95,7 +101,7 @@ namespace Gaza
 
 		if(!rootNode->first_node("Rectangle"))
 		{
-			Logger::getInstance()->write("The SpriteSheet element must have at least one Rectangle child node.");
+			Logger::getInstance()->write("The FrameSheet element must have at least one Rectangle child node.");
 			return false;
 		}
 
@@ -121,7 +127,7 @@ namespace Gaza
 		return true;
 	}
 
-	bool SpriteSheet::setImage(sf::Image * image)
+	bool FrameSheet::setImage(sf::Image * image)
 	{
 		if(name.size() == 0)
 		{
@@ -134,18 +140,18 @@ namespace Gaza
 		return true;
 	}
 
-	bool SpriteSheet::addRectangle(const std::string &name, const sf::IntRect &rectangle)
+	bool FrameSheet::addRectangle(const std::string &name, const sf::IntRect &rectangle)
 	{
 		if(subImages.find(name) != subImages.end())
 		{
-			Logger::getInstance()->write("A SubImage with name \""+name+"\" already exists.");
+			Logger::getInstance()->write("A Frame with name \""+name+"\" already exists.");
 			return false;
 		}
-		subImages[name] = new SubImage(rectangle, getImage());
+		subImages[name] = new Frame(rectangle, getImage());
 		return true;
 	}
 
-	SubImage * SpriteSheet::getSubImage(const std::string &name)
+	Frame * FrameSheet::getFrame(const std::string &name)
 	{
 		if(subImages.find(name) == subImages.end())
 		{
@@ -154,21 +160,21 @@ namespace Gaza
 		return subImages[name];
 	}
 
-	sf::Image * SpriteSheet::getImage()
+	sf::Image * FrameSheet::getImage()
 	{
 		return imageManager->get(name);
 	}
 
-	int SpriteSheet::getSubImageCount()
+	int FrameSheet::getFrameCount()
 	{
 		return subImages.size();
 	}
 
-	std::vector<std::string> SpriteSheet::getSubImageNames()
+	std::vector<std::string> FrameSheet::getFrameNames()
 	{
 		std::vector<std::string> names;
 
-		for(std::map<std::string, SubImage *>::iterator i = subImages.begin(); i != subImages.end(); i++)
+		for(std::map<std::string, Frame *>::iterator i = subImages.begin(); i != subImages.end(); i++)
 		{
 			names.push_back((*i).first);
 		}

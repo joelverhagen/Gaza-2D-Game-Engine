@@ -1,11 +1,10 @@
-#ifndef GAZASPRITESHEETGENERATOR_HPP
-#define GAZASPRITESHEETGENERATOR_HPP
+#ifndef GAZAFRAMESHEETGENERATOR_HPP
+#define GAZAFRAMESHEETGENERATOR_HPP
 
 #include "Gaza.hpp"
-#include "GazaSpriteSheet.hpp"
-#include "GazaSpriteSheetCollection.hpp"
+#include "GazaFrameSheet.hpp"
+#include "GazaFrameSheetCollection.hpp"
 #include "GazaPacker.hpp"
-#include "GazaScottHandler.hpp"
 #include "GazaUtility.hpp"
 
 #include <algorithm>
@@ -15,20 +14,20 @@
 
 namespace Gaza
 {
-	class SpriteSheetGenerator
+	class FrameSheetGenerator
 	{
 	public:
-		SpriteSheetGenerator(ImageManager * imageManager);
-		~SpriteSheetGenerator();
+		FrameSheetGenerator(ImageManager * imageManager);
+		~FrameSheetGenerator();
 
-		void addSpriteSheet(SpriteSheet * spriteSheet);
-		SpriteSheetCollection * generate();
+		void addFrameSheet(FrameSheet * frameSheet);
+		FrameSheetCollection * generate();
 
 	protected:
 		void setHandler(RectanglePacking::BaseHandler * handler);
 		virtual void generateImages() = 0;
 		void pushImage(const std::string &name, sf::Image * image);
-		SubImage * getSubImage(const std::string &name);
+		Frame * getFrame(const std::string &name);
 
 	private:
 		void removeImage(int index);
@@ -37,7 +36,7 @@ namespace Gaza
 		ImageManager * imageManager;
 		RectanglePacking::BaseHandler * handler;
 
-		SpriteSheetCollection inputSpriteSheets;
+		FrameSheetCollection inputFrameSheets;
 		std::vector<std::pair<std::string, sf::Image *> > individualImages;
 	};
 

@@ -1,7 +1,7 @@
 #ifndef DECK_HPP
 #define DECK_HPP
 
-#include "GazaSpriteSheetCollection.hpp"
+#include "GazaFrameSheetCollection.hpp"
 
 #include "Common.hpp"
 #include "Card.hpp"
@@ -12,7 +12,7 @@
 class Deck
 {
 public:
-	Deck(Gaza::SpriteSheetCollection * cardSprites);
+	Deck(Gaza::FrameSheetCollection * cardSprites);
 	~Deck();
 
 	Card * drawCard();

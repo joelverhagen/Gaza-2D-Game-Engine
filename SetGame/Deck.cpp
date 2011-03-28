@@ -1,6 +1,6 @@
 #include "Deck.hpp"
 
-Deck::Deck(Gaza::SpriteSheetCollection * cardSprites)
+Deck::Deck(Gaza::FrameSheetCollection * cardSprites)
 {
 	CardColor cardColors[3];
 	cardColors[0] = GREEN;

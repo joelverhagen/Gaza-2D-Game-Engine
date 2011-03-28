@@ -4,12 +4,12 @@
 #include "Common.hpp"
 
 #include "GazaApplication.hpp"
-#include "GazaSpriteSheet.hpp"
+#include "GazaFrameSheet.hpp"
 #include "GazaImageManager.hpp"
 #include "GazaLogger.hpp"
 
 #include "GameState.hpp"
-#include "CardSpriteSheetGenerator.hpp"
+#include "CardFrameSheetGenerator.hpp"
 
 class Application : public Gaza::Application
 {
@@ -22,7 +22,7 @@ public:
 private:
 	Gaza::ImageManager imageManager;
 
-	Gaza::SpriteSheetCollection * cardSprites;
+	Gaza::FrameSheetCollection * cardSprites;
 };
 
 #endif

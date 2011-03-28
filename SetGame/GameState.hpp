@@ -1,7 +1,7 @@
 #ifndef GAMESTATE_HPP
 #define GAMESTATE_HPP
 
-#include "GazaSpriteSheetCollection.hpp"
+#include "GazaFrameSheetCollection.hpp"
 #include "GazaApplication.hpp"
 #include "GazaBaseState.hpp"
 #include "GazaLogger.hpp"
@@ -15,7 +15,7 @@ public:
 	GameState();
 	~GameState();
 
-	void setCardSprites(Gaza::SpriteSheetCollection * cardSprites);
+	void setCardSprites(Gaza::FrameSheetCollection * cardSprites);
 
 	void initialize();
 	void cleanup();
@@ -27,7 +27,7 @@ public:
 	static GameState * getInstance();	
 
 protected:
-	Gaza::SpriteSheetCollection * cardSprites;
+	Gaza::FrameSheetCollection * cardSprites;
 
 	static GameState * instance;
 };

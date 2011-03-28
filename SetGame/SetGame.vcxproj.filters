@@ -54,15 +54,6 @@
     <ClCompile Include="GazaLogger.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="GazaSpriteSheet.cpp">
-      <Filter>Source Files\Base\SpriteSheets</Filter>
-    </ClCompile>
-    <ClCompile Include="GazaSpriteSheetGenerator.cpp">
-      <Filter>Source Files\Base\SpriteSheets</Filter>
-    </ClCompile>
-    <ClCompile Include="GazaSpriteSheetCollection.cpp">
-      <Filter>Source Files\Base\SpriteSheets</Filter>
-    </ClCompile>
     <ClCompile Include="GazaApplication.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
@@ -84,11 +75,20 @@
     <ClCompile Include="Card.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CardSpriteSheetGenerator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GazaFrameSheet.cpp">
+      <Filter>Source Files\Base\SpriteSheets</Filter>
     </ClCompile>
-    <ClCompile Include="GazaSubImage.cpp">
+    <ClCompile Include="GazaFrameSheetCollection.cpp">
+      <Filter>Source Files\Base\SpriteSheets</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaFrameSheetGenerator.cpp">
+      <Filter>Source Files\Base\SpriteSheets</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaFrame.cpp">
       <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFrameSheetGenerator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,9 +119,6 @@
     <ClInclude Include="GazaUtility.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="CardSpriteSheetGenerator.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GazaPacker.hpp">
       <Filter>Header Files\Base\RectanglePacking</Filter>
     </ClInclude>
@@ -136,15 +133,6 @@
     </ClInclude>
     <ClInclude Include="GazaApplication.hpp">
       <Filter>Header Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaSpriteSheet.hpp">
-      <Filter>Header Files\Base\SpriteSheets</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaSpriteSheetGenerator.hpp">
-      <Filter>Header Files\Base\SpriteSheets</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaSpriteSheetCollection.hpp">
-      <Filter>Header Files\Base\SpriteSheets</Filter>
     </ClInclude>
     <ClInclude Include="GazaStateManager.hpp">
       <Filter>Header Files\Base</Filter>
@@ -173,8 +161,20 @@
     <ClInclude Include="Table.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GazaSubImage.hpp">
+    <ClInclude Include="GazaFrameSheet.hpp">
+      <Filter>Header Files\Base\SpriteSheets</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaFrameSheetCollection.hpp">
+      <Filter>Header Files\Base\SpriteSheets</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaFrameSheetGenerator.hpp">
+      <Filter>Header Files\Base\SpriteSheets</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaFrame.hpp">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFrameSheetGenerator.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

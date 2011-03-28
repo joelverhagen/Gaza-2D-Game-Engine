@@ -1,12 +1,12 @@
-#include "CardSpriteSheetGenerator.hpp"
+#include "CardFrameSheetGenerator.hpp"
 
-CardSpriteSheetGenerator::CardSpriteSheetGenerator(Gaza::ImageManager * imageManager, Gaza::SpriteSheet * spriteSheet) : SpriteSheetGenerator(imageManager)
+CardFrameSheetGenerator::CardFrameSheetGenerator(Gaza::ImageManager * imageManager, Gaza::FrameSheet * frameSheet) : FrameSheetGenerator(imageManager)
 {
 	setHandler(&scottHandler);
-	addSpriteSheet(spriteSheet);
+	addFrameSheet(frameSheet);
 }
 
-void CardSpriteSheetGenerator::generateImages()
+void CardFrameSheetGenerator::generateImages()
 {
 	// Generate the individual images
 	std::pair<std::string, sf::Color> cardColors[3];
@@ -29,17 +29,17 @@ void CardSpriteSheetGenerator::generateImages()
 	cardShapes[1] = std::pair<std::string, std::string>("Oval", "Oval");
 	cardShapes[2] = std::pair<std::string, std::string>("Squiggly", "Squiggly");
 
-	Gaza::SubImage * unselectedCard = getSubImage("unselectedCard");
+	Gaza::Frame * unselectedCard = getFrame("unselectedCard");
 	sf::Image unselectedImage;
 	unselectedImage.Create(unselectedCard->rectangle.Width, unselectedCard->rectangle.Height);
 	unselectedImage.Copy(*unselectedCard->image, 0, 0, unselectedCard->rectangle);
 					
-	Gaza::SubImage * selectedCard = getSubImage("selectedCard");
+	Gaza::Frame * selectedCard = getFrame("selectedCard");
 	sf::Image selectedImage;
 	selectedImage.Create(selectedCard->rectangle.Width, selectedCard->rectangle.Height);
 	selectedImage.Copy(*selectedCard->image, 0, 0, selectedCard->rectangle);
 
-	Gaza::SubImage * emptySpot = getSubImage("emptySpot");
+	Gaza::Frame * emptySpot = getFrame("emptySpot");
 	sf::Image * emptySpotImage = new sf::Image();
 	emptySpotImage->Create(emptySpot->rectangle.Width, emptySpot->rectangle.Height);
 	emptySpotImage->Copy(*emptySpot->image, 0, 0, emptySpot->rectangle);
@@ -53,7 +53,7 @@ void CardSpriteSheetGenerator::generateImages()
 	{
 		for(int s = 0; s < 3; s++)
 		{
-			Gaza::SubImage * symbol = getSubImage(cardPatterns[p].second+cardShapes[s].second);
+			Gaza::Frame * symbol = getFrame(cardPatterns[p].second+cardShapes[s].second);
 			for(int c = 0; c < 3; c++)
 			{
 				sf::RenderImage symbolRenderImage;
