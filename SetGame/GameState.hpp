@@ -6,9 +6,15 @@
 #include "GazaBaseState.hpp"
 #include "GazaLogger.hpp"
 
+#include "Deck.hpp"
+#include "Card.hpp"
+
 class GameState : public Gaza::BaseState
 {
 public:
+	GameState();
+	~GameState();
+
 	void setCardSprites(Gaza::SpriteSheetCollection * cardSprites);
 
 	void initialize();
@@ -22,8 +28,9 @@ public:
 
 protected:
 	Gaza::SpriteSheetCollection * cardSprites;
+	Deck * deck;
 
-	static GameState instance;
+	static GameState * instance;
 };
 
 #endif

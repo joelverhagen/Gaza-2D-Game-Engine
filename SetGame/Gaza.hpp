@@ -3,6 +3,7 @@
 
 #include "GazaTypes.hpp"
 #include "GazaLogger.hpp"
+#include "GazaUtility.hpp"
 
 #include <SFML\Graphics.hpp>
 

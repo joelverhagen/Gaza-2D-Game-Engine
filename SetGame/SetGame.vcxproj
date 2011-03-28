@@ -14,6 +14,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardSpriteSheetGenerator.cpp" />
+    <ClCompile Include="Deck.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GazaApplication.cpp" />
     <ClCompile Include="GazaBaseState.cpp" />
@@ -34,6 +35,7 @@
     <ClInclude Include="Card.hpp" />
     <ClInclude Include="CardSpriteSheetGenerator.hpp" />
     <ClInclude Include="Common.hpp" />
+    <ClInclude Include="Deck.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Gaza.hpp" />
     <ClInclude Include="GazaApplication.hpp" />
@@ -56,6 +58,7 @@
     <ClInclude Include="rapidxml_print.hpp" />
     <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="GazaStateManager.hpp" />
+    <ClInclude Include="Table.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7D4F0672-8631-4737-9FF0-AE198A9EB015}</ProjectGuid>

@@ -4,9 +4,11 @@
 #include "Common.hpp"
 
 #include "GazaApplication.hpp"
-#include "GameState.hpp"
 #include "GazaSpriteSheet.hpp"
 #include "GazaImageManager.hpp"
+#include "GazaLogger.hpp"
+
+#include "GameState.hpp"
 #include "CardSpriteSheetGenerator.hpp"
 
 class Application : public Gaza::Application

@@ -16,8 +16,14 @@ namespace Gaza
 
 	void Logger::write(const std::string &input)
 	{
+		std::cout << input << std::endl;
 		outputStream << input << std::endl;
 		outputStream.flush();
+	}
+
+	void Logger::write(int input)
+	{
+		write(Utility::intToString(input));
 	}
 
 	Logger::~Logger()

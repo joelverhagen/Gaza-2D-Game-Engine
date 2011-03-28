@@ -1,6 +1,16 @@
 #include "GameState.hpp"
 
-GameState GameState::instance;
+GameState * GameState::instance = 0;
+
+GameState::GameState()
+{
+	deck = 0;
+}
+
+GameState::~GameState()
+{
+	cleanup();
+}
 
 void GameState::setCardSprites(Gaza::SpriteSheetCollection * cardSprites)
 {
@@ -9,12 +19,17 @@ void GameState::setCardSprites(Gaza::SpriteSheetCollection * cardSprites)
 
 void GameState::initialize()
 {
+	cleanup();
 
+	deck = new Deck(cardSprites);
 }
 
 void GameState::cleanup()
 {
-
+	if(deck != 0)
+	{
+		delete deck;
+	}
 }
 
 void GameState::handleEvents(Gaza::Application * application)
@@ -41,5 +56,10 @@ void GameState::draw(Gaza::Application * application)
 
 GameState * GameState::getInstance()
 {
-	return &instance;
+	if(instance == 0)
+	{
+		instance = new GameState();
+	}
+
+	return instance;
 }

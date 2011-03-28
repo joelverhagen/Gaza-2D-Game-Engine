@@ -5,30 +5,30 @@
 
 enum CardColor
 {
-	green,
-	purple,
-	red
+	GREEN,
+	PURPLE,
+	RED
 };
 
 enum CardNumber
 {
-	one,
-	two,
-	three
+	ONE,
+	TWO,
+	THREE
 };
 
 enum CardPattern
 {
-	empty,
-	solid,
-	striped
+	EMPTY,
+	SOLID,
+	STRIPED
 };
 
 enum CardShape
 {
-	diamond,
-	oval,
-	squiggly
+	DIAMOND,
+	OVAL,
+	SQUIGGLY
 };
 
 #endif

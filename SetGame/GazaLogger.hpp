@@ -1,8 +1,11 @@
 #ifndef GAZALOGGER_HPP
 #define GAZALOGGER_HPP
 
+#include "GazaUtility.hpp"
+
 #include <string>
 #include <fstream>
+#include <iostream>
 
 namespace Gaza
 {
@@ -11,6 +14,7 @@ namespace Gaza
 	public:
 		static Logger * getInstance();
 		void write(const std::string &input);
+		void write(int input);
 		~Logger();
 
 	private:

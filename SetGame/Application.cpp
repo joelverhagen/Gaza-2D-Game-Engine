@@ -10,6 +10,7 @@ Application::Application()
 
 	GameState * gameState = GameState::getInstance();
 	gameState->setCardSprites(cardSprites);
+
 	changeState(gameState);
 }
 

@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Header Files\Base">
       <UniqueIdentifier>{1b0d9f3e-93d6-4e79-9eec-4693af821dbf}</UniqueIdentifier>
     </Filter>
@@ -34,6 +30,10 @@
     <Filter Include="Source Files\Base\SpriteSheets">
       <UniqueIdentifier>{dbe1eddf-2c93-4b97-9790-9308f347810a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="GazaSprite.cpp">
       <Filter>Source Files\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="CardSpriteSheetGenerator.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GazaPacker.cpp">
       <Filter>Source Files\Base\RectanglePacking</Filter>
@@ -84,7 +81,13 @@
     <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Deck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardSpriteSheetGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -165,6 +168,12 @@
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="Card.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Deck.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
