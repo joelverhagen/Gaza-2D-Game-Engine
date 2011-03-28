@@ -9,12 +9,11 @@
 
 #include <string>
 
-class Card
+class Card : public sf::Sprite
 {
 public:
 	Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::FrameSheetCollection * cardSprites);
-
-	void draw(sf::RenderTarget &target);
+	~Card();
 
 	CardColor getCardColor();
 	CardNumber getCardNumber();
@@ -22,6 +21,7 @@ public:
 	CardShape getCardShape();
 
 	bool getSelected();
+	void setSelected(bool selected);
 	void toggleSelected();
 
 private:
@@ -34,8 +34,8 @@ private:
 	CardPattern cardPattern;
 	CardShape cardShape;
 
-	sf::Sprite unselectedSprite;
-	sf::Sprite selectedSprite;
+	Gaza::Frame * unselectedFrame;
+	Gaza::Frame * selectedFrame;
 };
 
 #endif

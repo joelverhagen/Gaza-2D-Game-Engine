@@ -61,7 +61,8 @@ std::string Card::getSpriteName(CardColor cardColor, CardNumber cardNumber, Card
 
 Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::FrameSheetCollection * cardSprites)
 {
-	selected = false;
+	unselectedFrame = 0;
+	selectedFrame = 0;
 
 	this->cardColor = cardColor;
 	this->cardNumber = cardNumber;
@@ -69,7 +70,7 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 	this->cardShape = cardShape;
 
 	std::string unselectedName = getSpriteName(cardColor, cardNumber, cardPattern, cardShape)+"Unselected";
-	Gaza::Frame * unselectedFrame = cardSprites->getFrame(unselectedName);
+	unselectedFrame = cardSprites->getFrame(unselectedName);
 
 	if(unselectedFrame == 0)
 	{
@@ -78,30 +79,25 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 	}
 
 	std::string selectedName = getSpriteName(cardColor, cardNumber, cardPattern, cardShape)+"Selected";
-	Gaza::Frame * selectedFrame = cardSprites->getFrame(selectedName);
+	selectedFrame = cardSprites->getFrame(selectedName);
 
 	if(selectedFrame == 0)
 	{
 		Gaza::Logger::getInstance()->write("Sprite of name \""+selectedName+"\" could not be found.");
 		return;
 	}
-
-	unselectedSprite.SetImage(*unselectedFrame->image);
-	unselectedSprite.SetSubRect(unselectedFrame->rectangle);
-
-	selectedSprite.SetImage(*selectedFrame->image);
-	selectedSprite.SetSubRect(selectedFrame->rectangle);
 }
 
-void Card::draw(sf::RenderTarget &target)
+Card::~Card()
 {
-	if(selected)
+	if(unselectedFrame != 0)
 	{
-		target.Draw(selectedSprite);
+		delete unselectedFrame;
 	}
-	else
+
+	if(selectedFrame != 0)
 	{
-		target.Draw(unselectedSprite);
+		delete selectedFrame;
 	}
 }
 
@@ -130,7 +126,22 @@ bool Card::getSelected()
 	return selected;
 }
 
+void Card::setSelected(bool selected)
+{
+	this->selected = selected;
+	if(selected)
+	{
+		SetImage(*selectedFrame->image);
+		SetSubRect(selectedFrame->rectangle);
+	}
+	else
+	{
+		SetImage(*unselectedFrame->image);
+		SetSubRect(unselectedFrame->rectangle);
+	}
+}
+
 void Card::toggleSelected()
 {
-	selected = !selected;
+	setSelected(!selected);
 }
