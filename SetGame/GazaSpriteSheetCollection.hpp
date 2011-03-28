@@ -3,7 +3,7 @@
 
 #include "Gaza.hpp"
 #include "GazaSpriteSheet.hpp"
-#include "GazaSprite.hpp"
+#include "GazaSubImage.hpp"
 
 #include <string>
 #include <vector>
@@ -17,11 +17,11 @@ namespace Gaza
 		~SpriteSheetCollection();
 
 		void addSpriteSheet(SpriteSheet * spriteSheet);
-		Sprite * getSprite(const std::string &name);
+		SubImage * getSubImage(const std::string &name);
 
 		int getSpriteSheetCount();
-		int getSpriteCount();
-		std::vector<std::string> getSpriteNames();
+		int getSubImageCount();
+		std::vector<std::string> getSubImageNames();
 
 		void clearSpriteSheets();
 

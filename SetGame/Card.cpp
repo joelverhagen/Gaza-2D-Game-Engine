@@ -69,7 +69,7 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 	this->cardShape = cardShape;
 
 	std::string unselectedName = getSpriteName(cardColor, cardNumber, cardPattern, cardShape)+"Unselected";
-	Gaza::Sprite * unselectedSubImage = cardSprites->getSprite(unselectedName);
+	Gaza::SubImage * unselectedSubImage = cardSprites->getSubImage(unselectedName);
 
 	if(unselectedSubImage == 0)
 	{
@@ -78,7 +78,7 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 	}
 
 	std::string selectedName = getSpriteName(cardColor, cardNumber, cardPattern, cardShape)+"Selected";
-	Gaza::Sprite * selectedSubImage = cardSprites->getSprite(selectedName);
+	Gaza::SubImage * selectedSubImage = cardSprites->getSubImage(selectedName);
 
 	if(selectedSubImage == 0)
 	{

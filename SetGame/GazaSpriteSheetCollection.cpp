@@ -21,18 +21,18 @@ namespace Gaza
 		spriteSheets.push_back(spriteSheet);
 	}
 
-	Sprite * SpriteSheetCollection::getSprite(const std::string &name)
+	SubImage * SpriteSheetCollection::getSubImage(const std::string &name)
 	{
-		Sprite * sprite = 0;
+		SubImage * subImage = 0;
 		for(unsigned int i = 0; i < spriteSheets.size(); i++)
 		{
-			sprite = spriteSheets[i]->getSprite(name);
-			if(sprite != 0)
+			subImage = spriteSheets[i]->getSubImage(name);
+			if(subImage != 0)
 			{
 				break;
 			}
 		}
-		return sprite;
+		return subImage;
 	}
 
 	int SpriteSheetCollection::getSpriteSheetCount()
@@ -40,25 +40,25 @@ namespace Gaza
 		return spriteSheets.size();
 	}
 
-	int SpriteSheetCollection::getSpriteCount()
+	int SpriteSheetCollection::getSubImageCount()
 	{
 		int sum = 0;
 
 		for(unsigned int i = 0; i < spriteSheets.size(); i++)
 		{
-			sum += spriteSheets[i]->getSpriteCount();
+			sum += spriteSheets[i]->getSubImageCount();
 		}
 
 		return sum;
 	}
 
-	std::vector<std::string> SpriteSheetCollection::getSpriteNames()
+	std::vector<std::string> SpriteSheetCollection::getSubImageNames()
 	{
 		std::vector<std::string> names;
 
 		for(unsigned int i = 0; i < spriteSheets.size(); i++)
 		{
-			std::vector<std::string> currentNames = spriteSheets[i]->getSpriteNames();
+			std::vector<std::string> currentNames = spriteSheets[i]->getSubImageNames();
 			for(unsigned int j = 0; j < currentNames.size(); j++)
 			{
 				names.push_back(currentNames[j]);

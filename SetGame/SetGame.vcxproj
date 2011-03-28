@@ -22,7 +22,7 @@
     <ClCompile Include="GazaLogger.cpp" />
     <ClCompile Include="GazaPacker.cpp" />
     <ClCompile Include="GazaScottHandler.cpp" />
-    <ClCompile Include="GazaSprite.cpp" />
+    <ClCompile Include="GazaSubImage.cpp" />
     <ClCompile Include="GazaSpriteSheet.cpp" />
     <ClCompile Include="GazaSpriteSheetCollection.cpp" />
     <ClCompile Include="GazaSpriteSheetGenerator.cpp" />
@@ -47,7 +47,7 @@
     <ClInclude Include="GazaPacker.hpp" />
     <ClInclude Include="GazaResourceManager.hpp" />
     <ClInclude Include="GazaScottHandler.hpp" />
-    <ClInclude Include="GazaSprite.hpp" />
+    <ClInclude Include="GazaSubImage.hpp" />
     <ClInclude Include="GazaSpriteSheet.hpp" />
     <ClInclude Include="GazaSpriteSheetCollection.hpp" />
     <ClInclude Include="GazaSpriteSheetGenerator.hpp" />

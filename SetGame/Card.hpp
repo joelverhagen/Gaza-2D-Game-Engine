@@ -3,7 +3,7 @@
 
 #include "Common.hpp"
 
-#include "GazaSprite.hpp"
+#include "GazaSubImage.hpp"
 #include "GazaSpriteSheetCollection.hpp"
 #include "GazaLogger.hpp"
 

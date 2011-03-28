@@ -29,17 +29,17 @@ void CardSpriteSheetGenerator::generateImages()
 	cardShapes[1] = std::pair<std::string, std::string>("Oval", "Oval");
 	cardShapes[2] = std::pair<std::string, std::string>("Squiggly", "Squiggly");
 
-	Gaza::Sprite * unselectedCard = getSprite("unselectedCard");
+	Gaza::SubImage * unselectedCard = getSubImage("unselectedCard");
 	sf::Image unselectedImage;
 	unselectedImage.Create(unselectedCard->rectangle.Width, unselectedCard->rectangle.Height);
 	unselectedImage.Copy(*unselectedCard->image, 0, 0, unselectedCard->rectangle);
 					
-	Gaza::Sprite * selectedCard = getSprite("selectedCard");
+	Gaza::SubImage * selectedCard = getSubImage("selectedCard");
 	sf::Image selectedImage;
 	selectedImage.Create(selectedCard->rectangle.Width, selectedCard->rectangle.Height);
 	selectedImage.Copy(*selectedCard->image, 0, 0, selectedCard->rectangle);
 
-	Gaza::Sprite * emptySpot = getSprite("emptySpot");
+	Gaza::SubImage * emptySpot = getSubImage("emptySpot");
 	sf::Image * emptySpotImage = new sf::Image();
 	emptySpotImage->Create(emptySpot->rectangle.Width, emptySpot->rectangle.Height);
 	emptySpotImage->Copy(*emptySpot->image, 0, 0, emptySpot->rectangle);
@@ -53,7 +53,7 @@ void CardSpriteSheetGenerator::generateImages()
 	{
 		for(int s = 0; s < 3; s++)
 		{
-			Gaza::Sprite * symbol = getSprite(cardPatterns[p].second+cardShapes[s].second);
+			Gaza::SubImage * symbol = getSubImage(cardPatterns[p].second+cardShapes[s].second);
 			for(int c = 0; c < 3; c++)
 			{
 				sf::RenderImage symbolRenderImage;

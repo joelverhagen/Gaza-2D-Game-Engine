@@ -2,7 +2,7 @@
 #define GAZASPRITESHEET_HPP
 
 #include "Gaza.hpp"
-#include "GazaSprite.hpp"
+#include "GazaSubImage.hpp"
 #include "GazaFile.hpp"
 #include "GazaUtility.hpp"
 #include "GazaImageManager.hpp"
@@ -27,19 +27,19 @@ namespace Gaza
 		bool loadFromMemory(char * fileData);
 
 		bool setImage(sf::Image * image);
-		bool addSprite(const std::string &name, Sprite * sprite);
+		bool addRectangle(const std::string &name, const sf::IntRect &rectangle);
 		
-		Sprite * getSprite(const std::string &name);
+		SubImage * getSubImage(const std::string &name);
 		sf::Image * getImage();
 
-		int getSpriteCount();
-		std::vector<std::string> getSpriteNames();
+		int getSubImageCount();
+		std::vector<std::string> getSubImageNames();
 
 	private:
 		ImageManager * imageManager;
 
 		std::string name;		
-		std::map<std::string, Sprite *> sprites;
+		std::map<std::string, SubImage *> subImages;
 	};
 }
 

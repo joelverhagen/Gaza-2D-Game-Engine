@@ -28,7 +28,7 @@ namespace Gaza
 		void setHandler(RectanglePacking::BaseHandler * handler);
 		virtual void generateImages() = 0;
 		void pushImage(const std::string &name, sf::Image * image);
-		Sprite * getSprite(const std::string &name);
+		SubImage * getSubImage(const std::string &name);
 
 	private:
 		void removeImage(int index);

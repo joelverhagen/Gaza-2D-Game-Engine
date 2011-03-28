@@ -9,11 +9,11 @@ namespace Gaza
 
 	SpriteSheet::~SpriteSheet()
 	{
-		for(std::map<std::string, Sprite *>::iterator i = sprites.begin(); i != sprites.end(); i++)
+		for(std::map<std::string, SubImage *>::iterator i = subImages.begin(); i != subImages.end(); i++)
 		{
 			delete (*i).second;
 		}
-		sprites.clear();
+		subImages.clear();
 
 		if(name.size() != 0)
 		{
@@ -115,9 +115,7 @@ namespace Gaza
 
 			std::string name = childNode->first_attribute("name")->value();
 
-			Sprite * sprite = new Sprite(rectangle, getImage());
-
-			addSprite(name, sprite);
+			addRectangle(name, rectangle);
 		}
 
 		return true;
@@ -136,24 +134,24 @@ namespace Gaza
 		return true;
 	}
 
-	bool SpriteSheet::addSprite(const std::string &name, Sprite * sprite)
+	bool SpriteSheet::addRectangle(const std::string &name, const sf::IntRect &rectangle)
 	{
-		if(sprites.find(name) != sprites.end())
+		if(subImages.find(name) != subImages.end())
 		{
-			Logger::getInstance()->write("A sprite with name \""+name+"\" already exists.");
+			Logger::getInstance()->write("A SubImage with name \""+name+"\" already exists.");
 			return false;
 		}
-		sprites[name] = sprite;
+		subImages[name] = new SubImage(rectangle, getImage());
 		return true;
 	}
 
-	Sprite * SpriteSheet::getSprite(const std::string &name)
+	SubImage * SpriteSheet::getSubImage(const std::string &name)
 	{
-		if(sprites.find(name) == sprites.end())
+		if(subImages.find(name) == subImages.end())
 		{
 			return 0;
 		}
-		return sprites[name];
+		return subImages[name];
 	}
 
 	sf::Image * SpriteSheet::getImage()
@@ -161,16 +159,16 @@ namespace Gaza
 		return imageManager->get(name);
 	}
 
-	int SpriteSheet::getSpriteCount()
+	int SpriteSheet::getSubImageCount()
 	{
-		return sprites.size();
+		return subImages.size();
 	}
 
-	std::vector<std::string> SpriteSheet::getSpriteNames()
+	std::vector<std::string> SpriteSheet::getSubImageNames()
 	{
 		std::vector<std::string> names;
 
-		for(std::map<std::string, Sprite *>::iterator i = sprites.begin(); i != sprites.end(); i++)
+		for(std::map<std::string, SubImage *>::iterator i = subImages.begin(); i != subImages.end(); i++)
 		{
 			names.push_back((*i).first);
 		}

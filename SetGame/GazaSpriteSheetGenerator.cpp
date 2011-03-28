@@ -81,7 +81,7 @@ namespace Gaza
 			for(unsigned int i = 0; i < rectangles.size(); i++)
 			{
 				currentImage->Copy(*individualImages[i].second, rectangles[i]->Left, rectangles[i]->Top);
-				currentSpriteSheet->addSprite(individualImages[i].first, new Sprite(*rectangles[i], currentImage));
+				currentSpriteSheet->addRectangle(individualImages[i].first, *rectangles[i]);
 			}
 
 			removeImages(0, rectangles.size());
@@ -111,9 +111,9 @@ namespace Gaza
 		individualImages.push_back(std::pair<std::string, sf::Image *>(name, image));
 	}
 
-	Sprite * SpriteSheetGenerator::getSprite(const std::string &name)
+	SubImage * SpriteSheetGenerator::getSubImage(const std::string &name)
 	{
-		return inputSpriteSheets.getSprite(name);
+		return inputSpriteSheets.getSubImage(name);
 	}
 
 	void SpriteSheetGenerator::removeImage(int index)

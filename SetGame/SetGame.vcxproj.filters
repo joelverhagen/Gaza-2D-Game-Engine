@@ -45,9 +45,6 @@
     <ClCompile Include="GazaUtility.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="GazaSprite.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="GazaPacker.cpp">
       <Filter>Source Files\Base\RectanglePacking</Filter>
     </ClCompile>
@@ -90,6 +87,9 @@
     <ClCompile Include="CardSpriteSheetGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GazaSubImage.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml.hpp">
@@ -121,9 +121,6 @@
     </ClInclude>
     <ClInclude Include="CardSpriteSheetGenerator.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaSprite.hpp">
-      <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="GazaPacker.hpp">
       <Filter>Header Files\Base\RectanglePacking</Filter>
@@ -175,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Table.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaSubImage.hpp">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -28,7 +28,6 @@ public:
 
 protected:
 	Gaza::SpriteSheetCollection * cardSprites;
-	Deck * deck;
 
 	static GameState * instance;
 };
