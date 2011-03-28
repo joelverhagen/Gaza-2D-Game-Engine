@@ -31,6 +31,10 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 
 Table::~Table()
 {
+	for(unsigned i = 0; i < table.size(); i++)
+	{
+		delete table[i];
+	}
 	delete deck;
 }
 

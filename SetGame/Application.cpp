@@ -16,6 +16,7 @@ Application::Application()
 	cardSprites = generator.generate();
 
 	GameState * gameState = GameState::getInstance();
+
 	gameState->setCardSprites(cardSprites);
 
 	changeState(gameState);

@@ -31,15 +31,7 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 
 Card::~Card()
 {
-	if(unselectedFrame != 0)
-	{
-		delete unselectedFrame;
-	}
 
-	if(selectedFrame != 0)
-	{
-		delete selectedFrame;
-	}
 }
 
 CardColor Card::getCardColor()

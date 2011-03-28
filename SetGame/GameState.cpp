@@ -7,11 +7,6 @@ GameState::GameState()
 	table = 0;
 }
 
-GameState::~GameState()
-{
-	cleanup();
-}
-
 void GameState::setCardSprites(Gaza::FrameSheetCollection * cardSprites)
 {
 	this->cardSprites = cardSprites;

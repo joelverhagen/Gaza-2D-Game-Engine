@@ -12,7 +12,6 @@ class GameState : public Gaza::BaseState
 {
 public:
 	GameState();
-	~GameState();
 
 	void setCardSprites(Gaza::FrameSheetCollection * cardSprites);
 
