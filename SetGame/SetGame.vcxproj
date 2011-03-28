@@ -15,6 +15,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardFrameSheetGenerator.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="EmptySpot.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GazaApplication.cpp" />
     <ClCompile Include="GazaBaseState.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="GazaStateManager.cpp" />
     <ClCompile Include="GazaUtility.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp" />
@@ -36,6 +38,7 @@
     <ClInclude Include="CardFrameSheetGenerator.hpp" />
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="Deck.hpp" />
+    <ClInclude Include="EmptySpot.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Gaza.hpp" />
     <ClInclude Include="GazaApplication.hpp" />

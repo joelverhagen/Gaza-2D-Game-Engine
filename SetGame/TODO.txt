@@ -1,0 +1,1 @@
+- Add option for pixel border between rectangles to handle texture bleed

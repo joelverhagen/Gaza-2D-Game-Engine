@@ -90,6 +90,12 @@
     <ClCompile Include="CardFrameSheetGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptySpot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml.hpp">
@@ -174,6 +180,9 @@
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="CardFrameSheetGenerator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptySpot.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

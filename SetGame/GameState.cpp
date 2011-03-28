@@ -4,7 +4,7 @@ GameState * GameState::instance = 0;
 
 GameState::GameState()
 {
-
+	table = 0;
 }
 
 GameState::~GameState()
@@ -20,11 +20,16 @@ void GameState::setCardSprites(Gaza::FrameSheetCollection * cardSprites)
 void GameState::initialize()
 {
 	cleanup();
+
+	table = new Table(cardSprites, sf::Vector2f(10, 20));
 }
 
 void GameState::cleanup()
 {
-
+	if(table != 0)
+	{
+		delete table;
+	}
 }
 
 void GameState::handleEvents(Gaza::Application * application)
@@ -46,7 +51,7 @@ void GameState::update(Gaza::Application * application)
 
 void GameState::draw(Gaza::Application * application)
 {
-
+	table->draw(application->getRenderWindow());
 }
 
 GameState * GameState::getInstance()

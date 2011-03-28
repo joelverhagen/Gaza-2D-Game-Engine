@@ -1,64 +1,5 @@
 #include "Card.hpp"
 
-std::string Card::getSpriteName(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape)
-{
-	std::string name;
-
-	switch(cardColor)
-	{
-	case GREEN:
-		name += "green";
-		break;
-	case PURPLE:
-		name += "purple";
-		break;
-	case RED:
-		name += "red";
-		break;
-	}
-
-	switch(cardNumber)
-	{
-	case ONE:
-		name += "One";
-		break;
-	case TWO:
-		name += "Two";
-		break;
-	case THREE:
-		name += "Three";
-		break;
-	}
-
-	switch(cardPattern)
-	{
-	case EMPTY:
-		name += "Empty";
-		break;
-	case SOLID:
-		name += "Solid";
-		break;
-	case STRIPED:
-		name += "Striped";
-		break;
-	}
-
-	switch(cardShape)
-	{
-	case DIAMOND:
-		name += "Diamond";
-		break;
-	case OVAL:
-		name += "Oval";
-		break;
-	case SQUIGGLY:
-		name += "Squiggly";
-		break;
-	}
-
-	return name;
-}
-
 Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::FrameSheetCollection * cardSprites)
 {
 	unselectedFrame = 0;
@@ -144,4 +85,63 @@ void Card::setSelected(bool selected)
 void Card::toggleSelected()
 {
 	setSelected(!selected);
+}
+
+std::string Card::getSpriteName(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape)
+{
+	std::string name;
+
+	switch(cardColor)
+	{
+	case GREEN:
+		name += "green";
+		break;
+	case PURPLE:
+		name += "purple";
+		break;
+	case RED:
+		name += "red";
+		break;
+	}
+
+	switch(cardNumber)
+	{
+	case ONE:
+		name += "One";
+		break;
+	case TWO:
+		name += "Two";
+		break;
+	case THREE:
+		name += "Three";
+		break;
+	}
+
+	switch(cardPattern)
+	{
+	case EMPTY:
+		name += "Empty";
+		break;
+	case SOLID:
+		name += "Solid";
+		break;
+	case STRIPED:
+		name += "Striped";
+		break;
+	}
+
+	switch(cardShape)
+	{
+	case DIAMOND:
+		name += "Diamond";
+		break;
+	case OVAL:
+		name += "Oval";
+		break;
+	case SQUIGGLY:
+		name += "Squiggly";
+		break;
+	}
+
+	return name;
 }
