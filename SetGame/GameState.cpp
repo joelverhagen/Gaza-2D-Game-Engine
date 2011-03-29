@@ -5,8 +5,7 @@ GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection
 	table = new Table(cardSprites, sf::Vector2f(5, 5));
 	this->cardSprites = cardSprites;
 
-	application->setInitialWindowWidth(table->getWidth());
-	application->setInitialWindowHeight(table->getHeight());
+	application->setSize(table->getWidth(), table->getHeight());
 }
 
 GameState::~GameState()

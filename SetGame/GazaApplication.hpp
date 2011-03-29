@@ -19,8 +19,7 @@ namespace Gaza
 		void setRunning(bool running);
 		bool getRunning();
 
-		void setInitialWindowWidth(unsigned int initialWindowWidth);
-		void setInitialWindowHeight(unsigned int initialWindowHeight);
+		void setSize(unsigned int width, unsigned int height);
 
 		sf::RenderWindow * getRenderWindow();
 
