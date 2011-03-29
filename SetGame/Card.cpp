@@ -27,6 +27,8 @@ Card::Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, 
 		Gaza::Logger::getInstance()->write("Sprite of name \""+selectedName+"\" could not be found.");
 		return;
 	}
+
+	setSelected(false);
 }
 
 Card::~Card()

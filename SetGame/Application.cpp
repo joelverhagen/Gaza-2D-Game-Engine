@@ -2,8 +2,6 @@
 
 Application::Application()
 {
-	cardSprites = 0;
-
 	Gaza::FrameSheet frameSheet(&imageManager);
 	bool success = frameSheet.loadFromFile("cardFrames.xml");
 	if(!success)
@@ -15,19 +13,12 @@ Application::Application()
 	CardFrameSheetGenerator generator(&imageManager, &frameSheet);
 	cardSprites = generator.generate();
 
-	GameState * gameState = GameState::getInstance();
-
-	gameState->setCardSprites(cardSprites);
-
-	changeState(gameState);
+	changeState(new GameState(this, cardSprites));
 }
 
 Application::~Application()
 {
-	if(cardSprites != 0)
-	{
-		delete cardSprites;
-	}
+	delete cardSprites;
 }
 
 Gaza::ImageManager * Application::getImageManager()

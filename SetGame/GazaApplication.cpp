@@ -5,6 +5,10 @@ namespace Gaza
 	Application::Application()
 	{
 		running = true;
+
+		initialWindowWidth = 400;
+		initialWindowHeight = 400;
+
 		videoMode = 0;
 		renderWindow = 0;
 	}
@@ -13,7 +17,6 @@ namespace Gaza
 	{
 		while(states.size() > 0)
 		{
-			states.top()->cleanup();
 			delete states.top();
 			states.pop();
 		}
@@ -26,20 +29,20 @@ namespace Gaza
 
 	int Application::run()
 	{
-		videoMode = new sf::VideoMode(600, 600, 32);
+		videoMode = new sf::VideoMode(initialWindowWidth, initialWindowHeight, 32);
 
 		renderWindow = new sf::RenderWindow(*videoMode, "Gaza Engine");
 
 		renderWindow->SetFramerateLimit(60);
 
-		while(running)
+		while(running && states.size() > 0)
 		{
-			states.top()->handleEvents(this);
+			states.top()->handleEvents();
 
-			states.top()->update(this);
+			states.top()->update();
 
 			renderWindow->Clear(sf::Color::Black);
-			states.top()->draw(this);
+			states.top()->draw();
 			renderWindow->Display();
 		}
 
@@ -65,11 +68,20 @@ namespace Gaza
 	{
 		if(!states.empty())
 		{
-			states.top()->cleanup();
+			delete states.top();
 			states.pop();
 		}
 
 		states.push(state);
-		state->initialize();
+	}
+
+	void Application::setInitialWindowWidth(unsigned int initialWindowWidth)
+	{
+		this->initialWindowWidth = initialWindowWidth;
+	}
+	
+	void Application::setInitialWindowHeight(unsigned int initialWindowHeight)
+	{
+		this->initialWindowHeight = initialWindowHeight;
 	}
 }

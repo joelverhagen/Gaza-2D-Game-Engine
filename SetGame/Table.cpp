@@ -18,15 +18,21 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 
 	deck = new Deck(cardSprites);
 
-	for(int i = 0; i < 21; i++)
+	for(unsigned int i = 0; i < initialCards; i++)
+	{
+		Card * currentCard = deck->drawCard();
+		currentCard->SetPosition(getIndexPosition(i));
+
+		table.push_back(currentCard);
+	}
+
+	for(unsigned int i = initialCards; i < 21; i++)
 	{
 		EmptySpot * currentEmptySpot = new EmptySpot(cardSprites);
 		currentEmptySpot->SetPosition(getIndexPosition(i));
 
 		table.push_back(currentEmptySpot);
 	}
-
-
 }
 
 Table::~Table()
@@ -49,4 +55,14 @@ void Table::draw(sf::RenderTarget * renderTarget)
 sf::Vector2f Table::getIndexPosition(int index)
 {
 	return sf::Vector2f(position.x + (index / cardRows) * (cardWidth + spacingX), position.y + (index % cardRows) * (cardHeight + spacingY));
+}
+
+unsigned int Table::getWidth()
+{
+	return cardColumns * (cardWidth + spacingX) + spacingX;
+}
+
+unsigned int Table::getHeight()
+{
+	return cardRows * (cardHeight + spacingY) + spacingY;
 }

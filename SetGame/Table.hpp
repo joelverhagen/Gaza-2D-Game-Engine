@@ -16,6 +16,9 @@ public:
 
 	void draw(sf::RenderTarget * renderTarget);
 
+	unsigned int getWidth();
+	unsigned int getHeight();
+
 private:
 	unsigned int static cardColumns;
 	unsigned int static cardRows;

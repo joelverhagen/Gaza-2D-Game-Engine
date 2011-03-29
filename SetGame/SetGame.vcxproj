@@ -27,7 +27,6 @@
     <ClCompile Include="GazaFrameSheet.cpp" />
     <ClCompile Include="GazaFrameSheetCollection.cpp" />
     <ClCompile Include="GazaFrameSheetGenerator.cpp" />
-    <ClCompile Include="GazaStateManager.cpp" />
     <ClCompile Include="GazaUtility.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Table.cpp" />
@@ -60,7 +59,6 @@
     <ClInclude Include="rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml_print.hpp" />
     <ClInclude Include="rapidxml_utils.hpp" />
-    <ClInclude Include="GazaStateManager.hpp" />
     <ClInclude Include="Table.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

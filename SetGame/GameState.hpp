@@ -11,24 +11,17 @@
 class GameState : public Gaza::BaseState
 {
 public:
-	GameState();
+	GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardSprites);
 
-	void setCardSprites(Gaza::FrameSheetCollection * cardSprites);
+	~GameState();
 
-	void initialize();
-	void cleanup();
-
-	void handleEvents(Gaza::Application * application);
-	void update(Gaza::Application * application);
-	void draw(Gaza::Application * application);
-
-	static GameState * getInstance();	
+	void handleEvents();
+	void update();
+	void draw();
 
 protected:
 	Gaza::FrameSheetCollection * cardSprites;
 	Table * table;
-
-	static GameState * instance;
 };
 
 #endif

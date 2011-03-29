@@ -2,7 +2,7 @@
 #define GAZAAPPLICATION_HPP
 
 #include "Gaza.hpp"
-#include "GazaStateManager.hpp"
+#include "GazaBaseState.hpp"
 
 #include <stack>
 
@@ -19,6 +19,9 @@ namespace Gaza
 		void setRunning(bool running);
 		bool getRunning();
 
+		void setInitialWindowWidth(unsigned int initialWindowWidth);
+		void setInitialWindowHeight(unsigned int initialWindowHeight);
+
 		sf::RenderWindow * getRenderWindow();
 
 	protected:
@@ -30,8 +33,10 @@ namespace Gaza
 		sf::RenderWindow * renderWindow;
 		sf::VideoMode * videoMode;
 
-		bool running;
+		unsigned int initialWindowWidth;
+		unsigned int initialWindowHeight;
 
+		bool running;
 	};
 }
 

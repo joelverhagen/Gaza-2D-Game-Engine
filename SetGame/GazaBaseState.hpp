@@ -9,18 +9,16 @@ namespace Gaza
 	class BaseState
 	{
 	public:
-		virtual void initialize() = 0;
-		virtual void cleanup() = 0;
+		BaseState(Gaza::Application * application);
 
-		virtual void handleEvents(Application * application) = 0;
-		virtual void update(Application * application) = 0;
-		virtual void draw(Application * application) = 0;
+		virtual ~BaseState();
 
-		void changeState(Application * application, BaseState * state);
+		virtual void handleEvents() = 0;
+		virtual void update() = 0;
+		virtual void draw() = 0;
 
 	protected:
-		BaseState();
-
+		Application * application;
 	};
 }
 

@@ -1,33 +1,20 @@
 #include "GameState.hpp"
 
-GameState * GameState::instance = 0;
-
-GameState::GameState()
+GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardSprites) : Gaza::BaseState(application)
 {
-	table = 0;
-}
-
-void GameState::setCardSprites(Gaza::FrameSheetCollection * cardSprites)
-{
+	table = new Table(cardSprites, sf::Vector2f(5, 5));
 	this->cardSprites = cardSprites;
+
+	application->setInitialWindowWidth(table->getWidth());
+	application->setInitialWindowHeight(table->getHeight());
 }
 
-void GameState::initialize()
+GameState::~GameState()
 {
-	cleanup();
-
-	table = new Table(cardSprites, sf::Vector2f(10, 20));
+	delete table;
 }
 
-void GameState::cleanup()
-{
-	if(table != 0)
-	{
-		delete table;
-	}
-}
-
-void GameState::handleEvents(Gaza::Application * application)
+void GameState::handleEvents()
 {
 	sf::Event event;
 	while(application->getRenderWindow()->GetEvent(event))
@@ -39,22 +26,12 @@ void GameState::handleEvents(Gaza::Application * application)
 	}
 }
 
-void GameState::update(Gaza::Application * application)
+void GameState::update()
 {
 
 }
 
-void GameState::draw(Gaza::Application * application)
+void GameState::draw()
 {
 	table->draw(application->getRenderWindow());
-}
-
-GameState * GameState::getInstance()
-{
-	if(instance == 0)
-	{
-		instance = new GameState();
-	}
-
-	return instance;
 }

@@ -57,9 +57,6 @@
     <ClCompile Include="GazaApplication.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="GazaStateManager.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -138,9 +135,6 @@
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="GazaApplication.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="GazaStateManager.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="GazaBaseState.hpp">

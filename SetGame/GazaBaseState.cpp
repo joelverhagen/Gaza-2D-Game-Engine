@@ -2,12 +2,12 @@
 
 namespace Gaza
 {
-	void BaseState::changeState(Application * application, BaseState * state)
+	BaseState::BaseState(Gaza::Application * application)
 	{
-
+		this->application = application;
 	}
 
-	BaseState::BaseState()
+	BaseState::~BaseState()
 	{
 
 	}
