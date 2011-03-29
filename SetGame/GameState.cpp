@@ -22,6 +22,10 @@ void GameState::handleEvents()
 		{
 			application->setRunning(false);
 		}
+		else if(event.Type == sf::Event::MouseButtonReleased && event.MouseButton.Button == sf::Mouse::Left)
+		{
+			table->handleClick(application->getRenderWindow()->GetInput().GetMouseX(), application->getRenderWindow()->GetInput().GetMouseY());
+		}
 	}
 }
 

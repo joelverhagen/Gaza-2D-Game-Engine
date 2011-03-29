@@ -16,6 +16,8 @@ public:
 
 	void draw(sf::RenderTarget * renderTarget);
 
+	void handleClick(int x, int y);
+
 	unsigned int getWidth();
 	unsigned int getHeight();
 
@@ -31,6 +33,8 @@ private:
 	unsigned int cardHeight;
 
 	sf::Vector2f getIndexPosition(int index);
+	int getIndexFromCoordinates(int x, int y);
+	int getIndexFromSpot(unsigned int spotX, unsigned int spotY);
 
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
