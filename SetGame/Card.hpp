@@ -25,6 +25,8 @@ public:
 	void setSelected(bool selected);
 	void toggleSelected();
 
+	void click();
+
 private:
 	static std::string getSpriteName(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape);
 

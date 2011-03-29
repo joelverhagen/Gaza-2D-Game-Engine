@@ -81,6 +81,11 @@ void Card::toggleSelected()
 	setSelected(!selected);
 }
 
+void Card::click()
+{
+	toggleSelected();
+}
+
 std::string Card::getSpriteName(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape)
 {
 	std::string name;

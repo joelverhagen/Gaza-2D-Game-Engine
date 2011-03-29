@@ -60,7 +60,7 @@ void Table::handleClick(int x, int y)
         return;
     }
 
-
+	table[index]->click();
 }
 
 unsigned int Table::getWidth()

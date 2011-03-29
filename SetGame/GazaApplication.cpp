@@ -35,9 +35,7 @@ namespace Gaza
 
 			states.top()->update();
 
-			renderWindow->Clear(sf::Color::Black);
 			states.top()->draw();
-			renderWindow->Display();
 		}
 
 		return 0;

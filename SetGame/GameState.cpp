@@ -22,7 +22,7 @@ void GameState::handleEvents()
 		{
 			application->setRunning(false);
 		}
-		else if(event.Type == sf::Event::MouseButtonReleased && event.MouseButton.Button == sf::Mouse::Left)
+		else if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
 		{
 			table->handleClick(application->getRenderWindow()->GetInput().GetMouseX(), application->getRenderWindow()->GetInput().GetMouseY());
 		}
@@ -36,5 +36,9 @@ void GameState::update()
 
 void GameState::draw()
 {
+	application->getRenderWindow()->Clear(sf::Color(102, 179, 255));
+	
 	table->draw(application->getRenderWindow());
+
+	application->getRenderWindow()->Display();
 }

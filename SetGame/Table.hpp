@@ -38,7 +38,7 @@ private:
 
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
-	std::vector<sf::Drawable *> table;
+	std::vector<Gaza::Sprite *> table;
 	Deck * deck;
 };
 
