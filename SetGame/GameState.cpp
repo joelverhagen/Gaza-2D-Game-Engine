@@ -36,7 +36,7 @@ void GameState::update()
 
 void GameState::draw()
 {
-	application->getRenderWindow()->Clear(sf::Color(102, 179, 255));
+	application->getRenderWindow()->Clear(sf::Color(51, 153, 51));
 	
 	table->draw(application->getRenderWindow());
 

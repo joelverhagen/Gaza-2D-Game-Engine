@@ -7,6 +7,8 @@
 #include "Deck.hpp"
 
 #include <vector>
+#include <map>
+#include <set>
 
 class Table
 {
@@ -38,7 +40,11 @@ private:
 
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
+	
 	std::vector<Gaza::Sprite *> table;
+	std::map<int, Gaza::Sprite *> cards;
+	std::set<Gaza::Sprite *> selectedCards;
+
 	Deck * deck;
 };
 

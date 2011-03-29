@@ -24,6 +24,7 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		currentCard->SetPosition(getIndexPosition(i));
 
 		table.push_back(currentCard);
+		cards[i] = currentCard;
 	}
 
 	for(unsigned int i = initialCards; i < 21; i++)
@@ -60,7 +61,31 @@ void Table::handleClick(int x, int y)
         return;
     }
 
-	table[index]->click();
+	std::map<int, Gaza::Sprite *>::iterator i = cards.find(index);
+	if(i == cards.end())
+	{
+		return;
+	}
+
+	Gaza::Sprite * clickedCard = (*i).second;
+
+	if(selectedCards.find(clickedCard) == selectedCards.end())
+	{
+		if(selectedCards.size() == 3)
+		{
+			return;
+		}
+		else
+		{
+			clickedCard->click();
+			selectedCards.insert(clickedCard);
+		}
+	}
+	else
+	{
+		clickedCard->click();
+		selectedCards.erase(clickedCard);
+	}
 }
 
 unsigned int Table::getWidth()
