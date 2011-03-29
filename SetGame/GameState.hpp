@@ -11,7 +11,7 @@
 class GameState : public Gaza::BaseState
 {
 public:
-	GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardSprites);
+	GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardFrames);
 
 	~GameState();
 
@@ -20,7 +20,7 @@ public:
 	void draw();
 
 protected:
-	Gaza::FrameSheetCollection * cardSprites;
+	Gaza::FrameSheetCollection * cardFrames;
 	Table * table;
 };
 

@@ -11,14 +11,14 @@ Application::Application()
 	}
 
 	CardFrameSheetGenerator generator(&imageManager, &frameSheet);
-	cardSprites = generator.generate();
+	cardFrames = generator.generate();
 
-	changeState(new GameState(this, cardSprites));
+	changeState(new GameState(this, cardFrames));
 }
 
 Application::~Application()
 {
-	delete cardSprites;
+	delete cardFrames;
 }
 
 Gaza::ImageManager * Application::getImageManager()

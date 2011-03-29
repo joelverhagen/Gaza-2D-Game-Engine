@@ -6,10 +6,11 @@
 #include "GazaFrame.hpp"
 #include "GazaFrameSheetCollection.hpp"
 #include "GazaLogger.hpp"
+#include "GazaSprite.hpp"
 
 #include <string>
 
-class Card : public sf::Sprite
+class Card : public Gaza::Sprite
 {
 public:
 	Card(CardColor cardColor, CardNumber cardNumber, CardPattern cardPattern, CardShape cardShape, Gaza::FrameSheetCollection * cardSprites);

@@ -2,7 +2,7 @@
 
 EmptySpot::EmptySpot(Gaza::FrameSheetCollection * cardSprites)
 {
-	this->cardSprites = cardSprites;
+	this->cardFrames = cardFrames;
 
 	Gaza::Frame * emptySpotFrame = cardSprites->getFrame("emptySpot");
 

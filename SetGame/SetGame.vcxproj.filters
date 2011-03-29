@@ -24,15 +24,15 @@
     <Filter Include="Source Files\Base\RectanglePacking">
       <UniqueIdentifier>{ca0322b7-da3d-4c7d-bc60-91b6ebabc339}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Base\SpriteSheets">
-      <UniqueIdentifier>{aee2214a-a013-495e-80b9-57f097d72a28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Base\SpriteSheets">
-      <UniqueIdentifier>{dbe1eddf-2c93-4b97-9790-9308f347810a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Base\FrameSheets">
+      <UniqueIdentifier>{dbe1eddf-2c93-4b97-9790-9308f347810a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Base\FrameSheets">
+      <UniqueIdentifier>{aee2214a-a013-495e-80b9-57f097d72a28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,13 +73,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GazaFrameSheet.cpp">
-      <Filter>Source Files\Base\SpriteSheets</Filter>
+      <Filter>Source Files\Base\FrameSheets</Filter>
     </ClCompile>
     <ClCompile Include="GazaFrameSheetCollection.cpp">
-      <Filter>Source Files\Base\SpriteSheets</Filter>
+      <Filter>Source Files\Base\FrameSheets</Filter>
     </ClCompile>
     <ClCompile Include="GazaFrameSheetGenerator.cpp">
-      <Filter>Source Files\Base\SpriteSheets</Filter>
+      <Filter>Source Files\Base\FrameSheets</Filter>
     </ClCompile>
     <ClCompile Include="GazaFrame.cpp">
       <Filter>Source Files\Base</Filter>
@@ -92,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="EmptySpot.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaSprite.cpp">
+      <Filter>Source Files\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,13 +165,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GazaFrameSheet.hpp">
-      <Filter>Header Files\Base\SpriteSheets</Filter>
+      <Filter>Header Files\Base\FrameSheets</Filter>
     </ClInclude>
     <ClInclude Include="GazaFrameSheetCollection.hpp">
-      <Filter>Header Files\Base\SpriteSheets</Filter>
+      <Filter>Header Files\Base\FrameSheets</Filter>
     </ClInclude>
     <ClInclude Include="GazaFrameSheetGenerator.hpp">
-      <Filter>Header Files\Base\SpriteSheets</Filter>
+      <Filter>Header Files\Base\FrameSheets</Filter>
     </ClInclude>
     <ClInclude Include="GazaFrame.hpp">
       <Filter>Header Files\Base</Filter>
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="EmptySpot.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaSprite.hpp">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

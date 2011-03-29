@@ -22,7 +22,7 @@ public:
 private:
 	Gaza::ImageManager imageManager;
 
-	Gaza::FrameSheetCollection * cardSprites;
+	Gaza::FrameSheetCollection * cardFrames;
 };
 
 #endif

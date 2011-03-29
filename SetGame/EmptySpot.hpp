@@ -3,17 +3,18 @@
 
 #include "GazaFrameSheetCollection.hpp"
 #include "GazaFrame.hpp"
+#include "GazaSprite.hpp"
 
 #include "Common.hpp"
 
 
-class EmptySpot : public sf::Sprite
+class EmptySpot : public Gaza::Sprite
 {
 public:
-	EmptySpot(Gaza::FrameSheetCollection * cardSprites);
+	EmptySpot(Gaza::FrameSheetCollection * cardFrames);
 
 private:
-	Gaza::FrameSheetCollection * cardSprites;
+	Gaza::FrameSheetCollection * cardFrames;
 };
 
 #endif

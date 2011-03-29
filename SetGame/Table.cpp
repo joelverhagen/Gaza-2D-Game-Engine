@@ -59,6 +59,8 @@ void Table::handleClick(int x, int y)
     {
         return;
     }
+
+
 }
 
 unsigned int Table::getWidth()

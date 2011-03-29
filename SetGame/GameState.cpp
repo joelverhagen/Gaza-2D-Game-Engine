@@ -1,9 +1,9 @@
 #include "GameState.hpp"
 
-GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardSprites) : Gaza::BaseState(application)
+GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardFrames) : Gaza::BaseState(application)
 {
-	table = new Table(cardSprites, sf::Vector2f(5, 5));
-	this->cardSprites = cardSprites;
+	table = new Table(cardFrames, sf::Vector2f(5, 5));
+	this->cardFrames = cardFrames;
 
 	application->setSize(table->getWidth(), table->getHeight());
 }
