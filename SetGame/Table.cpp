@@ -110,6 +110,11 @@ void Table::selectCard(Card * card)
 
 void Table::removeCard(Card * card)
 {
+	if(card == 0)
+	{
+		return;
+	}
+
 	// remove from pointer lists
 	std::vector<Card *>::iterator cardIterator = std::find(selectedCards.begin(), selectedCards.end(), card);
 	if(cardIterator != selectedCards.end())
@@ -133,6 +138,9 @@ void Table::removeCard(Card * card)
 	EmptySpot * newEmptySpot = new EmptySpot(cardSprites);
 	newEmptySpot->SetPosition(card->GetPosition());
 	sprites.push_back(newEmptySpot);
+
+	// free memory
+	delete card;
 }
 
 unsigned int Table::getWidth()
