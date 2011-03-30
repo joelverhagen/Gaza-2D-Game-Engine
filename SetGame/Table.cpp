@@ -95,7 +95,9 @@ void Table::selectCard(Card * card)
 
 			if(selectedCards.size() == 3 && validTriple(selectedCards[0], selectedCards[1], selectedCards[2]))
 			{
-				std::cout << "good!" << std::endl;
+				removeCard(selectedCards[2]);
+				removeCard(selectedCards[1]);
+				removeCard(selectedCards[0]);
 			}
 		}
 	}
@@ -104,6 +106,33 @@ void Table::selectCard(Card * card)
 		card->click();
 		selectedCards.erase(cardIterator);
 	}
+}
+
+void Table::removeCard(Card * card)
+{
+	// remove from pointer lists
+	std::vector<Card *>::iterator cardIterator = std::find(selectedCards.begin(), selectedCards.end(), card);
+	if(cardIterator != selectedCards.end())
+	{
+		selectedCards.erase(cardIterator);
+	}
+
+	cardIterator = std::find(cards.begin(), cards.end(), card);
+	if(cardIterator != cards.end())
+	{
+		cards.erase(cardIterator);
+	}
+
+	std::vector<Gaza::Sprite *>::iterator spriteIterator = std::find(sprites.begin(), sprites.end(), card);
+	if(spriteIterator != sprites.end())
+	{
+		sprites.erase(spriteIterator);
+	}
+
+	// replace with empty spots
+	EmptySpot * newEmptySpot = new EmptySpot(cardSprites);
+	newEmptySpot->SetPosition(card->GetPosition());
+	sprites.push_back(newEmptySpot);
 }
 
 unsigned int Table::getWidth()

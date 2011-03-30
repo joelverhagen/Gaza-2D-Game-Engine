@@ -38,6 +38,7 @@ private:
 	int getIndexFromSpot(unsigned int spotX, unsigned int spotY);
 
 	void selectCard(Card * card);
+	void removeCard(Card * card);
 
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
