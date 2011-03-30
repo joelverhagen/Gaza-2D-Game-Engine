@@ -57,6 +57,11 @@ Deck::~Deck()
 
 Card * Deck::drawCard()
 {
+	if(cards.size() == 0)
+	{
+		return 0;
+	}
+
 	Card * card = cards.top();
 	cards.pop();
 	

@@ -8,7 +8,6 @@
 
 #include <vector>
 #include <map>
-#include <set>
 
 class Table
 {
@@ -38,12 +37,17 @@ private:
 	int getIndexFromCoordinates(int x, int y);
 	int getIndexFromSpot(unsigned int spotX, unsigned int spotY);
 
+	void handleCardClick(Card * card);
+
+	bool validTriple(Card * a, Card * b, Card * c);
+	bool validTripleExists();
+
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
 	
-	std::vector<Gaza::Sprite *> table;
-	std::map<int, Gaza::Sprite *> cards;
-	std::set<Gaza::Sprite *> selectedCards;
+	std::vector<Gaza::Sprite *> sprites;
+	std::vector<Card *> cards;
+	std::vector<Card *> selectedCards;
 
 	Deck * deck;
 };

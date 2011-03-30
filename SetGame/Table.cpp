@@ -23,8 +23,16 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		Card * currentCard = deck->drawCard();
 		currentCard->SetPosition(getIndexPosition(i));
 
-		table.push_back(currentCard);
-		cards[i] = currentCard;
+		sprites.push_back(currentCard);
+		cards.push_back(currentCard);
+
+		if(i == initialCards - 1)
+		{
+			if(!validTripleExists())
+			{
+				initialCards += 3;
+			}
+		}
 	}
 
 	for(unsigned int i = initialCards; i < 21; i++)
@@ -32,24 +40,24 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		EmptySpot * currentEmptySpot = new EmptySpot(cardSprites);
 		currentEmptySpot->SetPosition(getIndexPosition(i));
 
-		table.push_back(currentEmptySpot);
+		sprites.push_back(currentEmptySpot);
 	}
 }
 
 Table::~Table()
 {
-	for(unsigned i = 0; i < table.size(); i++)
+	for(unsigned i = 0; i < sprites.size(); i++)
 	{
-		delete table[i];
+		delete sprites[i];
 	}
 	delete deck;
 }
 
 void Table::draw(sf::RenderTarget * renderTarget)
 {
-	for(unsigned i = 0; i < table.size(); i++)
+	for(unsigned i = 0; i < sprites.size(); i++)
 	{
-		renderTarget->Draw(*table[i]);
+		renderTarget->Draw(*sprites[i]);
 	}
 }
 
@@ -61,15 +69,20 @@ void Table::handleClick(int x, int y)
         return;
     }
 
-	std::map<int, Gaza::Sprite *>::iterator i = cards.find(index);
-	if(i == cards.end())
+	for(unsigned int i = 0; i < cards.size(); i++)
 	{
-		return;
+		sf::FloatRect bounds(cards[i]->GetPosition().x, cards[i]->GetPosition().y, cards[i]->GetSize().x, cards[i]->GetSize().y);
+		if(bounds.Contains((float)x, (float)y))
+		{
+			handleCardClick(cards[i]);
+		}
 	}
+}
 
-	Gaza::Sprite * clickedCard = (*i).second;
-
-	if(selectedCards.find(clickedCard) == selectedCards.end())
+void Table::handleCardClick(Card * card)
+{
+	std::vector<Card *>::iterator cardIterator = std::find(selectedCards.begin(), selectedCards.end(), card);
+	if(cardIterator == selectedCards.end())
 	{
 		if(selectedCards.size() == 3)
 		{
@@ -77,14 +90,19 @@ void Table::handleClick(int x, int y)
 		}
 		else
 		{
-			clickedCard->click();
-			selectedCards.insert(clickedCard);
+			card->click();
+			selectedCards.push_back(card);
+
+			if(selectedCards.size() == 3 && validTriple(selectedCards[0], selectedCards[1], selectedCards[2]))
+			{
+				std::cout << "good!";
+			}
 		}
 	}
 	else
 	{
-		clickedCard->click();
-		selectedCards.erase(clickedCard);
+		card->click();
+		selectedCards.erase(cardIterator);
 	}
 }
 
@@ -141,4 +159,68 @@ int Table::getIndexFromCoordinates(int x, int y)
 int Table::getIndexFromSpot(unsigned int spotX, unsigned int spotY)
 {
     return spotY + cardRows * spotX;
+}
+
+bool Table::validTriple(Card * a, Card * b, Card * c)
+{
+	return (
+		(
+			(a->getCardShape() == b->getCardShape() && a->getCardShape() == c->getCardShape() && c->getCardShape() == b->getCardShape()) ||
+			(a->getCardShape() != b->getCardShape() && a->getCardShape() != c->getCardShape() && c->getCardShape() != b->getCardShape())
+		)
+		&&
+		(
+			(a->getCardColor() == b->getCardColor() && a->getCardColor() == c->getCardColor() && c->getCardColor() == b->getCardColor()) ||
+			(a->getCardColor() != b->getCardColor() && a->getCardColor() != c->getCardColor() && c->getCardColor() != b->getCardColor())
+		)
+		&&
+		(
+			(a->getCardPattern() == b->getCardPattern() && a->getCardPattern() == c->getCardPattern() && c->getCardPattern() == b->getCardPattern()) ||
+			(a->getCardPattern() != b->getCardPattern() && a->getCardPattern() != c->getCardPattern() && c->getCardPattern() != b->getCardPattern())
+		)
+		&&
+		(
+			(a->getCardNumber() == b->getCardNumber() && a->getCardNumber() == c->getCardNumber() && c->getCardNumber() == b->getCardNumber()) ||
+			(a->getCardNumber() != b->getCardNumber() && a->getCardNumber() != c->getCardNumber() && c->getCardNumber() != b->getCardNumber())
+		)
+	);
+}
+
+bool Table::validTripleExists()
+{
+	/* do
+	{
+		if(validTriple(cards[0], cards[1], cards[2]))
+		{
+			return true;
+		}
+	}
+	while(Gaza::Utility::next_combination(cards.begin(), cards.begin() + 3, cards.end()));
+
+	return false; */
+	for(unsigned int a = 0; a < cards.size(); a++)
+	{
+		for(unsigned int b = 0; b < cards.size(); b++)
+		{
+			if(a == b)
+			{
+				continue;
+			}
+
+			for(unsigned int c = 0; c < cards.size(); c++)
+			{
+				if(a == c)
+				{
+					continue;
+				}
+
+				if(validTriple(cards[a], cards[b], cards[c]))
+				{
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
 }

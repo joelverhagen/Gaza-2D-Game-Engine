@@ -56,6 +56,11 @@ CardShape Card::getCardShape()
 	return cardShape;
 }
 
+std::string Card::getName()
+{
+	return getSpriteName(cardColor, cardNumber, cardPattern, cardShape);
+}
+
 bool Card::getSelected()
 {
 	return selected;

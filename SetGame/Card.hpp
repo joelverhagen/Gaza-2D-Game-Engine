@@ -21,6 +21,8 @@ public:
 	CardPattern getCardPattern();
 	CardShape getCardShape();
 
+	std::string getName();
+
 	bool getSelected();
 	void setSelected(bool selected);
 	void toggleSelected();
