@@ -16,14 +16,18 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 
 	for(unsigned int i = 0; i < maximumCards; i++)
 	{
-		spots[i] = 0;
+		emptySpots[i] = 0;
+		cards[i] = 0;
 	}
 
 	unsigned int initialCards = 12;
 	for(unsigned int i = 0; i < initialCards; i++)
 	{
 		Card * currentCard = deck->drawCard();
-		addCard(currentCard);
+		currentCard->SetPosition(getIndexPosition(i));
+
+		cards[i] = currentCard;
+		sprites.push_back(currentCard);
 
 		if(i == initialCards - 1)
 		{
@@ -39,6 +43,7 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		EmptySpot * currentEmptySpot = new EmptySpot(cardSprites);
 		currentEmptySpot->SetPosition(getIndexPosition(i));
 
+		emptySpots[i] = currentEmptySpot;
 		sprites.push_back(currentEmptySpot);
 	}	
 }
@@ -68,25 +73,37 @@ void Table::handleClick(int x, int y)
         return;
     }
 
-	if(spots[index] != 0)
+	if(cards[index] != 0)
 	{
-		selectCard(spots[index]);
+		selectCard(cards[index]);
 	}
 }
 
 void Table::addCard(Card * card)
 {
 	unsigned int currentIndex = 0;
-	while(spots[currentIndex] != 0 && currentIndex < maximumCards)
+	while(cards[currentIndex] != 0 && currentIndex < maximumCards)
 	{
 		currentIndex++;
 	}
 
+	// set the proper position of the card
 	card->SetPosition(getIndexPosition(currentIndex));
 
-	spots[currentIndex] = card;
+	// delete the empty spot
+	std::vector<Gaza::Sprite *>::iterator spriteIterator = std::find(sprites.begin(), sprites.end(), emptySpots[currentIndex]);
+	if(spriteIterator != sprites.end())
+	{
+		sprites.erase(spriteIterator);
+	}
+
+	delete emptySpots[currentIndex];
+	emptySpots[currentIndex] = 0;
+
+	// place the card
+	cards[currentIndex] = card;
 	sprites.push_back(card);
-	cards.push_back(card);
+	cards[currentIndex] = card;
 }
 
 void Table::selectCard(Card * card)
@@ -108,11 +125,17 @@ void Table::selectCard(Card * card)
 				for(int i = 2; i >= 0; i--)
 				{
 					removeCard(selectedCards[i]);
+				}
 
-					Card * newCard = deck->drawCard();
-					if(newCard != 0)
+				while(!validTripleExists() && deck->getCardCount() > 0)
+				{
+					for(int i = 0; i < 3; i++)
 					{
-						addCard(newCard);
+						Card * newCard = deck->drawCard();
+						if(newCard != 0)
+						{
+							addCard(newCard);
+						}
 					}
 				}
 			}
@@ -132,12 +155,17 @@ void Table::removeCard(Card * card)
 		return;
 	}
 
-	// remove spot array
+	// remove from cards array
 	for(unsigned int i = 0; i < maximumCards; i++)
 	{
-		if(spots[i] == card)
+		if(cards[i] == card)
 		{
-			spots[i] = 0;
+			cards[i] = 0;
+
+			EmptySpot * newEmptySpot = new EmptySpot(cardSprites);
+			newEmptySpot->SetPosition(card->GetPosition());
+			emptySpots[i] = newEmptySpot;
+			sprites.push_back(newEmptySpot);
 		}
 	}
 
@@ -148,22 +176,11 @@ void Table::removeCard(Card * card)
 		selectedCards.erase(cardIterator);
 	}
 
-	cardIterator = std::find(cards.begin(), cards.end(), card);
-	if(cardIterator != cards.end())
-	{
-		cards.erase(cardIterator);
-	}
-
 	std::vector<Gaza::Sprite *>::iterator spriteIterator = std::find(sprites.begin(), sprites.end(), card);
 	if(spriteIterator != sprites.end())
 	{
 		sprites.erase(spriteIterator);
 	}
-
-	// replace with empty spots
-	EmptySpot * newEmptySpot = new EmptySpot(cardSprites);
-	newEmptySpot->SetPosition(card->GetPosition());
-	sprites.push_back(newEmptySpot);
 
 	// free memory
 	delete card;
@@ -251,20 +268,30 @@ bool Table::validTriple(Card * a, Card * b, Card * c)
 
 bool Table::validTripleExists()
 {
-	bool success = false;
-
-	std::sort(cards.begin(), cards.end());
-
-	int count = 0;
-	do
+	std::vector<Card *> cardVector;
+	for(unsigned int i = 0; i < maximumCards; i++)
 	{
-		count++;
-		if(validTriple(cards[0], cards[1], cards[2]))
+		if(cards[i] != 0)
 		{
-			success = true;
+			cardVector.push_back(cards[i]);
 		}
 	}
-	while(Gaza::Utility::next_combination(cards.begin(), cards.begin() + 3, cards.end()));
 
-	return success;
+	if(cardVector.size() < 3)
+	{
+		return false;
+	}
+
+	std::sort(cardVector.begin(), cardVector.end());
+
+	do
+	{
+		if(validTriple(cardVector[0], cardVector[1], cardVector[2]))
+		{
+			return true;
+		}
+	}
+	while(Gaza::Utility::next_combination(cardVector.begin(), cardVector.begin() + 3, cardVector.end()));
+
+	return false;
 }

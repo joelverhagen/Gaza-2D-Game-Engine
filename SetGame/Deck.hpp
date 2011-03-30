@@ -17,6 +17,8 @@ public:
 
 	Card * drawCard();
 
+	int getCardCount();
+
 private:
 	std::stack<Card *> cards;
 

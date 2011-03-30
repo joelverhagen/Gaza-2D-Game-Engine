@@ -47,10 +47,12 @@ private:
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
 	
-	Card * spots[maximumCards];
-	std::vector<Gaza::Sprite *> sprites;
-	std::vector<Card *> cards;
-	std::vector<Card *> selectedCards;
+	std::vector<Gaza::Sprite *> sprites; // keep track of all sprites for drawing
+	
+	EmptySpot * emptySpots[maximumCards]; // keep track of indices of empty spots
+	Card * cards[maximumCards]; // keep track of indices of cards
+
+	std::vector<Card *> selectedCards; // keep track of selected cards
 
 	Deck * deck;
 };
