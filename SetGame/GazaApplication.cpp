@@ -6,7 +6,7 @@ namespace Gaza
 	{
 		running = true;
 
-		videoMode = new sf::VideoMode(400, 400, 32);
+		videoMode = new sf::VideoMode(800, 600, 32);
 		renderWindow = new sf::RenderWindow(*videoMode, "Gaza Engine", sf::Style::Titlebar | sf::Style::Close);
 		renderWindow->Show(false);
 	}

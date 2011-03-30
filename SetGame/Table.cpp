@@ -268,6 +268,17 @@ bool Table::validTriple(Card * a, Card * b, Card * c)
 
 bool Table::validTripleExists()
 {
+	if(getValidTriples().size() == 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+std::vector<std::vector<Card *> > Table::getValidTriples()
+{
+	std::vector<std::vector<Card *> > triples;
+
 	std::vector<Card *> cardVector;
 	for(unsigned int i = 0; i < maximumCards; i++)
 	{
@@ -279,7 +290,7 @@ bool Table::validTripleExists()
 
 	if(cardVector.size() < 3)
 	{
-		return false;
+		return triples;
 	}
 
 	std::sort(cardVector.begin(), cardVector.end());
@@ -288,10 +299,15 @@ bool Table::validTripleExists()
 	{
 		if(validTriple(cardVector[0], cardVector[1], cardVector[2]))
 		{
-			return true;
+			std::vector<Card *> triple;
+			triple.push_back(cardVector[0]);
+			triple.push_back(cardVector[1]);
+			triple.push_back(cardVector[2]);
+
+			triples.push_back(triple);
 		}
 	}
 	while(Gaza::Utility::next_combination(cardVector.begin(), cardVector.begin() + 3, cardVector.end()));
 
-	return false;
+	return triples;
 }

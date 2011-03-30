@@ -5,7 +5,7 @@ GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection
 	table = new Table(cardFrames, sf::Vector2f(5, 5));
 	this->cardFrames = cardFrames;
 
-	application->setSize(table->getWidth(), table->getHeight());
+	application->setSize(table->getWidth(), table->getHeight() + 150);
 }
 
 GameState::~GameState()
@@ -25,6 +25,10 @@ void GameState::handleEvents()
 		else if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
 		{
 			table->handleClick(application->getRenderWindow()->GetInput().GetMouseX(), application->getRenderWindow()->GetInput().GetMouseY());
+		}
+		else if(event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Key::LShift)
+		{
+			
 		}
 	}
 }

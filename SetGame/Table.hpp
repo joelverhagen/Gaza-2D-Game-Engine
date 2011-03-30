@@ -22,6 +22,10 @@ public:
 	unsigned int getWidth();
 	unsigned int getHeight();
 
+	std::vector<std::vector<Card *> > getValidTriples();
+	bool validTriple(Card * a, Card * b, Card * c);
+	bool validTripleExists();
+
 private:
 	const unsigned int static cardColumns = 7;
 	const unsigned int static cardRows = 3;
@@ -40,9 +44,6 @@ private:
 	void addCard(Card * card);
 	void selectCard(Card * card);
 	void removeCard(Card * card);
-
-	bool validTriple(Card * a, Card * b, Card * c);
-	bool validTripleExists();
 
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
