@@ -1,9 +1,11 @@
 #include "Table.hpp"
 
+unsigned int Table::cardColumns = 7;
+unsigned int Table::cardRows = 3;
+unsigned int Table::initialCards = 12;
+
 Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 {
-	initialCards = 12;
-
 	this->cardSprites = cardSprites;
 	this->position = position;
 
@@ -21,7 +23,7 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		Card * currentCard = deck->drawCard();
 		currentCard->SetPosition(getIndexPosition(i));
 
-		sprites[i] = currentCard;
+		sprites.push_back(currentCard);
 		cards.push_back(currentCard);
 
 		if(i == initialCards - 1)
@@ -38,13 +40,13 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		EmptySpot * currentEmptySpot = new EmptySpot(cardSprites);
 		currentEmptySpot->SetPosition(getIndexPosition(i));
 
-		sprites[i] = currentEmptySpot;
+		sprites.push_back(currentEmptySpot);
 	}
 }
 
 Table::~Table()
 {
-	for(unsigned i = 0; i < maximumCards; i++)
+	for(unsigned i = 0; i < sprites.size(); i++)
 	{
 		delete sprites[i];
 	}
@@ -53,7 +55,7 @@ Table::~Table()
 
 void Table::draw(sf::RenderTarget * renderTarget)
 {
-	for(unsigned i = 0; i < maximumCards; i++)
+	for(unsigned i = 0; i < sprites.size(); i++)
 	{
 		renderTarget->Draw(*sprites[i]);
 	}
@@ -126,16 +128,16 @@ void Table::removeCard(Card * card)
 		cards.erase(cardIterator);
 	}
 
-	for(unsigned int i = 0; i < initialCards; i++)
+	std::vector<Gaza::Sprite *>::iterator spriteIterator = std::find(sprites.begin(), sprites.end(), card);
+	if(spriteIterator != sprites.end())
 	{
-		if(card == sprites[i])
-		{
-			EmptySpot * newEmptySpot = new EmptySpot(cardSprites);
-			newEmptySpot->SetPosition(card->GetPosition());
-
-			sprites[i] = newEmptySpot;
-		}
+		sprites.erase(spriteIterator);
 	}
+
+	// replace with empty spots
+	EmptySpot * newEmptySpot = new EmptySpot(cardSprites);
+	newEmptySpot->SetPosition(card->GetPosition());
+	sprites.push_back(newEmptySpot);
 
 	// free memory
 	delete card;

@@ -23,11 +23,9 @@ public:
 	unsigned int getHeight();
 
 private:
-	const unsigned int static cardColumns = 7;
-	const unsigned int static cardRows = 3;
-	const unsigned int static maximumCards = cardColumns * cardRows;
-
-	unsigned int initialCards;
+	unsigned int static cardColumns;
+	unsigned int static cardRows;
+	unsigned int static initialCards;
 
 	int spacingX;
 	int spacingY;
@@ -48,7 +46,7 @@ private:
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
 	
-	Gaza::Sprite * sprites[maximumCards];
+	std::vector<Gaza::Sprite *> sprites;
 	std::vector<Card *> cards;
 	std::vector<Card *> selectedCards;
 
