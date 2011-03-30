@@ -74,12 +74,12 @@ void Table::handleClick(int x, int y)
 		sf::FloatRect bounds(cards[i]->GetPosition().x, cards[i]->GetPosition().y, cards[i]->GetSize().x, cards[i]->GetSize().y);
 		if(bounds.Contains((float)x, (float)y))
 		{
-			handleCardClick(cards[i]);
+			selectCard(cards[i]);
 		}
 	}
 }
 
-void Table::handleCardClick(Card * card)
+void Table::selectCard(Card * card)
 {
 	std::vector<Card *>::iterator cardIterator = std::find(selectedCards.begin(), selectedCards.end(), card);
 	if(cardIterator == selectedCards.end())
@@ -95,7 +95,7 @@ void Table::handleCardClick(Card * card)
 
 			if(selectedCards.size() == 3 && validTriple(selectedCards[0], selectedCards[1], selectedCards[2]))
 			{
-				std::cout << "good!";
+				std::cout << "good!" << std::endl;
 			}
 		}
 	}
@@ -188,39 +188,20 @@ bool Table::validTriple(Card * a, Card * b, Card * c)
 
 bool Table::validTripleExists()
 {
-	/* do
+	bool success = false;
+
+	std::sort(cards.begin(), cards.end());
+
+	int count = 0;
+	do
 	{
+		count++;
 		if(validTriple(cards[0], cards[1], cards[2]))
 		{
-			return true;
+			success = true;
 		}
 	}
 	while(Gaza::Utility::next_combination(cards.begin(), cards.begin() + 3, cards.end()));
 
-	return false; */
-	for(unsigned int a = 0; a < cards.size(); a++)
-	{
-		for(unsigned int b = 0; b < cards.size(); b++)
-		{
-			if(a == b)
-			{
-				continue;
-			}
-
-			for(unsigned int c = 0; c < cards.size(); c++)
-			{
-				if(a == c)
-				{
-					continue;
-				}
-
-				if(validTriple(cards[a], cards[b], cards[c]))
-				{
-					return true;
-				}
-			}
-		}
-	}
-
-	return false;
+	return success;
 }

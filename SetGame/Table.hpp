@@ -37,7 +37,7 @@ private:
 	int getIndexFromCoordinates(int x, int y);
 	int getIndexFromSpot(unsigned int spotX, unsigned int spotY);
 
-	void handleCardClick(Card * card);
+	void selectCard(Card * card);
 
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
