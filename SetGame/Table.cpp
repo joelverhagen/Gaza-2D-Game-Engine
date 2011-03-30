@@ -311,3 +311,17 @@ std::vector<std::vector<Card *> > Table::getValidTriples()
 
 	return triples;
 }
+
+// returns -1 on not found
+int Table::getCardIndex(Card * card)
+{
+	for(unsigned int i = 0; i < maximumCards; i++)
+	{
+		if(card == cards[i])
+		{
+			return i;
+		}
+	}
+	
+	return -1;
+}

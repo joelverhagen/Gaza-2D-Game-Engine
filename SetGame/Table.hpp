@@ -26,6 +26,8 @@ public:
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
 
+	int getCardIndex(Card * card);
+
 private:
 	const unsigned int static cardColumns = 7;
 	const unsigned int static cardRows = 3;
