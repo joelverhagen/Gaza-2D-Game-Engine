@@ -1,9 +1,5 @@
 #include "Table.hpp"
 
-unsigned int Table::cardColumns = 7;
-unsigned int Table::cardRows = 3;
-unsigned int Table::initialCards = 12;
-
 Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 {
 	this->cardSprites = cardSprites;
@@ -18,13 +14,16 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 
 	deck = new Deck(cardSprites);
 
+	for(unsigned int i = 0; i < maximumCards; i++)
+	{
+		spots[i] = 0;
+	}
+
+	unsigned int initialCards = 12;
 	for(unsigned int i = 0; i < initialCards; i++)
 	{
 		Card * currentCard = deck->drawCard();
-		currentCard->SetPosition(getIndexPosition(i));
-
-		sprites.push_back(currentCard);
-		cards.push_back(currentCard);
+		addCard(currentCard);
 
 		if(i == initialCards - 1)
 		{
@@ -35,13 +34,13 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 		}
 	}
 
-	for(unsigned int i = initialCards; i < 21; i++)
+	for(unsigned int i = initialCards; i < maximumCards; i++)
 	{
 		EmptySpot * currentEmptySpot = new EmptySpot(cardSprites);
 		currentEmptySpot->SetPosition(getIndexPosition(i));
 
 		sprites.push_back(currentEmptySpot);
-	}
+	}	
 }
 
 Table::~Table()
@@ -69,14 +68,25 @@ void Table::handleClick(int x, int y)
         return;
     }
 
-	for(unsigned int i = 0; i < cards.size(); i++)
+	if(spots[index] != 0)
 	{
-		sf::FloatRect bounds(cards[i]->GetPosition().x, cards[i]->GetPosition().y, cards[i]->GetSize().x, cards[i]->GetSize().y);
-		if(bounds.Contains((float)x, (float)y))
-		{
-			selectCard(cards[i]);
-		}
+		selectCard(spots[index]);
 	}
+}
+
+void Table::addCard(Card * card)
+{
+	unsigned int currentIndex = 0;
+	while(spots[currentIndex] != 0 && currentIndex < maximumCards)
+	{
+		currentIndex++;
+	}
+
+	card->SetPosition(getIndexPosition(currentIndex));
+
+	spots[currentIndex] = card;
+	sprites.push_back(card);
+	cards.push_back(card);
 }
 
 void Table::selectCard(Card * card)
@@ -95,9 +105,16 @@ void Table::selectCard(Card * card)
 
 			if(selectedCards.size() == 3 && validTriple(selectedCards[0], selectedCards[1], selectedCards[2]))
 			{
-				removeCard(selectedCards[2]);
-				removeCard(selectedCards[1]);
-				removeCard(selectedCards[0]);
+				for(int i = 2; i >= 0; i--)
+				{
+					removeCard(selectedCards[i]);
+
+					Card * newCard = deck->drawCard();
+					if(newCard != 0)
+					{
+						addCard(newCard);
+					}
+				}
 			}
 		}
 	}
@@ -113,6 +130,15 @@ void Table::removeCard(Card * card)
 	if(card == 0)
 	{
 		return;
+	}
+
+	// remove spot array
+	for(unsigned int i = 0; i < maximumCards; i++)
+	{
+		if(spots[i] == card)
+		{
+			spots[i] = 0;
+		}
 	}
 
 	// remove from pointer lists

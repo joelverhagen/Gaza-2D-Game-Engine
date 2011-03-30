@@ -38,7 +38,7 @@ Deck::Deck(Gaza::FrameSheetCollection * cardSprites)
 		}
 	}
 
-	Gaza::Utility::shuffle<Card *>(cardList);
+	// Gaza::Utility::shuffle<Card *>(cardList);
 
 	for(unsigned int i = 0; i < cardList.size(); i++)
 	{
