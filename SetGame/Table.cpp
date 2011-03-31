@@ -47,6 +47,13 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * appli
 		emptySpots[i] = currentEmptySpot;
 		sprites.push_back(currentEmptySpot);
 	}
+
+	HighlightSpot * highlightSpot;
+
+	highlightSpot = new HighlightSpot(cardSprites);
+	highlightSpot->setFrameRate(30);
+	highlightSpot->SetPosition(5, 5);
+	sprites.insert(sprites.end(), highlightSpot);
 }
 
 Table::~Table()
