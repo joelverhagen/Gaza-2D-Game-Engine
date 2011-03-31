@@ -2,8 +2,10 @@
 #define GAZAUTILITY_HPP
 
 #include <SFML\Graphics.hpp>
-#include <iostream>
 
+#include "rapidxml.hpp"
+
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -15,6 +17,11 @@ namespace Gaza
 {
 	namespace Utility
 	{
+		namespace RapidXml
+		{
+			void addAttribute(rapidxml::xml_document<> * document, rapidxml::xml_node<> * node, std::string key, std::string value);
+		}
+
 		int stringToInt(const std::string &input);
 		std::string intToString(int input);
 

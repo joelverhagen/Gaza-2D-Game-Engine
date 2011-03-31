@@ -4,6 +4,17 @@ namespace Gaza
 {
 	namespace Utility
 	{
+		namespace RapidXml
+		{
+			void addAttribute(rapidxml::xml_document<> * document, rapidxml::xml_node<> * node, std::string key, std::string value)
+			{
+				char * keyAllocated = document->allocate_string(key.data(), key.size());
+				char * valueAllocated = document->allocate_string(value.data(), value.size());
+				rapidxml::xml_attribute<> * attribute = document->allocate_attribute(keyAllocated, valueAllocated, key.size(), value.size());
+				node->append_attribute(attribute);
+			}
+		}
+
 		int stringToInt(const std::string &input)
 		{
 			std::stringstream ss(input);

@@ -127,6 +127,33 @@ namespace Gaza
 		return true;
 	}
 
+	std::string FrameSheet::saveToMemory()
+	{
+		rapidxml::xml_document<> document;
+		rapidxml::xml_node<> * rootNode = document.allocate_node(rapidxml::node_element, "FrameSheet");
+		document.append_node(rootNode);
+
+		Utility::RapidXml::addAttribute(&document, rootNode, "name", name);
+
+		rapidxml::xml_node<> * currentNode;
+		for(std::map<std::string, Frame *>::iterator i = frames.begin(); i != frames.end(); i++)
+		{
+			currentNode = document.allocate_node(rapidxml::node_element, "Rectangle");
+			rootNode->append_node(currentNode);
+
+			Utility::RapidXml::addAttribute(&document, currentNode, "x", Utility::intToString((*i).second->rectangle.Left));
+			Utility::RapidXml::addAttribute(&document, currentNode, "y", Utility::intToString((*i).second->rectangle.Top));
+			Utility::RapidXml::addAttribute(&document, currentNode, "width", Utility::intToString((*i).second->rectangle.Width));
+			Utility::RapidXml::addAttribute(&document, currentNode, "height", Utility::intToString((*i).second->rectangle.Height));
+			Utility::RapidXml::addAttribute(&document, currentNode, "name", (*i).first);
+		}
+
+		std::string output;
+		rapidxml::print(std::back_inserter(output), document, 0);
+
+		return output;
+	}
+
 	bool FrameSheet::setImage(sf::Image * image)
 	{
 		if(name.size() == 0)

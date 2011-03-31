@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include "rapidxml.hpp"
+#include "rapidxml_print.hpp"
 
 namespace Gaza
 {
@@ -25,6 +26,8 @@ namespace Gaza
 
 		bool loadFromFile(const std::string &filePath);
 		bool loadFromMemory(char * fileData);
+
+		std::string saveToMemory(); // returns string of XML representing the frame sheet
 
 		bool setImage(sf::Image * image);
 		bool addRectangle(const std::string &name, const sf::IntRect &rectangle);

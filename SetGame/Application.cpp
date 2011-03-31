@@ -10,6 +10,10 @@ Application::Application()
 		return;
 	}
 
+	// frameSheet.saveToMemory();
+
+	// setRunning(false);
+
 	CardFrameSheetGenerator generator(&imageManager, &frameSheet);
 	cardFrames = generator.generate();
 

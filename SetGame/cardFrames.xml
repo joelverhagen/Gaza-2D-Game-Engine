@@ -1,4 +1,3 @@
-<?xml version="1.0" ?>
 <FrameSheet name="cardFrames" filePath="cardFrames.png">
 	<Rectangle left="0" top="0" width="60" height="30" name="emptyDiamond" />
 	<Rectangle left="0" top="30" width="60" height="30" name="emptyOval" />
