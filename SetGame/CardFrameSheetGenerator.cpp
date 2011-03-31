@@ -17,12 +17,14 @@ void CardFrameSheetGenerator::generateImages()
 	pushImage("emptySpot", emptySpotImage);
 
 	// generate the highlight spot
+	newAnimationFrameNameList("highlightSpot");
+
 	Gaza::Frame * highlightSpot = getFrame("highlightSpot");
 
 	sf::Image * highlightSpotImage;
 
 	int highlightFrameCount = 10;
-	for(int i = highlightFrameCount - 1; i >= 0; i--)
+	for(int i = 0; i < highlightFrameCount; i++)
 	{
 		int alphaDifference = 255 - (int)Gaza::Utility::round((255 / (float)(highlightFrameCount - 1)) * i);
 
@@ -54,7 +56,10 @@ void CardFrameSheetGenerator::generateImages()
 			}
 		}
 
-		pushImage("highlightSpot"+Gaza::Utility::intToString(i), highlightSpotImage);
+		std::string highlightSpotFrameName = "highlightSpot"+Gaza::Utility::intToString(i);
+
+		pushImage(highlightSpotFrameName, highlightSpotImage);
+		addAnimationFrameName("highlightSpot", highlightSpotFrameName);
 	}
 
 

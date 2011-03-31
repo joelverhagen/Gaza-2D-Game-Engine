@@ -125,9 +125,9 @@ namespace Gaza
 
 	bool FrameSheetGenerator::addAnimationFrameNameList(const std::string &name, const std::vector<std::string> &frameNames)
 	{
-		if(animationFrameNameLists.find(name) != animationFrameNameLists.end())
+		if(animationFrameNameLists.find(name) == animationFrameNameLists.end())
 		{
-			Logger::getInstance()->write("A list of Frame Names with name \""+name+"\" already exists.");
+			Logger::getInstance()->write("A list of Frame Names with name \""+name+"\" does not exist.");
 			return false;
 		}
 

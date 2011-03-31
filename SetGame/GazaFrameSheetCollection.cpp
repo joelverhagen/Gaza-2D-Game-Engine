@@ -46,9 +46,9 @@ namespace Gaza
 	
 	bool FrameSheetCollection::addAnimationFrameList(const std::string &name, const std::vector<Frame *> &frames)
 	{
-		if(animationFrameLists.find(name) != animationFrameLists.end())
+		if(animationFrameLists.find(name) == animationFrameLists.end())
 		{
-			Logger::getInstance()->write("A list of Frames with name \""+name+"\" already exists.");
+			Logger::getInstance()->write("A list of Frames with name \""+name+"\" does not exist.");
 			return false;
 		}
 
@@ -62,9 +62,9 @@ namespace Gaza
 
 	bool FrameSheetCollection::addAnimationFrameList(const std::string &name, const std::vector<std::string> &frameNames)
 	{
-		if(animationFrameLists.find(name) != animationFrameLists.end())
+		if(animationFrameLists.find(name) == animationFrameLists.end())
 		{
-			Logger::getInstance()->write("A list of Frames with name \""+name+"\" already exists.");
+			Logger::getInstance()->write("A list of Frames with name \""+name+"\" does not exist.");
 			return false;
 		}
 
