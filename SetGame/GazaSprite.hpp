@@ -2,6 +2,7 @@
 #define GAZASPRITE_HPP
 
 #include "Gaza.hpp"
+#include "GazaFrame.hpp"
 
 namespace Gaza
 {
@@ -11,6 +12,8 @@ namespace Gaza
 		Sprite();
 
 		virtual void click();
+		virtual void update(float timeElapsed = 0.f);
+		void setFrame(Frame * frame);
 	};
 }
 

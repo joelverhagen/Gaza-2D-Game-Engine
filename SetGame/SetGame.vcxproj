@@ -17,6 +17,7 @@
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="EmptySpot.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GazaAnimatedSprite.cpp" />
     <ClCompile Include="GazaApplication.cpp" />
     <ClCompile Include="GazaBaseState.cpp" />
     <ClCompile Include="GazaFile.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="EmptySpot.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Gaza.hpp" />
+    <ClInclude Include="GazaAnimatedSprite.hpp" />
     <ClInclude Include="GazaApplication.hpp" />
     <ClInclude Include="GazaBaseHandler.hpp" />
     <ClInclude Include="GazaFile.hpp" />

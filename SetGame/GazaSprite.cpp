@@ -11,4 +11,15 @@ namespace Gaza
 	{
 
 	}
+
+	void Sprite::update(float timeElapsed)
+	{
+
+	}
+
+	void Sprite::setFrame(Frame * frame)
+	{
+		SetImage(*frame->image);
+		SetSubRect(frame->rectangle);
+	}
 }

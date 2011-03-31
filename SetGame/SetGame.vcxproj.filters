@@ -24,10 +24,6 @@
     <Filter Include="Source Files\Base\RectanglePacking">
       <UniqueIdentifier>{ca0322b7-da3d-4c7d-bc60-91b6ebabc339}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source Files\Base\FrameSheets">
       <UniqueIdentifier>{dbe1eddf-2c93-4b97-9790-9308f347810a}</UniqueIdentifier>
     </Filter>
@@ -94,6 +90,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GazaSprite.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GazaAnimatedSprite.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
   </ItemGroup>
@@ -183,6 +182,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GazaSprite.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaAnimatedSprite.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>

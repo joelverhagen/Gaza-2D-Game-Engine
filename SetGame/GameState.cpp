@@ -29,7 +29,7 @@ void GameState::handleEvents()
 		else if(event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Key::LShift)
 		{
 			std::vector<std::vector<Card *> > validTriples = table->getValidTriples();
-			for(int i = 0; i < validTriples.size(); i++)
+			for(unsigned int i = 0; i < validTriples.size(); i++)
 			{
 				for(int j = 0; j < 3; j++)
 				{
