@@ -29,6 +29,10 @@ namespace Gaza
 		void pushImage(const std::string &name, sf::Image * image);
 		Frame * getFrame(const std::string &name);
 
+		bool addAnimationFrameNameList(const std::string &name, const std::vector<std::string> &frameNames);
+		bool newAnimationFrameNameList(const std::string &name);
+		bool addAnimationFrameName(const std::string &name, const std::string &frameName);
+
 	private:
 		void removeImage(int index);
 		void removeImages(int first, int last);
@@ -38,6 +42,8 @@ namespace Gaza
 
 		FrameSheetCollection inputFrameSheets;
 		std::vector<std::pair<std::string, sf::Image *> > individualImages;
+
+		std::map<std::string, std::vector<std::string> > animationFrameNameLists;
 	};
 
 	class SortPredicate 

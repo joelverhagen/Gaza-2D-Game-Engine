@@ -23,16 +23,16 @@ namespace Gaza
 
 	Frame * FrameSheetCollection::getFrame(const std::string &name)
 	{
-		Frame * subImage = 0;
+		Frame * frame = 0;
 		for(unsigned int i = 0; i < frameSheets.size(); i++)
 		{
-			subImage = frameSheets[i]->getFrame(name);
-			if(subImage != 0)
+			frame = frameSheets[i]->getFrame(name);
+			if(frame != 0)
 			{
 				break;
 			}
 		}
-		return subImage;
+		return frame;
 	}
 
 	std::vector<Frame *> FrameSheetCollection::getAnimationFrameList(const std::string &name)
@@ -51,7 +51,28 @@ namespace Gaza
 			Logger::getInstance()->write("A list of Frames with name \""+name+"\" already exists.");
 			return false;
 		}
-		animationFrameLists[name] = frames;
+
+		for(unsigned int i = 0; i < frames.size(); i++)
+		{
+			addAnimationFrame(name, frames[i]);
+		}
+
+		return true;
+	}
+
+	bool FrameSheetCollection::addAnimationFrameList(const std::string &name, const std::vector<std::string> &frameNames)
+	{
+		if(animationFrameLists.find(name) != animationFrameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frames with name \""+name+"\" already exists.");
+			return false;
+		}
+
+		for(unsigned int i = 0; i < frameNames.size(); i++)
+		{
+			addAnimationFrame(name, frameNames[i]);
+		}
+
 		return true;
 	}
 
@@ -75,6 +96,16 @@ namespace Gaza
 		}
 		animationFrameLists[name].push_back(frame);
 		return true;
+	}
+
+	bool FrameSheetCollection::addAnimationFrame(const std::string &name, const std::string &frameName)
+	{
+		Frame * frame = getFrame(frameName);
+		if(frame == 0)
+		{
+			return false;
+		}
+		return addAnimationFrame(name, frame);
 	}
 
 	int FrameSheetCollection::getFrameSheetCount()

@@ -21,8 +21,10 @@ namespace Gaza
 
 		std::vector<Frame *> getAnimationFrameList(const std::string &name);
 		bool addAnimationFrameList(const std::string &name, const std::vector<Frame *> &frames);
+		bool addAnimationFrameList(const std::string &name, const std::vector<std::string> &frameNames);
 		bool newAnimationFrameList(const std::string &name);
 		bool addAnimationFrame(const std::string &name, Frame * frame);
+		bool addAnimationFrame(const std::string &name, const std::string &frameName);
 
 		int getFrameSheetCount();
 		int getFrameCount();

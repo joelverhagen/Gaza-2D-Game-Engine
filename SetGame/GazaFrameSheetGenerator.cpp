@@ -10,7 +10,8 @@ namespace Gaza
 
 	FrameSheetGenerator::~FrameSheetGenerator()
 	{
-
+		// the generator should not have ownership of the input sprite sheets, so empty references before the generator destructs
+		inputFrameSheets.clearFrameSheets();
 	}
 
 	void FrameSheetGenerator::addFrameSheet(FrameSheet * frameSheet)
@@ -27,9 +28,6 @@ namespace Gaza
 		}
 
 		generateImages();
-
-		// the generator should not have ownership of the input sprite sheets, so empty references before the generator destructs
-		inputFrameSheets.clearFrameSheets();
 
 		if(individualImages.size() == 0)
 		{
@@ -99,6 +97,13 @@ namespace Gaza
 		}
 		while(individualImages.size() > 0);
 
+		// add the animation frame lists
+		for(std::map<std::string, std::vector<std::string> >::iterator i = animationFrameNameLists.begin(); i != animationFrameNameLists.end(); i++)
+		{
+			frameSheetCollection->newAnimationFrameList((*i).first);
+			frameSheetCollection->addAnimationFrameList((*i).first, (*i).second);
+		}
+
 		return frameSheetCollection;
 	}
 
@@ -116,6 +121,44 @@ namespace Gaza
 	Frame * FrameSheetGenerator::getFrame(const std::string &name)
 	{
 		return inputFrameSheets.getFrame(name);
+	}
+
+	bool FrameSheetGenerator::addAnimationFrameNameList(const std::string &name, const std::vector<std::string> &frameNames)
+	{
+		if(animationFrameNameLists.find(name) != animationFrameNameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frame Names with name \""+name+"\" already exists.");
+			return false;
+		}
+
+		for(unsigned int i = 0; i < frameNames.size(); i++)
+		{
+			addAnimationFrameName(name, frameNames[i]);
+		}
+
+		return true;
+	}
+	
+	bool FrameSheetGenerator::newAnimationFrameNameList(const std::string &name)
+	{
+		if(animationFrameNameLists.find(name) != animationFrameNameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frame Names with name \""+name+"\" already exists.");
+			return false;
+		}
+		animationFrameNameLists[name] = std::vector<std::string>();
+		return true;
+	}
+
+	bool FrameSheetGenerator::addAnimationFrameName(const std::string &name, const std::string &frameName)
+	{
+		if(animationFrameNameLists.find(name) == animationFrameNameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frame Names with name \""+name+"\" does not exist.");
+			return false;
+		}
+		animationFrameNameLists[name].push_back(frameName);
+		return true;
 	}
 
 	void FrameSheetGenerator::removeImage(int index)
