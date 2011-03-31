@@ -95,6 +95,9 @@
     <ClCompile Include="GazaAnimatedSprite.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
+    <ClCompile Include="HighlightSpot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml.hpp">
@@ -186,6 +189,9 @@
     </ClInclude>
     <ClInclude Include="GazaAnimatedSprite.hpp">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="HighlightSpot.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

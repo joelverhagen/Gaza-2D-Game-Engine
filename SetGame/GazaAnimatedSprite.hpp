@@ -14,7 +14,7 @@ namespace Gaza
 		AnimatedSprite();
 		AnimatedSprite(const std::vector<Frame *> &frames, int frameRate = 0);
 
-		void update(float timeElapsed); // input the time since the last update
+		void update(float frameTime);
 		
 		void setFrames(const std::vector<Frame *> &frames); // setter for the frames vector
 
@@ -26,6 +26,7 @@ namespace Gaza
 		std::vector<Frame *> frames; // holds all of the frames of the animation in order
 		int currentFrame; // the index of the current frame in the frames vector
 		float frameDelta; // in seconds per frame
+		float timeElapsed;
 	};
 }
 

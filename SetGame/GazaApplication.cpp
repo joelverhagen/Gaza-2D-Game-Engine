@@ -31,8 +31,6 @@ namespace Gaza
 
 		while(running && states.size() > 0)
 		{
-			updateClock.Reset();
-
 			states.top()->handleEvents();
 
 			states.top()->update();
@@ -68,9 +66,9 @@ namespace Gaza
 		return renderWindow;
 	}
 
-	float Application::getTimeElapsed()
+	float Application::getUpdateTime()
 	{
-		return updateClock.GetElapsedTime();
+		return renderWindow->GetFrameTime();
 	}
 
 	void Application::changeState(BaseState * state)

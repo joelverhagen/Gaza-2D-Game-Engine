@@ -14,6 +14,8 @@ Application::Application()
 	cardFrames = generator.generate();
 
 	changeState(new GameState(this, cardFrames));
+
+	getRenderWindow()->SetFramerateLimit(60);
 }
 
 Application::~Application()

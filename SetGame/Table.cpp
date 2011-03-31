@@ -1,8 +1,9 @@
 #include "Table.hpp"
 
-Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
+Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position)
 {
 	this->cardSprites = cardSprites;
+	this->application = application;
 	this->position = position;
 
 	spacingX = 5;
@@ -45,7 +46,7 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position)
 
 		emptySpots[i] = currentEmptySpot;
 		sprites.push_back(currentEmptySpot);
-	}	
+	}
 }
 
 Table::~Table()
@@ -62,6 +63,14 @@ void Table::draw(sf::RenderTarget * renderTarget)
 	for(unsigned i = 0; i < sprites.size(); i++)
 	{
 		renderTarget->Draw(*sprites[i]);
+	}
+}
+
+void Table::update()
+{
+	for(unsigned int i = 0; i < sprites.size(); i++)
+	{
+		sprites[i]->update(application->getRenderWindow()->GetFrameTime());
 	}
 }
 
@@ -310,14 +319,6 @@ std::vector<std::vector<Card *> > Table::getValidTriples()
 	while(Gaza::Utility::next_combination(cardVector.begin(), cardVector.begin() + 3, cardVector.end()));
 
 	return triples;
-}
-
-void Table::update(float timeElapsed)
-{
-	for(unsigned int i = 0; i < sprites.size(); i++)
-	{
-		sprites[i]->update(timeElapsed);
-	}
 }
 
 // returns -1 on not found

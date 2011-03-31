@@ -6,18 +6,21 @@ namespace Gaza
 	{
 		currentFrame = 0;
 		frameDelta = 0.f; // in seconds
+		timeElapsed = 0.f;
 	}
 
-	void AnimatedSprite::update(float timeElapsed)
+	void AnimatedSprite::update(float frameTime)
 	{
 		if(frames.size() > 0)
 		{
 			if(frameDelta == 0.f) // run the animation at the speed of updates
 			{
-				currentFrame++;
+				currentFrame = (currentFrame + 1) % frames.size();
 			}
 			else
 			{
+				timeElapsed += frameTime;
+
 				while(timeElapsed > frames.size() * frameDelta) // eliminate unnecessary full loop arounds
 				{
 					timeElapsed -= frames.size() * frameDelta;

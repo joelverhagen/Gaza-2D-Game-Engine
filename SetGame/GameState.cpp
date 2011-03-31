@@ -2,7 +2,7 @@
 
 GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardFrames) : Gaza::BaseState(application)
 {
-	table = new Table(cardFrames, sf::Vector2f(5, 5));
+	table = new Table(cardFrames, application, sf::Vector2f(5, 5));
 	this->cardFrames = cardFrames;
 
 	application->setSize(table->getWidth(), table->getHeight());
@@ -44,7 +44,7 @@ void GameState::handleEvents()
 
 void GameState::update()
 {
-	table->update(application->getTimeElapsed());
+	table->update();
 }
 
 void GameState::draw()

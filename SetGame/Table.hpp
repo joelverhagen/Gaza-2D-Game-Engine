@@ -1,10 +1,13 @@
 #ifndef TABLE_HPP
 #define TABLE_HPP
 
+#include "GazaApplication.hpp"
+
 #include "Common.hpp"
 #include "Card.hpp"
 #include "EmptySpot.hpp"
 #include "Deck.hpp"
+#include "HighlightSpot.hpp"
 
 #include <vector>
 #include <map>
@@ -12,7 +15,7 @@
 class Table
 {
 public:
-	Table(Gaza::FrameSheetCollection * cardSprites, sf::Vector2f &position = sf::Vector2f(0, 0));
+	Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position = sf::Vector2f(0, 0));
 	~Table();
 
 	void draw(sf::RenderTarget * renderTarget);
@@ -26,7 +29,7 @@ public:
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
 
-	void update(float timeElapsed);
+	void update();
 
 	int getCardIndex(Card * card);
 
@@ -48,6 +51,8 @@ private:
 	void addCard(Card * card);
 	void selectCard(Card * card);
 	void removeCard(Card * card);
+
+	Gaza::Application * application;
 
 	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
