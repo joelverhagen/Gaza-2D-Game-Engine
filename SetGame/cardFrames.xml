@@ -12,4 +12,5 @@
 	<Rectangle left="60" top="0" width="100" height="140" name="unselectedCard" />
 	<Rectangle left="60" top="140" width="100" height="140" name="selectedCard" />
 	<Rectangle left="160" top="0" width="100" height="140" name="emptySpot" />
+	<Rectangle left="160" top="140" width="100" height="140" name="highlightSpot" />
 </FrameSheet>

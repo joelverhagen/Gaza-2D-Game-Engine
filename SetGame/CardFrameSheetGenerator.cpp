@@ -8,6 +8,56 @@ CardFrameSheetGenerator::CardFrameSheetGenerator(Gaza::ImageManager * imageManag
 
 void CardFrameSheetGenerator::generateImages()
 {
+	// push the empty spot image
+	Gaza::Frame * emptySpot = getFrame("emptySpot");
+	sf::Image * emptySpotImage = new sf::Image();
+	emptySpotImage->Create(emptySpot->rectangle.Width, emptySpot->rectangle.Height);
+	emptySpotImage->Copy(*emptySpot->image, 0, 0, emptySpot->rectangle);
+
+	pushImage("emptySpot", emptySpotImage);
+
+	// generate the highlight spot
+	Gaza::Frame * highlightSpot = getFrame("highlightSpot");
+
+	sf::Image * highlightSpotImage;
+
+	int highlightFrameCount = 10;
+	for(int i = highlightFrameCount - 1; i >= 0; i--)
+	{
+		int alphaDifference = 255 - (int)Gaza::Utility::round((255 / (float)(highlightFrameCount - 1)) * i);
+
+		highlightSpotImage = new sf::Image();
+		highlightSpotImage->Create(highlightSpot->rectangle.Width, highlightSpot->rectangle.Height, sf::Color(0, 0, 0, 0));
+
+		if(alphaDifference != 255)
+		{
+			highlightSpotImage->Copy(*highlightSpot->image, 0, 0, highlightSpot->rectangle);
+			
+			if(alphaDifference > 0)
+			{
+				for(unsigned int x = 0; x < highlightSpotImage->GetWidth(); x++)
+				{
+					for(unsigned int y = 0; y < highlightSpotImage->GetHeight(); y++)
+					{
+						// maintain the color, decrease the alpha
+						sf::Color pixel = highlightSpotImage->GetPixel(x, y);
+						int newAlpha = pixel.a - alphaDifference;
+						if(newAlpha < 0)
+						{
+							newAlpha = 0;
+						}
+						pixel.a = newAlpha;
+
+						highlightSpotImage->SetPixel(x, y, pixel);
+					}
+				}
+			}
+		}
+
+		pushImage("highlightSpot"+Gaza::Utility::intToString(i), highlightSpotImage);
+	}
+
+
 	// Generate the individual images
 	std::pair<std::string, sf::Color> cardColors[3];
 	cardColors[0] = std::pair<std::string, sf::Color>("green", sf::Color(0, 127, 0));
@@ -38,13 +88,6 @@ void CardFrameSheetGenerator::generateImages()
 	sf::Image selectedImage;
 	selectedImage.Create(selectedCard->rectangle.Width, selectedCard->rectangle.Height);
 	selectedImage.Copy(*selectedCard->image, 0, 0, selectedCard->rectangle);
-
-	Gaza::Frame * emptySpot = getFrame("emptySpot");
-	sf::Image * emptySpotImage = new sf::Image();
-	emptySpotImage->Create(emptySpot->rectangle.Width, emptySpot->rectangle.Height);
-	emptySpotImage->Copy(*emptySpot->image, 0, 0, emptySpot->rectangle);
-
-	pushImage("emptySpot", emptySpotImage);
 
 	bool renderImageMethod = false;
 
