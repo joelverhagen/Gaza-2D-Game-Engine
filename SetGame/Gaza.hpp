@@ -11,8 +11,8 @@
 
 namespace Gaza
 {
-	static unsigned int maximumImageWidth = 2048;
-	static unsigned int maximumImageHeight = 2048;
+	static unsigned int maximumImageWidth = 1024;
+	static unsigned int maximumImageHeight = 1024;
 }
 
 #endif
