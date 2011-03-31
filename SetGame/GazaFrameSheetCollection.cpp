@@ -35,6 +35,48 @@ namespace Gaza
 		return subImage;
 	}
 
+	std::vector<Frame *> FrameSheetCollection::getAnimationFrameList(const std::string &name)
+	{
+		if(animationFrameLists.find(name) == animationFrameLists.end())
+		{
+			return std::vector<Frame *>();
+		}
+		return animationFrameLists[name];
+	}
+	
+	bool FrameSheetCollection::addAnimationFrameList(const std::string &name, const std::vector<Frame *> &frames)
+	{
+		if(animationFrameLists.find(name) != animationFrameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frames with name \""+name+"\" already exists.");
+			return false;
+		}
+		animationFrameLists[name] = frames;
+		return true;
+	}
+
+	bool FrameSheetCollection::newAnimationFrameList(const std::string &name)
+	{
+		if(animationFrameLists.find(name) != animationFrameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frames with name \""+name+"\" already exists.");
+			return false;
+		}
+		animationFrameLists[name] = std::vector<Frame *>();
+		return true;
+	}
+	
+	bool FrameSheetCollection::addAnimationFrame(const std::string &name, Frame * frame)
+	{
+		if(animationFrameLists.find(name) == animationFrameLists.end())
+		{
+			Logger::getInstance()->write("A list of Frames with name \""+name+"\" does not exist.");
+			return false;
+		}
+		animationFrameLists[name].push_back(frame);
+		return true;
+	}
+
 	int FrameSheetCollection::getFrameSheetCount()
 	{
 		return frameSheets.size();

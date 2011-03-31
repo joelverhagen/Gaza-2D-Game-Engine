@@ -19,6 +19,11 @@ namespace Gaza
 		void addFrameSheet(FrameSheet * frameSheet);
 		Frame * getFrame(const std::string &name);
 
+		std::vector<Frame *> getAnimationFrameList(const std::string &name);
+		bool addAnimationFrameList(const std::string &name, const std::vector<Frame *> &frames);
+		bool newAnimationFrameList(const std::string &name);
+		bool addAnimationFrame(const std::string &name, Frame * frame);
+
 		int getFrameSheetCount();
 		int getFrameCount();
 		std::vector<std::string> getFrameNames();
@@ -27,6 +32,7 @@ namespace Gaza
 
 	private:
 		std::vector<FrameSheet *> frameSheets;
+		std::map<std::string, std::vector<Frame *> > animationFrameLists;
 	};
 }
 

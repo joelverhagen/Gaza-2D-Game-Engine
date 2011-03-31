@@ -9,11 +9,11 @@ namespace Gaza
 
 	FrameSheet::~FrameSheet()
 	{
-		for(std::map<std::string, Frame *>::iterator i = subImages.begin(); i != subImages.end(); i++)
+		for(std::map<std::string, Frame *>::iterator i = frames.begin(); i != frames.end(); i++)
 		{
 			delete (*i).second;
 		}
-		subImages.clear();
+		frames.clear();
 
 		if(name.size() != 0)
 		{
@@ -142,22 +142,22 @@ namespace Gaza
 
 	bool FrameSheet::addRectangle(const std::string &name, const sf::IntRect &rectangle)
 	{
-		if(subImages.find(name) != subImages.end())
+		if(frames.find(name) != frames.end())
 		{
 			Logger::getInstance()->write("A Frame with name \""+name+"\" already exists.");
 			return false;
 		}
-		subImages[name] = new Frame(rectangle, getImage());
+		frames[name] = new Frame(rectangle, getImage());
 		return true;
 	}
 
 	Frame * FrameSheet::getFrame(const std::string &name)
 	{
-		if(subImages.find(name) == subImages.end())
+		if(frames.find(name) == frames.end())
 		{
 			return 0;
 		}
-		return subImages[name];
+		return frames[name];
 	}
 
 	sf::Image * FrameSheet::getImage()
@@ -167,14 +167,14 @@ namespace Gaza
 
 	int FrameSheet::getFrameCount()
 	{
-		return subImages.size();
+		return frames.size();
 	}
 
 	std::vector<std::string> FrameSheet::getFrameNames()
 	{
 		std::vector<std::string> names;
 
-		for(std::map<std::string, Frame *>::iterator i = subImages.begin(); i != subImages.end(); i++)
+		for(std::map<std::string, Frame *>::iterator i = frames.begin(); i != frames.end(); i++)
 		{
 			names.push_back((*i).first);
 		}

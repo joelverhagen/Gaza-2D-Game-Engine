@@ -39,7 +39,7 @@ namespace Gaza
 		ImageManager * imageManager;
 
 		std::string name;		
-		std::map<std::string, Frame *> subImages;
+		std::map<std::string, Frame *> frames;
 	};
 }
 
