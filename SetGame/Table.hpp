@@ -26,6 +26,8 @@ public:
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
 
+	void update(float timeElapsed);
+
 	int getCardIndex(Card * card);
 
 private:

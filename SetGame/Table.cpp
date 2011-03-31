@@ -312,6 +312,14 @@ std::vector<std::vector<Card *> > Table::getValidTriples()
 	return triples;
 }
 
+void Table::update(float timeElapsed)
+{
+	for(unsigned int i = 0; i < sprites.size(); i++)
+	{
+		sprites[i]->update(timeElapsed);
+	}
+}
+
 // returns -1 on not found
 int Table::getCardIndex(Card * card)
 {

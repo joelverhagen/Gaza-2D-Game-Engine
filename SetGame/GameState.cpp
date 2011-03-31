@@ -44,7 +44,7 @@ void GameState::handleEvents()
 
 void GameState::update()
 {
-
+	table->update(application->getTimeElapsed());
 }
 
 void GameState::draw()

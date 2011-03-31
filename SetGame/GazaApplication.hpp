@@ -23,6 +23,8 @@ namespace Gaza
 
 		sf::RenderWindow * getRenderWindow();
 
+		float getTimeElapsed(); // get the time since the last update
+
 	protected:
 		void changeState(BaseState * state);
 
@@ -31,6 +33,8 @@ namespace Gaza
 	private:
 		sf::RenderWindow * renderWindow;
 		sf::VideoMode * videoMode;
+
+		sf::Clock updateClock;
 
 		unsigned int initialWindowWidth;
 		unsigned int initialWindowHeight;
