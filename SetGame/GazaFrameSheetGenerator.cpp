@@ -93,6 +93,8 @@ namespace Gaza
 
 			delete packer;
 
+			// currentImage->SaveToFile(Utility::intToString(frameSheetCollection->getFrameSheetCount())+".png");
+
 			frameSheetCollection->addFrameSheet(currentFrameSheet);
 		}
 		while(individualImages.size() > 0);
