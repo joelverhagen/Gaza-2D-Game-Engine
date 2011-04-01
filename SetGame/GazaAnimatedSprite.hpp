@@ -12,7 +12,7 @@ namespace Gaza
 	{
 	public:
 		AnimatedSprite();
-		AnimatedSprite(const std::vector<Frame *> &frames, int frameRate = 0);
+		AnimatedSprite(const std::vector<Frame *> &frames, int frameRate = 0, bool loopMaximum = 0);
 
 		void update(float frameTime);
 		
@@ -23,10 +23,15 @@ namespace Gaza
 		void setFrameRate(unsigned int frameRate); 
 		
 	private:
+		bool checkLoopCount(); // returns true on done looping
+
 		std::vector<Frame *> frames; // holds all of the frames of the animation in order
 		int currentFrame; // the index of the current frame in the frames vector
 		float frameDelta; // in seconds per frame
 		float timeElapsed;
+		int loopMaximum;
+		int loopCount;
+		bool finished;
 	};
 }
 

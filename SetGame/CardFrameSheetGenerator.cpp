@@ -23,8 +23,8 @@ void CardFrameSheetGenerator::generateImages()
 
 	sf::Image * highlightSpotImage;
 
-	int highlightFrameCount = 10;
-	for(int i = 0; i < highlightFrameCount; i++)
+	int highlightFrameCount = 20;
+	for(int i = highlightFrameCount - 1; i >= 0; i--)
 	{
 		int alphaDifference = 255 - (int)Gaza::Utility::round((255 / (float)(highlightFrameCount - 1)) * i);
 

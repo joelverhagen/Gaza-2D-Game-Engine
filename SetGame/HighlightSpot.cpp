@@ -1,7 +1,6 @@
 #include "HighlightSpot.hpp"
 
-HighlightSpot::HighlightSpot(Gaza::FrameSheetCollection * cardSprites)
+HighlightSpot::HighlightSpot(Gaza::FrameSheetCollection * cardSprites) : Gaza::AnimatedSprite(cardSprites->getAnimationFrameList("highlightSpot"), 60, 1)
 {
-	setFrames(cardSprites->getAnimationFrameList("highlightSpot"));
-	setFrameRate(60);
+
 }
