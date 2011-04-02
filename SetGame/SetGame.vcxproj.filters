@@ -98,6 +98,9 @@
     <ClCompile Include="HighlightSpot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GazaWindowPanel.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml.hpp">
@@ -192,6 +195,9 @@
     </ClInclude>
     <ClInclude Include="HighlightSpot.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GazaWindowPanel.hpp">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #define TABLE_HPP
 
 #include "GazaApplication.hpp"
+#include "GazaWindowPanel.hpp"
 
 #include "Common.hpp"
 #include "Card.hpp"
@@ -12,26 +13,24 @@
 #include <vector>
 #include <map>
 
-class Table
+class Table : public Gaza::WindowPanel
 {
 public:
 	Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position = sf::Vector2f(0, 0));
 	~Table();
 
-	void draw(sf::RenderTarget * renderTarget);
-
-	void handleClick(int x, int y);
-
 	unsigned int getWidth();
 	unsigned int getHeight();
+
+	void handleClick(int x, int y);
+	void update();
+	void draw(sf::RenderTarget * renderTarget);
 
 	std::vector<std::vector<Card *> > getValidTriples();
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
 
 	void highlightValidTriple();
-
-	void update();
 
 	int getCardIndex(Card * card);
 
@@ -58,9 +57,6 @@ private:
 
 	void removeSprite(Gaza::Sprite * sprite);
 
-	Gaza::Application * application;
-
-	sf::Vector2f position;
 	Gaza::FrameSheetCollection * cardSprites;
 	
 	std::vector<Gaza::Sprite *> sprites; // keep track of all sprites for drawing

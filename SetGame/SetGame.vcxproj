@@ -38,6 +38,7 @@
     <ClCompile Include="GazaFrameSheetGenerator.cpp" />
     <ClCompile Include="GazaSprite.cpp" />
     <ClCompile Include="GazaUtility.cpp" />
+    <ClCompile Include="GazaWindowPanel.cpp" />
     <ClCompile Include="HighlightSpot.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Table.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="GazaSprite.hpp" />
     <ClInclude Include="GazaTypes.hpp" />
     <ClInclude Include="GazaUtility.hpp" />
+    <ClInclude Include="GazaWindowPanel.hpp" />
     <ClInclude Include="HighlightSpot.hpp" />
     <ClInclude Include="rapidxml.hpp" />
     <ClInclude Include="rapidxml_iterators.hpp" />

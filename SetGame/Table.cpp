@@ -1,10 +1,8 @@
 #include "Table.hpp"
 
-Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position)
+Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position) : Gaza::WindowPanel(application, position)
 {
 	this->cardSprites = cardSprites;
-	this->application = application;
-	this->position = position;
 
 	spacingX = 5;
 	spacingY = 5;

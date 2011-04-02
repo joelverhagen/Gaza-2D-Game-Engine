@@ -2,6 +2,8 @@
 
 Application::Application()
 {
+	getRenderWindow()->SetTitle("Set");
+
 	Gaza::FrameSheet frameSheet(&imageManager);
 	bool success = frameSheet.loadFromFile("cardFrames.xml");
 	if(!success)
