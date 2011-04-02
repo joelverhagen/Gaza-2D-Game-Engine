@@ -5,12 +5,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SetGame", "SetGame\SetGame.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug (static)|Win32 = Debug (static)|Win32
 		Debug|Win32 = Debug|Win32
+		Release (static)|Win32 = Release (static)|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Debug (static)|Win32.ActiveCfg = Debug (static)|Win32
+		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Debug (static)|Win32.Build.0 = Debug (static)|Win32
 		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Debug|Win32.ActiveCfg = Debug|Win32
 		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Debug|Win32.Build.0 = Debug|Win32
+		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Release (static)|Win32.ActiveCfg = Release (static)|Win32
+		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Release (static)|Win32.Build.0 = Release (static)|Win32
 		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Release|Win32.ActiveCfg = Release|Win32
 		{7D4F0672-8631-4737-9FF0-AE198A9EB015}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
