@@ -29,15 +29,9 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * appli
 
 		cards[i] = currentCard;
 		sprites.push_back(currentCard);
-
-		if(i == initialCards - 1)
-		{
-			if(!validTripleExists())
-			{
-				initialCards += 3;
-			}
-		}
 	}
+
+	ensureValidTripleExists();
 
 	for(unsigned int i = initialCards; i < maximumCards; i++)
 	{
@@ -94,6 +88,21 @@ void Table::handleClick(int x, int y)
 	}
 }
 
+void Table::ensureValidTripleExists()
+{
+	while(!validTripleExists() && deck->getCardCount() > 0)
+	{
+		for(int i = 0; i < 3; i++)
+		{
+			Card * newCard = deck->drawCard();
+			if(newCard != 0)
+			{
+				addCard(newCard);
+			}
+		}
+	}
+}
+
 void Table::addCard(Card * card)
 {
 	unsigned int currentIndex = 0;
@@ -128,32 +137,29 @@ void Table::selectCard(Card * card)
 	{
 		if(selectedCards.size() == 3)
 		{
-			return;
-		}
-		else
-		{
-			card->click();
-			selectedCards.push_back(card);
-
-			if(selectedCards.size() == 3 && validTriple(selectedCards[0], selectedCards[1], selectedCards[2]))
+			if(/* if we all trailing card selection */false)
 			{
-				for(int i = 2; i >= 0; i--)
-				{
-					removeCard(selectedCards[i]);
-				}
-
-				while(!validTripleExists() && deck->getCardCount() > 0)
-				{
-					for(int i = 0; i < 3; i++)
-					{
-						Card * newCard = deck->drawCard();
-						if(newCard != 0)
-						{
-							addCard(newCard);
-						}
-					}
-				}
+				std::vector<Card *>::iterator firstCardIterator = selectedCards.begin();
+				(*firstCardIterator)->click();
+				selectedCards.erase(firstCardIterator);
 			}
+			else
+			{
+				return;
+			}
+		}
+
+		card->click();
+		selectedCards.push_back(card);
+
+		if(selectedCards.size() == 3 && validTriple(selectedCards[0], selectedCards[1], selectedCards[2]))
+		{
+			for(int i = 2; i >= 0; i--)
+			{
+				removeCard(selectedCards[i]);
+			}
+
+			ensureValidTripleExists();
 		}
 	}
 	else

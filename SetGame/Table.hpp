@@ -48,6 +48,8 @@ private:
 	int getIndexFromCoordinates(int x, int y);
 	int getIndexFromSpot(unsigned int spotX, unsigned int spotY);
 
+	void ensureValidTripleExists();
+
 	void addCard(Card * card);
 	void selectCard(Card * card);
 	void removeCard(Card * card);
