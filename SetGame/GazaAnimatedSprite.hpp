@@ -21,6 +21,8 @@ namespace Gaza
 		// setter indirectly for the frameDelta value. input is in frames per second
 		// if 0 is used for the frameRate, then the frame increments at every update
 		void setFrameRate(unsigned int frameRate); 
+
+		bool getFinished();
 		
 	private:
 		bool checkLoopCount(); // returns true on done looping

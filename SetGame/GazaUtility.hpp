@@ -83,6 +83,11 @@ namespace Gaza
 		template<class T>
 		void shuffle(std::vector<T> &input)
 		{
+			if(input.size() < 1)
+			{
+				return;
+			}
+
 			std::vector<std::pair<int, T> > pairs;
 			
 			for(unsigned int i = 0; i < input.size(); i++)

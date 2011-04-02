@@ -41,12 +41,6 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * appli
 		emptySpots[i] = currentEmptySpot;
 		sprites.push_back(currentEmptySpot);
 	}
-
-	HighlightSpot * highlightSpot;
-
-	highlightSpot = new HighlightSpot(cardSprites);
-	highlightSpot->SetPosition(5, 5);
-	sprites.insert(sprites.end(), highlightSpot);
 }
 
 Table::~Table()
@@ -64,6 +58,51 @@ void Table::draw(sf::RenderTarget * renderTarget)
 	{
 		renderTarget->Draw(*sprites[i]);
 	}
+}
+
+void Table::highlightValidTriple()
+{
+	if(highlightSpots.size() > 0)
+	{
+		for(unsigned int i = 0; i < highlightSpots.size(); i++)
+		{
+			if(highlightSpots[i]->getFinished())
+			{
+				removeSprite(highlightSpots[i]);
+
+				delete highlightSpots[i];
+			}
+			else
+			{
+				return;
+			}
+		}
+
+		highlightSpots.clear();
+	}
+
+	std::vector<std::vector<Card *> > validTriples = getValidTriples();
+
+	if(validTriples.size() == 0)
+	{
+		return;
+	}
+	
+	Gaza::Utility::shuffle(validTriples);
+
+	std::vector<Card *> validTriple = validTriples[0];
+
+	for(unsigned int i = 0; i < validTriple.size(); i++)
+	{
+			HighlightSpot * highlightSpot;
+
+			highlightSpot = new HighlightSpot(cardSprites);
+			highlightSpot->SetPosition(validTriple[i]->GetPosition());
+			highlightSpots.push_back(highlightSpot);
+
+			sprites.push_back(highlightSpot);
+	}
+
 }
 
 void Table::update()
@@ -197,14 +236,23 @@ void Table::removeCard(Card * card)
 		selectedCards.erase(cardIterator);
 	}
 
-	std::vector<Gaza::Sprite *>::iterator spriteIterator = std::find(sprites.begin(), sprites.end(), card);
+	removeSprite(card);
+
+	// free memory
+	delete card;
+}
+
+void Table::removeSprite(Gaza::Sprite * sprite)
+{
+	std::vector<Gaza::Sprite *>::iterator spriteIterator = std::find(sprites.begin(), sprites.end(), sprite);
 	if(spriteIterator != sprites.end())
 	{
 		sprites.erase(spriteIterator);
 	}
-
-	// free memory
-	delete card;
+	else
+	{
+		Gaza::Logger::getInstance()->write("A sprite was getting deleted from the Sprite vector but could not be found.");
+	}
 }
 
 unsigned int Table::getWidth()

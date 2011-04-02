@@ -29,6 +29,8 @@ public:
 	bool validTriple(Card * a, Card * b, Card * c);
 	bool validTripleExists();
 
+	void highlightValidTriple();
+
 	void update();
 
 	int getCardIndex(Card * card);
@@ -54,6 +56,8 @@ private:
 	void selectCard(Card * card);
 	void removeCard(Card * card);
 
+	void removeSprite(Gaza::Sprite * sprite);
+
 	Gaza::Application * application;
 
 	sf::Vector2f position;
@@ -65,6 +69,7 @@ private:
 	Card * cards[maximumCards]; // keep track of indices of cards
 
 	std::vector<Card *> selectedCards; // keep track of selected cards
+	std::vector<HighlightSpot *> highlightSpots;
 
 	Deck * deck;
 };

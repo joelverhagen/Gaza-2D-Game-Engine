@@ -95,6 +95,11 @@ namespace Gaza
 		}
 	}
 
+	bool AnimatedSprite::getFinished()
+	{
+		return finished;
+	}
+
 	bool AnimatedSprite::checkLoopCount()
 	{
 		if(loopCount >= loopMaximum && loopMaximum != 0)

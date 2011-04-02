@@ -26,18 +26,9 @@ void GameState::handleEvents()
 		{
 			table->handleClick(application->getRenderWindow()->GetInput().GetMouseX(), application->getRenderWindow()->GetInput().GetMouseY());
 		}
-		else if(event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Key::LShift)
+		else if(event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Key::Z)
 		{
-			std::vector<std::vector<Card *> > validTriples = table->getValidTriples();
-			for(unsigned int i = 0; i < validTriples.size(); i++)
-			{
-				for(int j = 0; j < 3; j++)
-				{
-					std::cout << table->getCardIndex(validTriples[i][j]) << ' ';
-				}
-				std::cout << std::endl;
-			}
-			std::cout << std::endl;
+			table->highlightValidTriple();
 		}
 	}
 }
