@@ -2,15 +2,18 @@
 
 GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection * cardFrames) : Gaza::BaseState(application)
 {
-	table = new Table(cardFrames, application, sf::Vector2f(5, 5));
 	this->cardFrames = cardFrames;
 
-	application->setSize(table->getWidth(), table->getHeight());
+	table = new Table(cardFrames, application, sf::Vector2f(5, 5));
+	gameControls = new GameControls(table->getWidth(), application, sf::Vector2f(0.f, (float)table->getHeight()));
+
+	application->setSize(table->getWidth(), table->getHeight() + gameControls->getHeight());
 }
 
 GameState::~GameState()
 {
 	delete table;
+	delete gameControls;
 }
 
 void GameState::handleEvents()
@@ -36,6 +39,7 @@ void GameState::handleEvents()
 void GameState::update()
 {
 	table->update();
+	gameControls->update();
 }
 
 void GameState::draw()
@@ -43,6 +47,7 @@ void GameState::draw()
 	application->getRenderWindow()->Clear(sf::Color(51, 153, 51));
 	
 	table->draw(application->getRenderWindow());
+	gameControls->draw(application->getRenderWindow());
 
 	application->getRenderWindow()->Display();
 }

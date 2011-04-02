@@ -24,6 +24,7 @@
     <ClCompile Include="CardFrameSheetGenerator.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="EmptySpot.cpp" />
+    <ClCompile Include="GameControls.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GazaAnimatedSprite.cpp" />
     <ClCompile Include="GazaApplication.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="Deck.hpp" />
     <ClInclude Include="EmptySpot.hpp" />
+    <ClInclude Include="GameControls.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Gaza.hpp" />
     <ClInclude Include="GazaAnimatedSprite.hpp" />

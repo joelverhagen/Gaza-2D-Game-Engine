@@ -7,6 +7,7 @@
 #include "GazaLogger.hpp"
 
 #include "Table.hpp"
+#include "GameControls.hpp"
 
 class GameState : public Gaza::BaseState
 {
@@ -21,7 +22,9 @@ public:
 
 protected:
 	Gaza::FrameSheetCollection * cardFrames;
+
 	Table * table;
+	GameControls * gameControls;
 };
 
 #endif
