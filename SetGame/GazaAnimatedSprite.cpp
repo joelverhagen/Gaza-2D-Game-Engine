@@ -4,22 +4,23 @@ namespace Gaza
 {
 	AnimatedSprite::AnimatedSprite()
 	{
-		currentFrame = 0;
 		frameDelta = 0.f; // in seconds
-		timeElapsed = 0.f;
 		loopMaximum = 0;
+
+		currentFrame = 0;
+		timeElapsed = 0.f;
 		loopCount = 0;
 		finished = false;
 	}
 
-	AnimatedSprite::AnimatedSprite(const std::vector<Frame *> &frames, int frameRate, bool loopMaximum)
+	AnimatedSprite::AnimatedSprite(const std::vector<Frame *> &frames, int frameRate, int loopMaximum)
 	{
 		setFrames(frames);
-		
-		currentFrame = 0;
 		setFrameRate(frameRate);
-		timeElapsed = 0.f;
 		this->loopMaximum = loopMaximum;
+
+		currentFrame = 0;
+		timeElapsed = 0.f;
 		loopCount = 0;
 		finished = false;
 	}
@@ -49,7 +50,6 @@ namespace Gaza
 				while(timeElapsed > frames.size() * frameDelta) // eliminate unnecessary full loop arounds
 				{
 					timeElapsed -= frames.size() * frameDelta;
-					loopCount++;
 
 					if(checkLoopCount())
 					{

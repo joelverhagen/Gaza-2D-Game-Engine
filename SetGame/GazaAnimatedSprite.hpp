@@ -12,7 +12,7 @@ namespace Gaza
 	{
 	public:
 		AnimatedSprite();
-		AnimatedSprite(const std::vector<Frame *> &frames, int frameRate = 0, bool loopMaximum = 0);
+		AnimatedSprite(const std::vector<Frame *> &frames, int frameRate = 0, int loopMaximum = 0);
 
 		void update(float frameTime);
 		

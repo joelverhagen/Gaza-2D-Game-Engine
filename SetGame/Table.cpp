@@ -51,7 +51,6 @@ Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * appli
 	HighlightSpot * highlightSpot;
 
 	highlightSpot = new HighlightSpot(cardSprites);
-	highlightSpot->setFrameRate(30);
 	highlightSpot->SetPosition(5, 5);
 	sprites.insert(sprites.end(), highlightSpot);
 }
