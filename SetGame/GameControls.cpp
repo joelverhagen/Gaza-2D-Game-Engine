@@ -4,15 +4,17 @@ GameControls::GameControls(unsigned int width, Gaza::Application * application, 
 {
 	this->width = width;
 
-	shape.AddPoint(position.x, position.y, sf::Color::Red);
-	shape.AddPoint(position.x + getWidth(), position.y, sf::Color::Green);
-	shape.AddPoint(position.x + getWidth(), position.y + getHeight(), sf::Color::Yellow);
-	shape.AddPoint(position.x, position.y + getHeight(), sf::Color::Blue);
+	scoreText = new sf::Text("Score:");
+	scoreText->SetPosition(position.x + 10, position.y + 10);
+
+	timeText = new sf::Text("Time: 0");
+	timeText->SetPosition(position.x + 10, scoreText->GetPosition().y + scoreText->GetRect().Height + 10);
 }
 
 GameControls::~GameControls()
 {
-
+	delete scoreText;
+	delete timeText;
 }
 
 unsigned int GameControls::getWidth()
@@ -32,10 +34,25 @@ void GameControls::handleClick(int x, int y)
 
 void GameControls::update()
 {
-
+	updateTimeText();
 }
 
 void GameControls::draw(sf::RenderTarget * renderTarget)
 {
-	renderTarget->Draw(shape);
+	renderTarget->Draw(*scoreText);
+	renderTarget->Draw(*timeText);
+}
+
+void GameControls::updateTimeText()
+{
+	std::string newTime = Gaza::Utility::floatToString(Gaza::Utility::round(gameDuration.GetElapsedTime()));
+	if(currentTime != newTime)
+	{
+		sf::Vector2f currentTextPosition = timeText->GetPosition();
+
+		delete timeText;
+
+		timeText = new sf::Text("Time: " + newTime);
+		timeText->SetPosition(currentTextPosition);
+	}
 }

@@ -30,6 +30,13 @@ namespace Gaza
 			ss << input;
 			return ss.str();
 		}
+
+		std::string floatToString(float input)
+		{
+			std::stringstream ss;
+			ss << input;
+			return ss.str();
+		}
 		
 		int power(int base, int exponent)
 		{

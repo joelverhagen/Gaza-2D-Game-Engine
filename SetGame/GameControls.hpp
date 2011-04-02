@@ -12,13 +12,19 @@ public:
 	unsigned int getWidth();
 	unsigned int getHeight();
 
-	void handleClick(int x, int y) ;
-	void update() ;
+	void handleClick(int x, int y);
+	void update();
 	void draw(sf::RenderTarget * renderTarget);
 
 private:
+	void updateTimeText();
+
 	unsigned int width;
-	sf::Shape shape;
+	sf::Text * scoreText;
+	sf::Text * timeText;
+	
+	std::string currentTime;
+	sf::Clock gameDuration;
 
 };
 

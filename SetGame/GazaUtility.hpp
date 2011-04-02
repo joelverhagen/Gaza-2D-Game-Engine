@@ -24,6 +24,7 @@ namespace Gaza
 
 		int stringToInt(const std::string &input);
 		std::string intToString(int input);
+		std::string floatToString(float input);
 
 		int power(int base, int exponent);
 		double round(double input);
