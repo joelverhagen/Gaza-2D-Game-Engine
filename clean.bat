@@ -4,7 +4,7 @@ del SetGame\log.txt
 rmdir /Q /S Debug
 rmdir /Q /S "Debug (static)"
 rmdir /Q /S Release
-rmdir /Q /S Release
+rmdir /Q /S "Release (static)"
 rmdir /Q /S ipch
 rmdir /Q /S SetGame\Debug
 rmdir /Q /S "SetGame\Debug (static)"

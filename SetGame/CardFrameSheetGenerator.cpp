@@ -29,7 +29,7 @@ void CardFrameSheetGenerator::generateImages()
 		int alphaDifference = 255 - (int)Gaza::Utility::round((255 / (float)(highlightFrameCount - 1)) * i);
 
 		highlightSpotImage = new sf::Image();
-		highlightSpotImage->Create(highlightSpot->rectangle.Width, highlightSpot->rectangle.Height);
+		highlightSpotImage->Create(highlightSpot->rectangle.Width, highlightSpot->rectangle.Height, sf::Color(0, 0, 0, 0));
 
 		if(alphaDifference != 255)
 		{
