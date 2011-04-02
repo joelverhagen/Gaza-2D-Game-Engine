@@ -8,7 +8,6 @@ namespace Gaza
 
 		videoMode = new sf::VideoMode(800, 600, 32);
 		renderWindow = new sf::RenderWindow(*videoMode, "Gaza Engine", sf::Style::Titlebar | sf::Style::Close);
-		renderWindow->Show(false);
 	}
 
 	Application::~Application()
@@ -27,8 +26,6 @@ namespace Gaza
 
 	int Application::run()
 	{
-		renderWindow->Show(true);
-
 		while(running && states.size() > 0)
 		{
 			states.top()->handleEvents();
