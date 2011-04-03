@@ -1,8 +1,9 @@
 #include "Table.hpp"
 
-Table::Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position) : Gaza::WindowPanel(application, position)
+Table::Table(Gaza::FrameSheetCollection * cardSprites, int * score, Gaza::Application * application, sf::Vector2f &position) : Gaza::WindowPanel(application, position)
 {
 	this->cardSprites = cardSprites;
+	this->score = score;
 
 	spacingX = 5;
 	spacingY = 5;
@@ -195,6 +196,8 @@ void Table::selectCard(Card * card)
 			{
 				removeCard(selectedCards[i]);
 			}
+
+			(*score)++;
 
 			ensureValidTripleExists();
 		}

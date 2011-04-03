@@ -23,6 +23,8 @@ public:
 protected:
 	Gaza::FrameSheetCollection * cardFrames;
 
+	int score;
+
 	Table * table;
 	GameControls * gameControls;
 };

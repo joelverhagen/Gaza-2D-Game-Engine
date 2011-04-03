@@ -16,7 +16,7 @@
 class Table : public Gaza::WindowPanel
 {
 public:
-	Table(Gaza::FrameSheetCollection * cardSprites, Gaza::Application * application, sf::Vector2f &position = sf::Vector2f(0, 0));
+	Table(Gaza::FrameSheetCollection * cardSprites, int * score, Gaza::Application * application, sf::Vector2f &position = sf::Vector2f(0, 0));
 	~Table();
 
 	unsigned int getWidth();
@@ -41,6 +41,8 @@ private:
 
 	int spacingX;
 	int spacingY;
+
+	int * score;
 
 	unsigned int cardWidth;
 	unsigned int cardHeight;

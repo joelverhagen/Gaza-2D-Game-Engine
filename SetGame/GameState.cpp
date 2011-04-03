@@ -4,8 +4,10 @@ GameState::GameState(Gaza::Application * application, Gaza::FrameSheetCollection
 {
 	this->cardFrames = cardFrames;
 
-	table = new Table(cardFrames, application, sf::Vector2f(5, 5));
-	gameControls = new GameControls(table->getWidth(), application, sf::Vector2f(0.f, (float)table->getHeight()));
+	score = 0;
+
+	table = new Table(cardFrames, &score, application, sf::Vector2f(5, 5));
+	gameControls = new GameControls(table->getWidth(), &score, application, sf::Vector2f(0.f, (float)table->getHeight()));
 
 	application->setSize(table->getWidth(), table->getHeight() + gameControls->getHeight());
 }
